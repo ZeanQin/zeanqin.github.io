@@ -43,8 +43,40 @@ Instead of importing axios everywhere, the module provides you a convenient inte
 ## Configure Nuxt with ESLint and Prettier in VSCode
  - https://medium.com/@gogl.alex/how-to-properly-set-up-eslint-with-prettier-for-vue-or-nuxt-in-vscode-e42532099a9c
 
+## Handling errors in NuxtJS
+The two types of error pages are, 
+
+|              | Client side error pages          | Server side error pages |
+|:-------------|:------------------|:------|
+| How it happens           | app is loaded in browser, and the user clicks on a link that can't be rendered | user directly visits a link that can't be rendered  |
+| Location of rendering |  Browser  | Server  |
+|  |    |   |
+
+### How to override client side error pages
+1. Add `~/layout/error.vue` 
+
+    The error page is a page component which is always displayed when an error occurs (that does not happen while server-side rendering). Though this file is placed in the layouts folder, it should be treated as a page. this layout is special, since you should not include <nuxt/> inside its template. You must see this layout as a component displayed when an error occurs (404, 500, etc.). Similar to other page components, you can set a custom layout for the error page as well in the usual way.
+    
+    Nuxt.js adds the error(params) method in the context, which you can call to display the error page. i.e. 
+    
+    ```js
+      error({ statusCode: 404, message: 'Post not found' })
+    ```
+
+
+### How to override the server side error pages
+1. Add `~/app/views/error.html` to the project
+
+## Conventions
+The [nuxtjs.org](https://nuxtjs.org) website itself is a NuxtJS project and its source code can be found [here](https://github.com/nuxt/nuxtjs.org). Some conventions that I have observed and are following are: 
+ - use kebab-case for everything in the `pages` folder
+ - use kebab-case for folders under the `components` folder but use PascalCase for all component names
+ - use kebab-case everywhere else
+
 ## References: 
 1. https://blog.lichter.io/posts/organize-and-decouple-your-api-calls-in-nuxtjs/#generalize-our-implementation
 2. https://medium.com/@gogl.alex/how-to-properly-set-up-eslint-with-prettier-for-vue-or-nuxt-in-vscode-e42532099a9c
 3. https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 4. Auth External API (JWT) with SSR: https://nuxtjs.org/examples/auth-external-jwt
+5. Change the Nuxt.js server error page: https://blog.lichter.io/posts/change-the-nuxtjs-server-error-page/
+6. Error handling in NuxtJS: https://nuxtjs.org/guide/async-data#handling-errors
