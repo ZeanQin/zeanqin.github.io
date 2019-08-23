@@ -64,10 +64,14 @@ The two types of error pages are,
     ```
 
 
-### How to override the server side error pages
+### Server side error pages
 1. Add `~/app/views/error.html` to the project
 
-## Conventions
+Errors on the server take the most precedence over anything else. Not that they are more important, but they stop the execution of the Nuxt application. If you app encounters an unhandled exception, and you do not handle it, then it is going to stop. As a last resort, Nuxt can throw the Nuxt Server Error page. By this point, your Nuxt app has stopped executing. It has a static page it will return to the browser as part of the Express request. There is no Nuxt magic at this point either so you cannot call for other resources or reference your Store or the error that caused this in the first place.
+
+NuxtJS doesn't handle errors for you, but it allows you to handle known errors either on server side or client side and allows you to redirect to a page `error.vue` using the `error` method avaiable on the `context` object.
+
+## Naming Conventions
 The [nuxtjs.org](https://nuxtjs.org) website itself is a NuxtJS project and its source code can be found [here](https://github.com/nuxt/nuxtjs.org). Some conventions that I have observed and are following are: 
  - use kebab-case for everything in the `pages` folder
  - use kebab-case for folders under the `components` folder but use PascalCase for all component names
@@ -80,3 +84,4 @@ The [nuxtjs.org](https://nuxtjs.org) website itself is a NuxtJS project and its 
 4. Auth External API (JWT) with SSR: https://nuxtjs.org/examples/auth-external-jwt
 5. Change the Nuxt.js server error page: https://blog.lichter.io/posts/change-the-nuxtjs-server-error-page/
 6. Error handling in NuxtJS: https://nuxtjs.org/guide/async-data#handling-errors
+7. Handling errors while server side rendering your code in Nuxt.js: https://medium.com/@benrichardson_5275/handling-errors-while-server-side-rendering-your-code-in-nuxt-js-d733ed76239d
