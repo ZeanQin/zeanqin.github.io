@@ -20,6 +20,7 @@ The **_.NET Core SDK_** contains the CLR, FCL and other tools that make developi
 - `dotnet build` - compile the source code i.e. the C# compiler translates all `.cs` files into a `.dll` binary file (an assembly). 
 - `dotnet run` - restore, build and run the project
 - `dotnet <assembly.dll>` - run the assembly
+- `dotnet test` - run unit tests using the test runner specified in the `.csproj` file
 
 A **project** is a collection of source code files that you want to put together into a single application or library that you write to share with other developers. You can create a new project using `dotnet new` from the command line.
 
@@ -29,4 +30,11 @@ Typical folders/files in a project,
 - `obj/` - temporary files that are put together during the restore and build process
 - other source files
 
-**NuGet** is the package system. External packages are referenced in the `.csproj` file and can be restored using the `dotnet restore` command.
+**NuGet** is the package system for .NET and .NET Core. External packages are referenced in the `.csproj` file and can be restored using the `dotnet restore` command.
+
+Keywords: 
+- `static` - The static keyword associates members (i.e. methods or fields in a class) to the class rather than its instances (i.e. objects) of a class. Static fields are mostly used to track some global states across all objects of the same class. Static methods are usually behaviours that have nothing to do with specific objects of the class.  
+- `internal`
+
+
+*Unit test* is testing a small unit of code, e.g. a method in a class, and verify that it's working as intended. The convention in C# is to create a separate project with the name _**<project_name>.Tests**_.
