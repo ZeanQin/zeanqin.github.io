@@ -1,5 +1,5 @@
 ---
-title: The definitive guide to Python import statements
+title: The definitive guide to npm
 layout: post
 use_toc: true
 excerpt: The definitive guide to NPM
