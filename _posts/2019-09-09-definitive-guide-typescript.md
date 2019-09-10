@@ -58,3 +58,29 @@ Features:
 - Intellisense and syntax checking if using supported editor 
 
 ![](/assets/images/typescript/typescript-compilcation-process.PNG)
+
+## Keywords and Operators
+| Keyword                 | Description
+|:------------------------|:-------------------------------------------------------|
+| **class**               | Container for members such as properties and functions | 
+| **constructor**         | Provides initialization functionality in a class |
+| **exports**             | Export a member from a module |
+| **extends**             | Extend a class or interface |
+| **implements**          | Implement an interface |
+| **imports**             | Import a module |
+| **interface**           | Defnes code contract that can be implemented by types |
+| **module / namespace**  | Naming container for classes and other code |
+| **public/private**      | Member visibility modifers |
+| **…**                   | Rest parameter syntax |
+| **=>**                  | Arrow syntax used with defnitions and functions |
+| **< typeName>**         | < > characters use to cast/convert between types |
+| **:**                   | Separator between variable/parameter names and types |
+
+
+Code Hierarchy in TypeScript is as following: 
+
+![](/assets/images/typescript/code-hierarchy.PNG)
+
+## Tooling and Framework Options
+- Node.js (server side framework)
+- Sublime, Emacs, Vi, VS (including auto compling into JavaScript upon saving a TypeScript file), VS Code, Atom, and WebStorm
