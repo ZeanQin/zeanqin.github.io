@@ -85,3 +85,5 @@ The [nuxtjs.org](https://nuxtjs.org) website itself is a NuxtJS project and its 
 5. Change the Nuxt.js server error page: https://blog.lichter.io/posts/change-the-nuxtjs-server-error-page/
 6. Error handling in NuxtJS: https://nuxtjs.org/guide/async-data#handling-errors
 7. Handling errors while server side rendering your code in Nuxt.js: https://medium.com/@benrichardson_5275/handling-errors-while-server-side-rendering-your-code-in-nuxt-js-d733ed76239d
+8. State management in Vue.js https://antenna.io/blog/2018/01/state-management-in-vue-js
+9. Custom Events https://vuejs.org/v2/guide/components-custom-events.html
