@@ -12,6 +12,21 @@ The main characteristics of JavaScript include encapsulation, messy code, and dy
 
 ### Dynamic type system
 
+In a dynamic type system, the same variable can be re-used to store a reference to objects of different types or store values of different types. 
+
+```js
+// An example of dynamic type
+
+var person; // could be any type
+
+person = "John Papa";
+person.substring(1, 4);
+
+person = 1;
+person.substring(1, 4); // will cause an exception at runtime
+```
+
+
 The good: 
 - variables can hold any type of object e.g. boolean, string, number, object literal etc. 
 - Types determined on the fy
@@ -62,6 +77,7 @@ Features:
 ## Keywords and Operators
 | Keyword                 | Description
 |:------------------------|:-------------------------------------------------------|
+| **declare**             | Creates an ambient declaration, meaning the variable doesn't exist in the current file but exists in somewhere else such as in a referenced library | 
 | **class**               | Container for members such as properties and functions | 
 | **constructor**         | Provides initialization functionality in a class |
 | **exports**             | Export a member from a module |
@@ -69,13 +85,23 @@ Features:
 | **implements**          | Implement an interface |
 | **imports**             | Import a module |
 | **interface**           | Defnes code contract that can be implemented by types |
-| **module / namespace**  | Naming container for classes and other code |
+| **module / namespace**  | Naming container for classes and other code. namespace is preferred over module |
 | **public/private**      | Member visibility modifers |
 | **…**                   | Rest parameter syntax |
 | **=>**                  | Arrow syntax used with defnitions and functions |
 | **< typeName>**         | < > characters use to cast/convert between types |
 | **:**                   | Separator between variable/parameter names and types |
 
+```ts
+/** Example ambient declaration*/
+
+//  Reference the types file
+/// <reference path="jquery.d.ts">  
+
+declare var $ // meaning the dollar sign is not in this file, but it's coming from somewhere else, in this case, the jquery typings file
+
+$("div").text("hi");
+```
 
 Code Hierarchy in TypeScript is as following: 
 
@@ -84,3 +110,37 @@ Code Hierarchy in TypeScript is as following:
 ## Tooling and Framework Options
 - Node.js (server side framework)
 - Sublime, Emacs, Vi, VS (including auto compling into JavaScript upon saving a TypeScript file), VS Code, Atom, and WebStorm
+
+### Type inference 
+
+Type inference
+```ts 
+var num = 2; // num has the type number
+var num; // num has the type any, which is the base type for all types
+```
+Explicit type (recommended)
+```ts 
+var num: number = 2;
+var num: number; 
+```
+### Defining the type
+```ts
+// for a variable
+var a: number = 2;
+```
+```ts
+// for a function
+// TODO: this doesn't seem to be correct
+foo: (a: string, b: number) => void
+= function(aliasForA, aliasForB) 
+{
+
+}
+```
+
+
+
+
+`tsc` commands
+- `tsc --init` - creates a `.tsconfig.json` file
+- `tsc -w` - watch input files
