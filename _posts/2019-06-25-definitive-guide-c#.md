@@ -83,7 +83,7 @@ void GetBookSetName(out book)
 Unlike `ref`, with the `out` keyword, the C# compiler assumes that the incoming reference has not been initialised. The compiler will give an error if the out parameter is not assigned in the `GetBookSetName` method. 
 
 ### How to tell if a varialbe is reference type or value type
-A `class` type is a reference type and a `struct` type, including `double` (alias for `Double`), `DateTime` etc., is a value type. 
+A `class` type is a reference type and a `struct` type, including `double` (alias for `Double`), `DateTime`, `char` etc., is a value type. 
 
 ```
 A `struct` is similar to a `class` in that it can have fields and methods. 
@@ -102,3 +102,19 @@ Conventions
 Execution always goes from top to bottom. Flow controls include, 
 - `if` for branching,
 - `foreach`, `do ... while`, `while`, `for` for looping
+- `break`, `continue` for jumping statements
+- `switch` for switching
+
+```c#
+// C# 7 and later supports switch with pattern matching
+switch(a)
+{
+    case var aa when <predicate>: // aa will take on the value of a
+        ...
+        break;
+    ...
+    default: 
+        ...
+        break;
+}
+```
