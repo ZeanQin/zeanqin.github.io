@@ -118,3 +118,56 @@ switch(a)
         break;
 }
 ```
+## Building Types
+### _Fields and Methods_
+Fields and methods in a class are both _members_ of that type. The C# compiler determines if two methods are the same by looking at their signature, which contains: 
+- the name of the method, 
+- parameter types, 
+- number of parameters
+
+The return type of a method is not part of the signature for that method. 
+
+### _Properties_
+A field is the variable representing the state of the object, while a property is the field + the getters and setters of that backing field. 
+```c#
+// a backing field for the property
+private string name;
+
+// property
+public string Name {
+    get {
+        return name;
+    }
+    set {
+        name = value;
+    }
+}
+```
+And it can be written as an auto property as below
+```c#
+// the C# compiler will automatically generate a private backing field with the getters and setters as shown above. 
+public string Name { get; set; }
+```
+
+Defining a property is very similar to defining a public field. However, there are a couple of differences between them, 
+- The main differences revovle around reflection and serialisation, which both inspect an object to see what's available for state at runtime. 
+- Another difference is that the getter and setter of a property can have different access modifiers. e.g. one is private while the other is public. 
+
+### _Readonly fields_
+A `readonly` field can only be set by a variable initialisor or in the constructor. And the compiler will throw an error if it's set in a method. It's good for states that are set at the object creation time but never are changed for the rest of the object life cycle.
+```C#
+// initializer
+readonly string Cateogry = "Science";
+// or initialise in constructor
+...
+```
+
+### _Const fields_
+`const` has a stricter rule than `readonly`. i.e. it can only be set by an initializer and is not even able to be set inside a constructor. Because it's not tied to a particular object, it's accessed via the type name rather than the object. 
+```C#
+// initializer
+public const string CATEGORY = "Science"; // by convension, all const values use upper case for the name of the field. 
+```
+
+### _Delegates_
+
