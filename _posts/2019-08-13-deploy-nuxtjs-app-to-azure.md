@@ -39,7 +39,41 @@ The two additional files are:
    1. going to Kudu > console
    2. run `node -v` and `npm -v`
 
+## Set up environment variables in Azure
+Nuxt uses webpack's `definePlugin` to define the environmental variable. According to [webpack website](https://webpack.js.org/plugins/define-plugin/)
+```
+The `DefinePlugin` allows you to create global constants which can be configured at compile time. This can be useful for allowing different behavior between development builds and production builds. If you perform logging in your development build but not in the production build you might use a global constant to determine whether logging takes place. That's where DefinePlugin shines, set it and forget it rules for development and production builds.
+``` 
+This means that the actual `process` or `process.env` from Node.js is neither available nor defined. Each of the env properties defined in nuxt.config.js is individually mapped to `process.env.xxxx` and converted during compilation.
+
+As an example, 
+```js
+export default {
+  env: {
+    apiuri: process.env.API_KEY || 'default value'
+  }
+}
+```
+Here we use the API_KEY environment variable defined as part of the Azure application settings, if it's available, and assign that to `apiuri`.
+
+These will be processed at build time and then made available using the name you give them, e.g.
+
+```js
+module.exports = {
+  fireConfig: {
+    apiKey: process.env.firebaseApiKey,  # Not API_KEY
+    // ...
+};
+```
+You can asscess the defined `api` variable, 
+- via `process.env.apiKey`, or
+- via `context.env.apiKey`, see [context API](https://nuxtjs.org/api/context).
+
+_Please note: the implication is that once you have deinfed a property in Azure, changes to it will not take effect unless you re-build the application._
 
 ## References: 
 1. "How to deploy on Azure Portal" - https://nuxtjs.org/faq/deployment-azure-portal
 2. Kudu - https://github.com/projectkudu/kudu/wiki
+3. Nuxt `env` property - https://nuxtjs.org/api/configuration-env/
+4. `DefinePlugin` - https://webpack.js.org/plugins/define-plugin/
+5. How to access Heroku environment variables with Nuxt.JS app - https://stackoverflow.com/questions/55704031/how-to-access-heroku-environment-variables-with-nuxt-js-app?answertab=votes#tab-top
