@@ -170,4 +170,138 @@ public const string CATEGORY = "Science"; // by convension, all const values use
 ```
 
 ### _Delegates_
+A delegate is a specific type, just like `double`, `string` etc, that describes what a method looks like including the return type of the method and the sequence of parameters of the method. 
+
+```c#
+namespace GradeBook {
+    // for comparision 
+    public class Book {}
+
+    // define delegate 
+    public delegate string WriteLogDelegate(string logMessage);
+}
+```
+Then somewhere, 
+```c#
+namespace Gradebook.Tests
+{
+    public class 
+    {
+        [Fact]
+        public void WriteLogDelegateCanPointToMethod()
+        {
+            WriteLogDelegate log;
+            
+            // 1st way: similar to how an object is constructed from a class definition
+            log = new WriteLogDelegate(ReturnMessage);
+
+            // 2nd way 
+            log = ReturnMessage;
+
+            // invoking the delegate
+            var result = log("Hello");
+            Assert.Equal("Hello", result);
+        }
+
+        string ReturnMessage(string message)
+        {
+            return message;
+        }
+    }
+}
+```
+
+A `multi-cast delegate` is a delegate that contains multiple methods and can invoke all methods at once. Example, 
+```c#
+namespace Tests
+{
+    public delegate string WriteLogDelegate(string message);
+
+    public class Foo.Tests 
+    {
+        [Fact]
+        public void DelegateCanMultiCast
+        {
+            WriteLogDelegate log;
+
+            log = MethodA;
+            log += MethodA;
+            log += MethodB;
+
+            // MethodA will be called twice and MethodB will be called once i.e. multi-cast
+            var result = log("Hello");
+
+        }
+
+        string MethodA(string message) 
+        {
+            // ... 
+        }
+
+        string MethodB(string message) 
+        {
+            // ... 
+        }
+
+    }
+}
+```
+
+### _Events_
+
+A method of an object might want to generate some event and invoke some methods defined elsewhere. 
+
+An example of defining and raising an event using delegate,
+```c#
+namespace GradeBook
+{
+
+    // should go into a separate file as it's its own type similar to a class
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
+    public class Book
+    {
+        // the `event` keyword add further restrictions and additional capabilities to the delegate that make the delegate safer to use. 
+        // example restriction such as forbiding the use of the assignment operator
+        public event GradeAddedDelegate GradeAdded;
+
+        public void AddGrade(char letter)
+        {
+            // publish event 
+            GradeAdded(this, new EventArgs());
+        }
+    }
+}
+```
+and an exmaple of handling the event is, 
+```c#
+class Program
+{
+    static void Main(string[] args)
+    {
+        var book = new Book();
+
+        // add event handlers
+        book.GradedAdded += OnGradeAdded1;
+        book.GradedAdded += OnGradeAdded2;
+        book.GradedAdded += OnGradeAdded2;
+        book.GradedAdded -= OnGradeAdded2;
+
+        // can't use assignment operator on `event`, such as wiping out all methods in delegate
+        // book.GradeAdded = null;
+
+
+    }
+
+    static void OnGradeAdded1(object sender, EventArgs e)
+    {
+        // ...
+    }
+
+    static void OnGradeAdded2(object sender, EventArgs e)
+    {
+        // ...
+    }
+}
+```
 
