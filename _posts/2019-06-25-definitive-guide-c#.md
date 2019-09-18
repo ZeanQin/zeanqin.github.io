@@ -289,8 +289,6 @@ class Program
 
         // can't use assignment operator on `event`, such as wiping out all methods in delegate
         // book.GradeAdded = null;
-
-
     }
 
     static void OnGradeAdded1(object sender, EventArgs e)
@@ -304,4 +302,110 @@ class Program
     }
 }
 ```
+
+## Object-oriented Programming (OOP)
+The three pillars of OOP: 
+- _*Encapsulation*_ allows us to hide details about our code. e.g. methods, properties, access modifiers etc. 
+
+- _*Inheritance*_ allows us to reuse code from similar classes
+    ```c#
+    namespace Test {
+        public class A {
+            public string Name {get; set;}
+            public A(string name)
+            {
+                Name = name;
+            }
+        }
+        // inheritance is denoted by the `:` symbol
+        public class B : A {
+            public B(string name) : base(name) // chain constructors for initialising properties in base object.
+            {
+                Name = name;
+            }
+        }
+    }
+    ```
+    Every class has a base class; if not specified, the base class is the `System.Object` class. A struct also inherits from the `Object` class; so a value type is technically also a reference type. 
+
+- _*Polymorphism*_ allows us to have objects of the same type to behave differently. 
+
+    One way to achieve polymorphism is by inheriting from an abstract class and providing implementation for the abstract methods. For example, a `Book` object (the real type could be different) can `SaveGrade()` to in memory, disk or over the network. 
+
+    ```c#
+    public class NamedObject 
+    {
+        public string Name {get; set;}
+    }
+
+    public abstract class Book : NamedOjbect
+    {
+        public Book(string name) : base(name)
+        {
+            Name = name;
+        }
+
+        // only defines the signature and return type of the method that any descendant classes should have
+        // no implementation details
+        public abstract void AddGrade(double grade);
+
+    }
+
+    public class InMemoryBook : Book
+    {
+        public Book(string name) : base(name)
+        {
+            Name = name;
+        }
+
+        // the override keyword tells the comiler to override the inherited abstract or virtual method.
+        public override void AddGrade(double grade)
+        {
+            // store grades in memory
+        }
+    }
+    ```
+    ```c#
+    var inMemoryBook = new InMemoryBook("hi");
+    foo(inMemoryBook);
+
+    public foo(Book book)
+    {
+        book.AddGrade(96);
+    }
+    ```
+
+    Another way to achieve encapsulation and polymorphism is by definning an interface. 
+
+    - An interface contains no implementation details and it only describes the members that should be available on a specific type. 
+    - An abstract class contains some implementation details and some 
+    - A class has all implmentation details
+
+    No access modifier for methods are needed in an interface because the implementing type must always make the method public. 
+
+    ```C#
+    public interface IBook 
+    {
+        string Name {get;}
+        void AddGrade(double grade);
+        Statistics GetStatistics();
+        event GradeAddedDelegate GradeAdded;
+    }
+
+    public class InMemoryBook : IBook
+    {
+
+    }
+    ```
+    ```c#
+    public void foo(IBook book)
+    {
+        // ... 
+    }
+    ```
+
+    Difference between an `abstract` method and a `virtual` method, 
+    - An `abstract` method is saying the deriving class must override me,
+    - a `virtual` method is saying I have provided implmention details, but deriving class can still override me if it needs to. 
+    
 
