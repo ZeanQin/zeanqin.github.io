@@ -59,7 +59,7 @@ Passing a variable by its reference to a method allows (inside) that method to u
   - If the variable holds a value, the method can update the value held by the varialbe. 
 
 In C#, passing a variable by reference is achieved by using the `ref` keyword,  
-```csharp
+``` csharp
 var book = new Book("Book 1");
 GetBookSetName(ref book);
 ```
