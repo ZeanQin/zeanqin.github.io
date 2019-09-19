@@ -1,9 +1,11 @@
 ---
-title: C# Fundamentals
+title: C# fundamentals
 layout: post
 use_toc: true
-excerpt: This post contains some of the basic/important concpets that I find myself keeping coming back to. 
+excerpt: This post contains some of the basic/important concpets that I find myself keeping coming back to around C#. 
 ---
+
+## Tools
 
 |              | .NET              | .NET Core                 |
 |:-------------|:------------------|:--------------------------|
@@ -45,7 +47,7 @@ Keywords:
 
     Tip: if you try to describe what a class does or what a single method does, and you have to use a conjunction word like **_and_**, there is a chance that it's doing too many things. In this case, you should break your class or method up. 
 
-## References vs Values
+## Reference type vs value types
 ![](/assets/images/csharp/reference-type-vs-value-type.PNG)
 
     Tip: the keywords are "memory address".
@@ -119,7 +121,7 @@ switch(a)
 }
 ```
 ## Building Types
-### _Fields and Methods_
+#### _Fields and Methods_
 Fields and methods in a class are both _members_ of that type. The C# compiler determines if two methods are the same by looking at their signature, which contains: 
 - the name of the method, 
 - parameter types, 
@@ -127,7 +129,7 @@ Fields and methods in a class are both _members_ of that type. The C# compiler d
 
 The return type of a method is not part of the signature for that method. 
 
-### _Properties_
+#### _Properties_
 A field is the variable representing the state of the object, while a property is the field + the getters and setters of that backing field. 
 ```c#
 // a backing field for the property
@@ -153,7 +155,7 @@ Defining a property is very similar to defining a public field. However, there a
 - The main differences revovle around reflection and serialisation, which both inspect an object to see what's available for state at runtime. 
 - Another difference is that the getter and setter of a property can have different access modifiers. e.g. one is private while the other is public. 
 
-### _Readonly fields_
+#### _Readonly fields_
 A `readonly` field can only be set by a variable initialisor or in the constructor. And the compiler will throw an error if it's set in a method. It's good for states that are set at the object creation time but never are changed for the rest of the object life cycle.
 ```C#
 // initializer
@@ -162,14 +164,14 @@ readonly string Cateogry = "Science";
 ...
 ```
 
-### _Const fields_
+#### _Const fields_
 `const` has a stricter rule than `readonly`. i.e. it can only be set by an initializer and is not even able to be set inside a constructor. Because it's not tied to a particular object, it's accessed via the type name rather than the object. 
 ```C#
 // initializer
 public const string CATEGORY = "Science"; // by convension, all const values use upper case for the name of the field. 
 ```
 
-### _Delegates_
+#### _Delegates_
 A delegate is a specific type, just like `double`, `string` etc, that describes what a method looks like including the return type of the method and the sequence of parameters of the method. 
 
 ```c#
@@ -247,7 +249,7 @@ namespace Tests
 }
 ```
 
-### _Events_
+#### _Events_
 
 A method of an object might want to generate some event and invoke some methods defined elsewhere. 
 
@@ -423,7 +425,10 @@ void foo()
     }
 }
 ```
-### Non-nullable Reference Types
+## Non-nullable Reference Types
 The C# compiler can aggresively look through our programs to find places where we might have null reference exception at rumtime. This behaviour can be turned on/off in the `.csproj` file and it's enabled by default for the C# 8. 
 
 By default, all reference types are non-nullable, but a varialble can be null by adding a `?` after the type. e.g. `Book? book;`
+
+## References
+1. C# Fundamentals - [https://app.pluralsight.com/course-player?clipId=12291494-5b2e-406b-b9ee-0256328d9aa7](https://app.pluralsight.com/library/courses/csharp-fundamentals-dev/table-of-contents)
