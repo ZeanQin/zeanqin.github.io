@@ -1,8 +1,8 @@
 ---
-title: The definitive guide to C#
+title: C# Fundamentals
 layout: post
 use_toc: true
-excerpt: This post contains some of the basic/important concpets that I find myself keeping coming back to. I will keep update this page as I learning about new things about C#.
+excerpt: This post contains some of the basic/important concpets that I find myself keeping coming back to. 
 ---
 
 |              | .NET              | .NET Core                 |
@@ -408,4 +408,22 @@ The three pillars of OOP:
     - An `abstract` method is saying the deriving class must override me,
     - a `virtual` method is saying I have provided implmention details, but deriving class can still override me if it needs to. 
     
+The `IDisposable` is implemented by many classes to advertise that they have something to be cleaned up, freed or released. The implementing class usually has a `.Close()` method as well as the `.Dispose()` method. These two methods typically do the same thing i.e. freeing up the underlying resources. 
 
+An easy pattern to make sure an object is always disposed is
+```c#
+void foo()
+{
+    // when used to wrap a statement, the `using` keyword is telling the compiler that we are using the `writer` object and it needs to always call the `.Dispose()` method on the object after all statements in the code block are executed. 
+    // the c# compiler will generate a try ... catch ... finally code to make sure the `.Dispose()` method is called. 
+    using(var writter = File.AppendText("test.txt"))
+    {
+        // ... 
+
+    }
+}
+```
+### Non-nullable Reference Types
+The C# compiler can aggresively look through our programs to find places where we might have null reference exception at rumtime. This behaviour can be turned on/off in the `.csproj` file and it's enabled by default for the C# 8. 
+
+By default, all reference types are non-nullable, but a varialble can be null by adding a `?` after the type. e.g. `Book? book;`
