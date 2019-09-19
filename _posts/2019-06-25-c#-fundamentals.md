@@ -428,7 +428,10 @@ void foo()
 ## Non-nullable Reference Types
 The C# compiler can aggresively look through our programs to find places where we might have null reference exception at rumtime. This behaviour can be turned on/off in the `.csproj` file and it's enabled by default for the C# 8. 
 
-By default, all reference types are non-nullable, but a varialble can be null by adding a `?` after the type. e.g. `Book? book;`
+By default, all reference types are non-nullable, but a varialble can be null by adding a `?` after the type. e.g. 
+```
+Book? book;
+````
 
 ## References
 1. C# Fundamentals - [https://app.pluralsight.com/course-player?clipId=12291494-5b2e-406b-b9ee-0256328d9aa7](https://app.pluralsight.com/library/courses/csharp-fundamentals-dev/table-of-contents)
