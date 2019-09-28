@@ -98,8 +98,44 @@ Dictionary<string, Country> countries = new Dictionary<string, Country>
 | Check the number of items           | `Length` property | `Count` property  | `Count` property
 | Efficiency           | Occupies a continouse chunck of memory. Suuports random access of items | Also occupies a continous chunk of memory. `Add()` or `Remove()` item near the front of the list can be expensive because it does copy and paste all following items. Also support random access of items. | Fast read
 | Look up/replace an item           | `[index]` | `[index]` | `[key]`
+| Multiple indices for an element           | Yes, `[index1, index2]` i.e. multidimensional array | No | No
 
 ### Reflections: 
 - Use array when the number of items is known. 
 - Use list when the number of items is not known and there are not many insert/remove operations
 - Use dictionary if random access is important and order is not important
+
+Microsoft designed `foreach` loop to be read only; use `for` for updating a collection.
+
+
+## LINQ
+LINQ is for _reading_ data only. 
+
+## Collection of collections
+
+- `jagged array` is an array in which every element is an array, i.e. array of arrays `T[][]`
+- `multidimensional array` is just one simple plain array that require multiple indices to access an element `T[,]`
+
+```csharp
+// Jagged array
+int[][] foo = 
+{
+    new int[3],
+    new int[3],
+    new int[3],
+}
+
+// multidimensional array
+int[,] = new int[3, 3]
+```
+
+Other collection types: 
+- Array is _*not*_ a standard generic collection. It's uniquely baked into the .NET runtime. This gives them special syntax etc. 
+ - `Standard generic collections` are usually found in `System.Collections.Generic` such as `List<T>`, `Dictionary<TKey, TValue>`, SortedDictionary, SortedList, LinkedList
+  - `System.Collections.ObjectModel` usually contains collections for building custom collections. For example, the ObservableCollection is built on top of ObjectModel types. 
+  - Immutable collections i.e. collections that can't be modified once instantiated. Most collections have their immutable counter parts e.g. `ImmutableArray`, `ImmutableList`, `ImmutableDictionary` etc. These are natually thread safe because they can never be modifed once they are created. 
+  - Concurrent collections are similar to standard collections but are thread-safe. Arrays and all other collections are designed to be used by one thread at a time. 
+
+## Collection Interfaces
+  - `IEnumerable<T>` - All collections implement `IEnumerable<T>` that allows a collection to act as a data source. `LINQ` and `foreach` rely heavily on the interface. 
+  - `IList<T>` - Implemented by types such as `T[][]` `List<T>` etc, this interface provides functions such as enumerate, look up by index, modify by index etc. 
