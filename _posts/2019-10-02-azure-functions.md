@@ -107,6 +107,16 @@ After the installation finishes, the `func` command should be available.
 
 - `func -v` - Shows version of the core tools
 - `func init` - Create a new Function App in the current folder. Initializes git repo.
+- `func new` - Create a new function from a template.
+- `func start` - Launches the functions runtime host
+
+```bash
+## Sending a GET request
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" http://hostname/resource
+
+## Sending a POST request
+curl --data "param1=value1&param2=value2" http://hostname/resource
+```
 
 ### Directory structure
 
