@@ -48,7 +48,7 @@ Tasks of connecting to external resources i.e. post message to a queue, write a 
 
 The script files are compiled on the fly and can be programmed in the Azure portal. However, it's better to precompile the functions into an DLL (the class library). 
 
-With the pre-compiled approach, a `function.json` file will get automatically created for each function and will point to the function in the DLL that implements the function.
+With the pre-compiled approach, a `function.json` file will get automatically created for each function and will point to the function in the DLL that implements the function. This approach uses attributes (provided by the `Microsoft.NET.Sdk.Functions` package) to hold information about the triggers and bindings.
 
 ## Azure Functions Core Tools
 
@@ -106,9 +106,24 @@ After the installation finishes, the `func` command should be available.
 ### Common commands
 
 - `func -v` - Shows version of the core tools
-- `func init` - Create a new Function App in the current folder. Initializes git repo.
+- `func init` - Create a new Function App in the current folder by adding the following files
+  - `<name>.csproj` - The C# project file. It contains info such as the target framework, Azure Functions version, dependencies, what should be copied into the output folder etc.,
+  - `host.json` - It contains the configration settings for the function app as a whole.
+  - `local.settings.json` - It contains the settings to use when running locally.
+  - `.gitignore` - Useful if we need to initialise a git repository.
+  - `.vscode` -  It contains settings that prompts VS Code to install some useful extentions that improves the Azure Functions development experience.
 - `func new` - Create a new function from a template.
 - `func start` - Launches the functions runtime host
+
+### What happens under the hood
+
+The compilation process,
+
+- copies over the `host.json` file and `local.settings.json` file,
+- generates the bin folder containing the DLL files, and
+- generates a folder for each Azure function with each folder containing a `function.json` file. This `function.json` file is generated based on the attributes in the C# code. It contains info such as the bindings, script file (i.e. the dll file containing our function) and entry point (i.e. the full qualified name of the function) etc.
+
+![After compilation](/assets/images/azure-functions/after-compilation.PNG)
 
 ```bash
 ## Sending a GET request
@@ -117,14 +132,6 @@ curl -i -H "Accept: application/json" -H "Content-Type: application/json" http:/
 ## Sending a POST request
 curl --data "param1=value1&param2=value2" http://hostname/resource
 ```
-
-### Directory structure
-
-- `<name>.csproj` - The C# project file. It contains info such as the target framework, Azure Functions version, dependencies, what should be copied into the output folder etc. 
-- `host.json` - It contains the configration settings for the function app as a whole.
-- `local.settings.json` - It contains the settings to use when running locally.
-- `.gitignore` - Useful if we need to initialise a git repository.
-- `.vscode` -  It contains settings that prompts VS Code to install some useful extentions that improves the Azure Functions development experience.
 
 ## References
 
