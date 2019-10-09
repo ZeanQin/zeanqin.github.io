@@ -133,6 +133,24 @@ curl -i -H "Accept: application/json" -H "Content-Type: application/json" http:/
 curl --data "param1=value1&param2=value2" http://hostname/resource
 ```
 
+## Triggers
+
+| Trigger type        | Package          | Other |
+|:-------------|:------------------|:------|
+| HTTP trigger | `Microsoft.NET.Sdk.Functions` |   |
+| Queue trigger | `` |   |
+| Blob trigger | `` |   |
+| Table Storage trigger | `` |   |
+
+## Bindings
+
+| Output binding type | Package          | Other |
+|:-------------|:------------------|:------|
+| Queue output  | `Microsoft.Azure.WebJobs.Extensions.Storage` |   |
+| Blob output  | `` |   |
+| SendGrid email output  | `Microsoft.Azure.WebJobs.Extensions.SendGrid` |   |
+| Table Storage output  | `` |   |
+
 ## References
 
 1. [Azure Functions in practice](https://www.troyhunt.com/azure-functions-in-practice/)
@@ -140,3 +158,4 @@ curl --data "param1=value1&param2=value2" http://hostname/resource
 3. [Supported languages in Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/supported-languages)
 4. [Azure functions core tools](https://github.com/Azure/azure-functions-core-tools)
 5. [Work with Azure functions core tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local)
+6. [Azure Queue storage bindings for Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-queue)
