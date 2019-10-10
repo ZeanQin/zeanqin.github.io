@@ -40,7 +40,7 @@ There are still servers such as DB server, web server etc., but you delegate the
 
 ### Input and output bindings
 
-Tasks of connecting to external resources i.e. post message to a queue, write a file to blob storage, send an email. Bindings can reduce the amount of code to achieve these tasks.
+Tasks of connecting to external resources i.e. post message to a queue, write a file to blob storage, send an email. Bindings can reduce the amount of code to achieve these tasks. Input bindings allows us to look up data from different input sources easily.
 
 ## Two ways of writing C# in Azure Functions
 
@@ -150,6 +150,44 @@ curl --data "param1=value1&param2=value2" http://hostname/resource
 | Blob output  | `` |   |
 | SendGrid email output  | `Microsoft.Azure.WebJobs.Extensions.SendGrid` |   |
 | Table Storage output  | `` |   |
+
+### The `IBinder` interface
+
+Normally, the output binding is defined as part of the function signature. The `IBinder` interface allows us to customise the binding at rumtime.
+
+```csharp
+public static class GenerateLicenseFile
+    {
+        [FunctionName("GenerateLicenseFile")]
+        public static async Task Run(
+            [QueueTrigger("orders", Connection = "AzureWebJobsStorage")] Order order,
+            IBinder binder,
+            ILogger log)
+        {
+            var outputBlob = await binder.BindAsync<TextWriter>(new BlobAttribute($"licenses/{order.OrderId}.lic"){
+                Connection = "AzureWebJobsStorage"
+            });
+
+            outputBlob.WriteLine($"OrderId: {order.OrderId}");
+            outputBlob.WriteLine($"Email: {order.Email}");
+            outputBlob.WriteLine($"ProductId: {order.ProductId}");
+            outputBlob.WriteLine($"PurchaseDate: {DateTime.UtcNow}");
+            var md5 = System.Security.Cryptography.MD5.Create();
+            var hash = md5.ComputeHash(
+                System.Text.Encoding.UTF8.GetBytes(order.Email + "secret"));
+            outputBlob.WriteLine($"SecretCode: {BitConverter.ToString(hash).Replace("-", "")}");
+
+            log.LogInformation($"C# Queue trigger function processed: {order}");
+        }
+    }
+}
+```
+
+The benefits of using the `IBinder` interface is that, it
+
+- works with all binding attributes (e.g. QueueAttribute, SendGridAttribute),
+- calculates attribute parameters on-demand in the function body,
+- has the flexibility to choose the type to bind to at rumtime.
 
 ## References
 
