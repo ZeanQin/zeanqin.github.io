@@ -14,7 +14,7 @@ To store a list of commands in a text file, then execute the command where the c
 The `<C-R>"` pastes the yanked text into the command-line; the `<C-H>` deletes the EOL character which was yanked along with the line.
 
 Then you can set up the mapping upon starting vim by updating the `.vimrc` file with 
-`nmap ,x Y:!clear && <C-R>"<C-H><CR`. My sample `.vimrc` file is [here](/assets/scripts/vimrc).
+`nmap ,x Y:!clear && <C-R>"<C-H><CR>`. My sample `.vimrc` file is [here](/assets/scripts/vimrc).
 
 ## References
 1. [Mapping keys in Vim](https://vim.fandom.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1))
