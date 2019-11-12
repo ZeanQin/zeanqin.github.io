@@ -40,7 +40,7 @@ There are still servers such as DB server, web server etc., but you delegate the
 
 ### Input and output bindings
 
-Tasks of connecting to external resources i.e. post message to a queue, write a file to blob storage, send an email. Bindings can reduce the amount of code to achieve these tasks.
+Tasks of connecting to external resources i.e. post message to a queue, write a file to blob storage, send an email. Bindings can reduce the amount of code to achieve these tasks. Input bindings allows us to look up data from different input sources easily.
 
 ## Two ways of writing C# in Azure Functions
 
@@ -133,6 +133,62 @@ curl -i -H "Accept: application/json" -H "Content-Type: application/json" http:/
 curl --data "param1=value1&param2=value2" http://hostname/resource
 ```
 
+## Triggers
+
+| Trigger type        | Package          | Other |
+|:-------------|:------------------|:------|
+| HTTP trigger | `Microsoft.NET.Sdk.Functions` |   |
+| Queue trigger | `` |   |
+| Blob trigger | `` |   |
+| Table Storage trigger | `` |   |
+
+## Bindings
+
+| Output binding type | Package          | Other |
+|:-------------|:------------------|:------|
+| Queue output  | `Microsoft.Azure.WebJobs.Extensions.Storage` |   |
+| Blob output  | `` |   |
+| SendGrid email output  | `Microsoft.Azure.WebJobs.Extensions.SendGrid` |   |
+| Table Storage output  | `` |   |
+
+### The `IBinder` interface
+
+Normally, the output binding is defined as part of the function signature. The `IBinder` interface allows us to customise the binding at rumtime.
+
+```csharp
+public static class GenerateLicenseFile
+    {
+        [FunctionName("GenerateLicenseFile")]
+        public static async Task Run(
+            [QueueTrigger("orders", Connection = "AzureWebJobsStorage")] Order order,
+            IBinder binder,
+            ILogger log)
+        {
+            var outputBlob = await binder.BindAsync<TextWriter>(new BlobAttribute($"licenses/{order.OrderId}.lic"){
+                Connection = "AzureWebJobsStorage"
+            });
+
+            outputBlob.WriteLine($"OrderId: {order.OrderId}");
+            outputBlob.WriteLine($"Email: {order.Email}");
+            outputBlob.WriteLine($"ProductId: {order.ProductId}");
+            outputBlob.WriteLine($"PurchaseDate: {DateTime.UtcNow}");
+            var md5 = System.Security.Cryptography.MD5.Create();
+            var hash = md5.ComputeHash(
+                System.Text.Encoding.UTF8.GetBytes(order.Email + "secret"));
+            outputBlob.WriteLine($"SecretCode: {BitConverter.ToString(hash).Replace("-", "")}");
+
+            log.LogInformation($"C# Queue trigger function processed: {order}");
+        }
+    }
+}
+```
+
+The benefits of using the `IBinder` interface is that, it
+
+- works with all binding attributes (e.g. QueueAttribute, SendGridAttribute),
+- calculates attribute parameters on-demand in the function body,
+- has the flexibility to choose the type to bind to at rumtime.
+
 ## References
 
 1. [Azure Functions in practice](https://www.troyhunt.com/azure-functions-in-practice/)
@@ -140,3 +196,4 @@ curl --data "param1=value1&param2=value2" http://hostname/resource
 3. [Supported languages in Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/supported-languages)
 4. [Azure functions core tools](https://github.com/Azure/azure-functions-core-tools)
 5. [Work with Azure functions core tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local)
+6. [Azure Queue storage bindings for Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-queue)
