@@ -50,7 +50,7 @@ or the shorthand
 git checkout -t <name of remote>/test
 ```
 
-## add and commit in one command
+## Add and commit in one command
 
 ```bash
 git config --global alias.add-commit '!git add -A && git commit'
@@ -78,9 +78,26 @@ export EDITOR="$VISUAL"
 
 *Setting both is not necessarily needed, but some programs may not use the more-correct `VISUAL`. See `VISUAL` vs. `EDITOR`.
 
+## Discard unstaged files in current working directory
+
+To discard all unstaged files in current working directory,
+
+```bash
+git checkout -- .
+```
+
+For a specific file, use
+
+```bash
+git checkout -- path/to/file/to/revert
+```
+
+The `--` is to remove [argument ambiguation](https://git-scm.com/docs/git-checkout#_argument_disambiguation).
+
 ## References
 
 1. [How do I delete a Git branch locally and remotely?](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely)
 2. [How do I check out a remote Git branch?](https://stackoverflow.com/questions/1783405/how-do-i-check-out-a-remote-git-branch)
 3. [Git add and commit in one command](https://stackoverflow.com/questions/4298960/git-add-and-commit-in-one-command)
 4. [How do I make Git use the editor of my choice for commits?](https://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits)
+5. [How do I discard unstaged changes in Git?](https://stackoverflow.com/questions/52704/how-do-i-discard-unstaged-changes-in-git)
