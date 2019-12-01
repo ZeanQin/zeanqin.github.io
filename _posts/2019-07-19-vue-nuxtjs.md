@@ -11,6 +11,7 @@ excerpt: Basics of Nuxt.js
 Run `npx create-nuxt-app <project-name>`
 
 ## Directory structure
+
  - `assets` - un-compiled assets such as Stylus or Sass files, images, or fonts
  - `components` - Vue.js Components. You can't use either `asyncData` or `fetch` in these components.
  - `layouts` - application layouts that are used to change the look and feel of your page (for example by including a sidebar or having distinct layouts for mobile and desktop). _This directory cannot be renamed without extra configuration._
@@ -63,8 +64,8 @@ The two types of error pages are,
       error({ statusCode: 404, message: 'Post not found' })
     ```
 
-
 ### Server side error pages
+
 1. Add `~/app/views/error.html` to the project
 
 Errors on the server take the most precedence over anything else. Not that they are more important, but they stop the execution of the Nuxt application. If you app encounters an unhandled exception, and you do not handle it, then it is going to stop. As a last resort, Nuxt can throw the Nuxt Server Error page. By this point, your Nuxt app has stopped executing. It has a static page it will return to the browser as part of the Express request. There is no Nuxt magic at this point either so you cannot call for other resources or reference your Store or the error that caused this in the first place.
