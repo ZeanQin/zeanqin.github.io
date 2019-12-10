@@ -94,6 +94,36 @@ git checkout -- path/to/file/to/revert
 
 The `--` is to remove [argument ambiguation](https://git-scm.com/docs/git-checkout#_argument_disambiguation).
 
+## Rename a local and remote branch
+
+### Step 1: Rename your local branch
+
+If you are on the branch you want to rename:
+
+```bash
+git branch -m new-name
+```
+
+If you are on a different branch:
+
+```bash
+git branch -m old-name new-name
+```
+
+### Step 2: Delete the old-name remote branch and push the new-name local branch
+
+```bash
+git push origin :old-name new-name
+```
+
+### Step 3: Reset the upstream branch for the new-name local branch
+
+Switch to the branch and then:
+
+```bash
+git push origin -u new-name
+```
+
 ## References
 
 1. [How do I delete a Git branch locally and remotely?](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely)
@@ -101,3 +131,4 @@ The `--` is to remove [argument ambiguation](https://git-scm.com/docs/git-checko
 3. [Git add and commit in one command](https://stackoverflow.com/questions/4298960/git-add-and-commit-in-one-command)
 4. [How do I make Git use the editor of my choice for commits?](https://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits)
 5. [How do I discard unstaged changes in Git?](https://stackoverflow.com/questions/52704/how-do-i-discard-unstaged-changes-in-git)
+6. [Rename a local and remote branch in git](https://multiplestates.wordpress.com/2015/02/05/rename-a-local-and-remote-branch-in-git/)
