@@ -124,6 +124,36 @@ Switch to the branch and then:
 git push origin -u new-name
 ```
 
+## A better Git log
+
+Step 1: Set up alias
+
+```bash
+git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+```
+
+Step 2: Append additional flags if needed
+
+```bash
+# filter by start date
+--after="2016-01-31"
+--since="2016-01-31"
+
+# filter by end date
+--before="2017-03-10"
+--until="2017-03-10"
+
+# filter by auther
+--author="John Doe"
+```
+
+### commonly used
+
+```bash
+git lg --after="yesterday" --author="Zean"
+```
+
+
 ## References
 
 1. [How do I delete a Git branch locally and remotely?](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely)
