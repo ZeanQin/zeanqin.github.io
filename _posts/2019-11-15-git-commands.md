@@ -153,6 +153,15 @@ Step 2: Append additional flags if needed
 git lg --after="yesterday" --author="Zean"
 ```
 
+## Git Diffs
+
+I use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy) to make the diffs more readable. Install it and then run, 
+
+
+```bash
+git diff
+```
+
 
 ## References
 
@@ -162,3 +171,4 @@ git lg --after="yesterday" --author="Zean"
 4. [How do I make Git use the editor of my choice for commits?](https://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits)
 5. [How do I discard unstaged changes in Git?](https://stackoverflow.com/questions/52704/how-do-i-discard-unstaged-changes-in-git)
 6. [Rename a local and remote branch in git](https://multiplestates.wordpress.com/2015/02/05/rename-a-local-and-remote-branch-in-git/)
+7. [Good-lookin' diffs. Actually… nah… The best-lookin' diffs.](https://github.com/so-fancy/diff-so-fancy)
