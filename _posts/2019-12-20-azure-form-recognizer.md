@@ -45,25 +45,27 @@ Access to the Form Recognizer sample labeling tool. To get access, fill out and 
 
 ### Set up the sampling tool
 
-1.First, install Docker on a host computer. The host computer can be your local computer ([Windows](https://docs.docker.com/docker-for-windows/), MacOS, or Linux).
-2.Next, you'll need the [Azure command-line interface (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Install it on your machine if you haven't already.
-3.Then enter the following command in a command prompt. The values for `<username>` and `<password>` are in your Welcome to Form Recognizer email.
+1. Install Docker on a host computer. The host computer can be your local computer ([Windows](https://docs.docker.com/docker-for-windows/), MacOS, or Linux).
 
-```bash
-docker login containerpreview.azurecr.io -u <username> -p <password>
-```
+2. Next, you'll need the [Azure command-line interface (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Install it on your machine if you haven't already.
 
-4.Get the sample labeling tool container with the `docker pull` command.
+3. Then enter the following command in a command prompt. The values for `<username>` and `<password>` are in your Welcome to Form Recognizer email.
 
-```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool:latest
-```
+    ```bash
+    docker login containerpreview.azurecr.io -u <username> -p <password>
+    ```
 
-5.Now you're ready to run the container with `docker run`.
+4. Get the sample labeling tool container with the `docker pull` command.
 
-```bash
-docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
-```
+    ```bash
+    docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool:latest
+    ```
+
+5. Now you're ready to run the container with `docker run`.
+
+    ```bash
+    docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
+    ```
 
 ## References
 
