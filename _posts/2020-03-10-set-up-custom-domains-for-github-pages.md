@@ -1,8 +1,8 @@
 ---
-title: How to Point Custom Subdomain and Root Domain to Github Pages
+title: Point custom subdomain and loot domain to Github pages
 layout: post
 use_toc: true
-excerpt: Point a custom root domain and a subdomain to GitHub pages
+excerpt: Steps I followed to point a custom root domain and a subdomain to GitHub pages
 ---
 
 ## Introduction
