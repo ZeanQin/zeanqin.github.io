@@ -1,5 +1,5 @@
 ---
-title: Point custom subdomain and loot domain to Github pages
+title: Point custom subdomain and root domain to Github pages
 layout: post
 use_toc: true
 use_code: true
