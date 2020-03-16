@@ -2,6 +2,7 @@
 title: Deplying NuxtJS app to Azure with continous deployment
 layout: post
 use_toc: true
+use_code: true
 excerpt: How to deploy a NuxtJS app to Azure with continous deployment
 ---
 > # This page is currently work in progress.

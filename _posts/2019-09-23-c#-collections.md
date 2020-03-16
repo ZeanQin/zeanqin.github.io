@@ -2,6 +2,7 @@
 title: C# collections
 layout: post
 use_toc: true
+use_code: true
 excerpt: C# collection basics
 ---
 

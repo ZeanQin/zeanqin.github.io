@@ -2,6 +2,7 @@
 title: C# fundamentals
 layout: post
 use_toc: true
+use_code: true
 excerpt: This post contains some of the basic/important concpets that I find myself keeping coming back to around C#. 
 ---
 

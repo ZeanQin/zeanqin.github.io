@@ -2,6 +2,7 @@
 title: Azure functions
 layout: post
 use_toc: true
+use_code: true
 excerpt: Basics of Azure functions
 ---
 ## Azure function basics
