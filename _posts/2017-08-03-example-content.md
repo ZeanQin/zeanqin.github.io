@@ -2,7 +2,7 @@
 title: "Example content"
 layout: post
 use_code: true
-excerpt: Markdown examples
+excerpt: Markdown examples.
 ---
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
