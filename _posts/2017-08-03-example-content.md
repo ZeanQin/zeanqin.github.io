@@ -2,6 +2,7 @@
 title: "Example content"
 layout: post
 use_code: true
+comments: true
 excerpt: Markdown examples.
 ---
 
