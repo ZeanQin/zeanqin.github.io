@@ -2,6 +2,7 @@
 title: "Apache Website Files Permission Setup"
 layout: post
 use_code: true
+comments: true
 excerpt: A quick summary of Apache Website Files Permission Setup
 ---
 

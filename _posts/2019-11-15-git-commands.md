@@ -3,6 +3,7 @@ title: My commonly used Git commands
 layout: post
 use_toc: true
 use_code: true
+comments: true
 excerpt: These are some of my most commonly used Git commands.
 ---
 

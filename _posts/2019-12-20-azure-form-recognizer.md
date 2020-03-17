@@ -3,6 +3,7 @@ title: Azure Form Recognizer notes
 layout: post
 use_code: true
 use_toc: true
+comments: true
 excerpt: Notes I made while learning to use the Azure Form Recognizer
 ---
 

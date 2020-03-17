@@ -2,6 +2,7 @@
 title: How to execute commands stored in a file opened in vim
 layout: post
 use_toc: true
+comments: true
 excerpt: Store commands in a file then execute the current line in Vim
 ---
 

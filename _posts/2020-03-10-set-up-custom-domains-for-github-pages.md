@@ -3,6 +3,7 @@ title: Point custom subdomain and root domain to Github pages
 layout: post
 use_toc: true
 use_code: true
+comments: true
 excerpt: Steps I followed to point a custom root domain and a subdomain to GitHub pages
 ---
 
