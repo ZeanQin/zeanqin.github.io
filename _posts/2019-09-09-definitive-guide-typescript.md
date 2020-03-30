@@ -58,12 +58,12 @@ One can write in Dart or CoffeeScript and output JavaScript. But TypeScript is J
 
 ## What is TypeScript
 
-_TypeScript is a typed superset of JavaScript that compiles to plain JavaScript_. TypeScript is not a totally separate language; it's a language built on top of JavaScript, by adding new features and key words.
+_TypeScript is a typed superset of JavaScript that compiles to plain JavaScript_. TypeScript is not a totally separate language; it's a language built on top of JavaScript, by adding new features and additional key words.
 
 Some key TypeScript features include,
 
 - supports standard JavaScript code,
-- provides static typing so we can catch incorrect data types through tooling, compilation process or after fact i.e. unit testing,
+- provides static typing so we can catch incorrect data types through tooling (e.g. red lines in editor), compilation process or after fact (e.g. unit testing),
 - provides encapsulation through classes and containers i.e. modules,
 - supports for constructors, variables, properties and functions,
 - supports interfaces to define the mimimum members that a particular type must have,
@@ -74,13 +74,13 @@ The TypeScript compiler is what converts TypeScript code into plain JavaScript c
 
 ![TypeScript compiler](/assets/images/typescript/typescript-compilcation-process.PNG)
 
-## Keywords and Operators
+## Some keywords and operators in TypeScript
 
 | Keyword                 | Description
 |:------------------------|:-------------------------------------------------------|
 | **declare**             | Creates an ambient declaration, meaning the variable doesn't exist in the current file but exists in somewhere else such as in a referenced library |
 | **class**               | Container for members such as properties and functions |
-| **constructor**         | Provides initialization functionality in a class |
+| **constructor**         | Provides initialisation functionality in a class |
 | **exports**             | Export a member from a module |
 | **extends**             | Extend a class or interface |
 | **implements**          | Implement an interface |
@@ -104,9 +104,9 @@ declare var $ // meaning the dollar sign is not in this file, but it's coming fr
 $("div").text("hi");
 ```
 
-Code Hierarchy in TypeScript is as following:
+The code hierarchy in TypeScript is as following:
 
-![](/assets/images/typescript/code-hierarchy.PNG)
+![TypeScript code hierarchy](/assets/images/typescript/code-hierarchy.PNG)
 
 ## Tooling and Framework Options
 
