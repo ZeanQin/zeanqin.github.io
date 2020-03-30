@@ -108,10 +108,52 @@ The code hierarchy in TypeScript is as following:
 
 ![TypeScript code hierarchy](/assets/images/typescript/code-hierarchy.PNG)
 
-## Tooling and Framework Options
+## Tooling and framework options for TypeScript
+
+Some of the frameworks and tolls for TypeScript are,
 
 - Node.js (server side framework)
 - Sublime, Emacs, Vi, VS (including auto compling into JavaScript upon saving a TypeScript file), VS Code, Atom, and WebStorm
+
+### Installing the TypeScript compiler on Ubuntu
+
+```bash
+# Install the command-line TypeScript compiler as a Node.js package
+npm install -g typescript
+
+# Then compile a typescript file
+tsc helloworld.ts
+```
+
+### Add the `tsconfig.json` file
+
+The presence of a `tsconfig.json` file in a directory indicates that the directory is the root of a TypeScript project. The `tsconfig.json` file specifies the root files and the compiler options required to compile the project.
+
+```bash
+# create a default tsconfig.json file
+tsc --init
+```
+
+A sample `tsconfig.json` file for Visual Studio Code can be,
+
+```json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "sourceMap": true
+  }
+}
+```
+
+### Transpile TypeScript into JavaScript in Visual Studio Code
+
+Open the directory containing the `tsconfig.json` file in Visual Studio Code, and press `Ctrl + Shift + B` (i.e. *Run Build Task*) to either
+
+- build the project once, or
+- make the TypeScript compiler watch for changes to the TypeScript files and runs the transpiler on each change, or
+
+To set a default behaviour when pressing `Ctrl + Shift + B`, select *Configure Default Build Task* from the global *Terminal* menu and set the default build task so that it is executed directly when you trigger *Run Build Task* (`Ctrl + Shift + B`).
 
 ### Type inference
 
@@ -150,3 +192,7 @@ foo: (a: string, b: number) => void
 
 - `tsc --init` - creates a `.tsconfig.json` file
 - `tsc -w` - watch input files
+
+## References
+
+- [Compiling TypeScript](https://code.visualstudio.com/docs/typescript/typescript-compiling)
