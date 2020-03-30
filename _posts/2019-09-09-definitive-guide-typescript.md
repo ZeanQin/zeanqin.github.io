@@ -58,27 +58,21 @@ One can write in Dart or CoffeeScript and output JavaScript. But TypeScript is J
 
 ## What is TypeScript
 
-TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
+_TypeScript is a typed superset of JavaScript that compiles to plain JavaScript_. TypeScript is not a totally separate language; it's a language built on top of JavaScript, by adding new features and key words.
 
-Ecosystem
+Some key TypeScript features include,
 
-- Any broser,
-- Any host such as node,
-- Any OS,
-- Open source,
-- Tool support e.g. Sublime, VS, VS Code etc.
+- supports standard JavaScript code,
+- provides static typing so we can catch incorrect data types through tooling, compilation process or after fact i.e. unit testing,
+- provides encapsulation through classes and containers i.e. modules,
+- supports for constructors, variables, properties and functions,
+- supports interfaces to define the mimimum members that a particular type must have,
+- supports arrow functions `=>`,
+- enables intellisense and syntax checking if using supported editor.
 
-Features:
+The TypeScript compiler is what converts TypeScript code into plain JavaScript code, and it works as below,
 
-- Supports standard JavaScript code,
-- Static typing so we can catch incorrect data types through either tooling, compilation process or after fact i.e. unit testing,
-- Encapsulation through classes and modules,
-- Support for constructors, properties, functions,
-- Interfaces defining the mimimum members that a particular type must have
-- Arrow functions `=>`
-- Intellisense and syntax checking if using supported editor
-
-![](/assets/images/typescript/typescript-compilcation-process.PNG)
+![TypeScript compiler](/assets/images/typescript/typescript-compilcation-process.PNG)
 
 ## Keywords and Operators
 
