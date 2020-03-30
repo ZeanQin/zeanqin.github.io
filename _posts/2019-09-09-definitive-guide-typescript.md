@@ -148,10 +148,10 @@ A sample `tsconfig.json` file for Visual Studio Code can be,
 
 ### Transpile TypeScript into JavaScript in Visual Studio Code
 
-Open the directory containing the `tsconfig.json` file in Visual Studio Code, and press `Ctrl + Shift + B` (i.e. *Run Build Task*) to either
+Open the directory containing the `tsconfig.json` file in Visual Studio Code, and press `Ctrl + Shift + B` (i.e. *Run Build Task*) to either,
 
 - build the project once, or
-- make the TypeScript compiler watch for changes to the TypeScript files and runs the transpiler on each change, or
+- make the TypeScript compiler watch for changes to the TypeScript files and runs the transpiler on each change.
 
 To set a default behaviour when pressing `Ctrl + Shift + B`, select *Configure Default Build Task* from the global *Terminal* menu and set the default build task so that it is executed directly when you trigger *Run Build Task* (`Ctrl + Shift + B`).
 
