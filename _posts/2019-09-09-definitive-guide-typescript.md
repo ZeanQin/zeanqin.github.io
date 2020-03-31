@@ -93,17 +93,6 @@ The TypeScript compiler is what converts TypeScript code into plain JavaScript c
 | **< typeName>**         | < > characters use to cast/convert between types |
 | **:**                   | Separator between variable/parameter names and types |
 
-```ts
-/** Example ambient declaration*/
-
-//  Reference the types file
-/// <reference path="jquery.d.ts">  
-
-declare var $ // meaning the dollar sign is not in this file, but it's coming from somewhere else, in this case, the jquery typings file
-
-$("div").text("hi");
-```
-
 The code hierarchy in TypeScript is as following:
 
 ![TypeScript code hierarchy](/assets/images/typescript/code-hierarchy.PNG)
@@ -155,16 +144,16 @@ Open the directory containing the `tsconfig.json` file in Visual Studio Code, an
 
 To set a default behaviour when pressing `Ctrl + Shift + B`, select *Configure Default Build Task* from the global *Terminal* menu and set the default build task so that it is executed directly when you trigger *Run Build Task* (`Ctrl + Shift + B`).
 
-### Type inference
+## Type inference in TypeScript
 
-Type inference
+TypeScript supports type inference, for example,
 
 ```ts
 var num = 2; // num has the type number
 var num; // num has the type any, which is the base type for all types
 ```
 
-Explicit type (recommended)
+But explicit type is recommended, so the above can be re-written as below:
 
 ```ts
 var num: number = 2;
@@ -178,20 +167,28 @@ var num: number;
 var a: number = 2;
 ```
 
-```ts
-// for a function
-// TODO: this doesn't seem to be correct
-foo: (a: string, b: number) => void
-= function(aliasForA, aliasForB)
-{
+## Working with libraries written in JavaScript
 
-}
+A lot of the libraries, such as jQuery/Node.js/AngularJS etc., are written in plain JavaScript; they export varialbes and functions without type information. And it's too hard to re-write them in TypeScript.
+
+When your TypeScript file needs to use these libraries, you can use an ambient declaration file for that third party library. An ambient declaration file by convention is stored in a `.d.ts` file, and it contains ambient declarations that describe the types that would have been there, had the third party library been written in TypeScript.
+
+> The [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) repository contains a lot of high quality TypeScript defintions for some popular JavaScript libraries.
+
+An example using ambient declaration in a TypeScript file is as below,
+
+```ts
+/** Example ambient declaration*/
+
+//  Reference the types file
+/// <reference path="knockout-2.2.d.ts">  
+
+declare var ko: KnockoutStatic; // meaning the variable ko is not in this file, but it's coming from somewhere else, in this case, the Knockout typings file
+
+var name = ko.observable('Zean'); // you get intellisense here
 ```
 
-`tsc` commands
-
-- `tsc --init` - creates a `.tsconfig.json` file
-- `tsc -w` - watch input files
+The above TypeScript file will then be compiled into a plain JavaScript file using the `ko` defined in the `Knockout` library.
 
 ## References
 
