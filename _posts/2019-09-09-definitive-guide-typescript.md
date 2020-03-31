@@ -173,6 +173,8 @@ A lot of the libraries, such as jQuery/Node.js/AngularJS etc., are written in pl
 
 When your TypeScript file needs to use these libraries, you can use an ambient declaration file for that third party library. An ambient declaration file by convention is stored in a `.d.ts` file, and it contains ambient declarations that describe the types that would have been there, had the third party library been written in TypeScript.
 
+Your TypeScript file that uses these ambient declaration files will then be compiled into plain JavaScript using the variable/functions provided by the third party library.
+
 > The [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) repository contains a lot of high quality TypeScript defintions for some popular JavaScript libraries.
 
 An example using ambient declaration in a TypeScript file is as below,
