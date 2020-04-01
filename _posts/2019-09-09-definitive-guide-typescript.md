@@ -322,14 +322,16 @@ interface Person {
 }
 
 function getPerson(): Person {
-  var getFullName = (firstName: string, lastName: string) => firstName + ' ' + lastName
+  var innerVale: number = 2
+  var getFullName = (firstName: string, lastName: string) => firstName + ' ' + lastName + innerVale
 
   return {
     getFullName: getFullName
   }
 }
 
-var p = getPerson()
+var p = getPerson();
+p.getFullName('Zean', 'Qin');
 ```
 
 ## References
