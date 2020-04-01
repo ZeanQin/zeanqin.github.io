@@ -192,6 +192,146 @@ var name = ko.observable('Zean'); // you get intellisense here
 
 The above TypeScript file will then be compiled into a plain JavaScript file using the `ko` defined in the `Knockout` library.
 
+## Common types in TypeScript
+
+### Primative types
+
+The commonly seen primative types in TypeScript are `number`, `boolean`, `string`, `string []`.
+
+#### The `any` type
+
+A type, in general, is a constraint on a value. The `any` type is the base type of all types in TypeScript, and it essentially places no constraint on a value.
+
+A variable of `any` type can be defined as,
+
+```ts
+var data: any;
+var data; // when there's is no type annotation, the `any` type will be inferred.
+```
+
+### Object types
+
+There are a few ways to specify the type of an object variable
+
+```ts
+// Object
+var o1: Object;
+o1 = {x:1}
+o1.x  // no intellisense
+
+// {}
+var o2: {};
+o2 = {x:1}
+o2.x  // no intellisense
+
+// {x: number}
+var o3: {x: number};
+o3 = {x:1}
+o3.x  // intellisense
+
+// {x: number}
+var o4 = {x: 1}
+o4.x  // intellisense
+```
+
+### Type of functions
+
+The type of a function describes the types of all its input variables and its return type. For example, the function
+
+ ```ts
+ var foo = function (x: number) { return number; }
+ ```
+
+ has the type
+
+ ```ts
+ (x: number) => number
+ ```
+
+There are a few ways to specify the function type of a function variable,  
+
+```ts
+// Function
+var f1: Function;
+f1 = function(x: number) { return x; }
+
+// (x: number) => number
+var f2 : (x: number) => number
+f2 = function(x: number) { return x; }
+
+// (x: number) => number
+var f3 = function(x: number) { return x; }
+```
+
+A more complex example can be,
+
+```ts
+// (x: {w: number, h?:number | undefined}) => number
+var f4 = function(x: {w: number, h?: number}) { return x.w * x.w; }
+
+// it can be simplified as below using lambda syntax
+// (x: {w: number, h?:number | undefined}) => number
+var f4 = (x: {w: number, h?:number}) => x.w * x.w
+```
+
+## Interfaces in TypeScript
+
+An interface describes the minimum number of properties/functions and the type of each property/function that an implementing object has to have.
+
+We can simplify this,
+
+```ts
+var p:  {
+  firstName: string,
+  lastName: string,
+  address?: string,
+  getFullName: (firstName: string, lastName: string) => string
+}
+
+p = {
+  firstName: 'Zean',
+  lastName: 'Qin',
+  getFullName : (firstName, lastName) => firstName + ' ' + lastName
+}
+```
+
+to the following
+
+```ts
+interface Person {
+  firstName: string,
+  lastName: string,
+  address?: string,
+  getFullName: (firstName: string, lastName: string) => string
+}
+
+var p: Person;
+
+p = {
+  firstName: 'Zean',
+  lastName: 'Qin',
+  getFullName : (firstName, lastName) => firstName + ' ' + lastName
+}
+```
+
+Another example,
+
+```ts
+interface Person {
+  getFullName: (firstName: string, lastName: string) => string
+}
+
+function getPerson(): Person {
+  var getFullName = (firstName: string, lastName: string) => firstName + ' ' + lastName
+
+  return {
+    getFullName: getFullName
+  }
+}
+
+var p = getPerson()
+```
+
 ## References
 
 - [Compiling TypeScript](https://code.visualstudio.com/docs/typescript/typescript-compiling)
