@@ -276,7 +276,13 @@ var f4 = (x: {w: number, h?:number}) => x.w * x.w
 
 ## Interfaces in TypeScript
 
-An interface describes the minimum number of properties/functions and the type of each property/function that an implementing object has to have.
+An interface describes the minimum number of fields/properties/functions and the type of each field/property/function that an implementing object has to have.
+
+_JavaScript has no concept of interfaces_. That means, the interfaces will not be compiled into anything in JavaScript, and the JavaScript rumtime will have no mention of interfaces anywhere.
+
+### 1. Interface Examples
+
+#### Example A
 
 We can simplify this,
 
@@ -314,7 +320,7 @@ p = {
 }
 ```
 
-Another example,
+#### Example B
 
 ```ts
 interface Person {
@@ -332,6 +338,73 @@ function getPerson(): Person {
 
 var p = getPerson();
 p.getFullName('Zean', 'Qin');
+```
+
+Another example interface,
+
+```ts
+interface IEngine {
+  // fields
+  model: string; // field that an implementing class must have
+  year?: string; // optional field that an implementing class can have
+
+  // functions
+  start(callback: (startStatus: string, engineType: string) => void): void;
+  stop: (callback: (stopStatus: boolean, engineType: string) => void) => void;
+}
+```
+
+A class implementing this interface can be,
+
+```ts
+class Engine implements IEngine {
+  model: string;
+  year?: string;
+
+  constructor(model: string, year: string) {
+    this.model = model;
+    this.year = year;
+  }
+
+  start(callback: (startStatus: boolean, engineType: string) => void): void
+  {
+    // implemnetation details
+    // ...
+  }
+
+  stop(callback: (stopStatus: boolean, engineType: string) => void): void {
+    // implementation details
+    // ...
+  }
+}
+```
+
+And a class depending on this interface can be,
+
+```ts
+class Auto {
+  engine: IEngine;
+
+  constructor(engine: IEngine)
+  {
+    this.engine = engine;
+  }
+}
+```
+
+### 2. Extending an interface
+
+```ts
+interface IPerson {
+  name: string;
+  address?: string;
+}
+```
+
+```ts
+interface Student extends IPerson {
+  studentId: string;
+}
 ```
 
 ## Classes in TypeScript
