@@ -334,6 +334,80 @@ var p = getPerson();
 p.getFullName('Zean', 'Qin');
 ```
 
+## Classes in TypeScript
+
+### Class structure
+
+A class in TypeScript is a re-usable container that encapsulate code, such as functions and variables. The main members of a class are,
+
+- *fields* i.e. variables for storing the state,
+- *constructors* for initialising the fields,
+- *properties* i.e. ways to get/set field values (they act as filters), and
+- *functions*.
+
+A couple of sample classes are,
+
+```ts
+class Engine {
+  // the `public` keyword automatically generates a public field with the same name and type.
+  constructor(public hoursePower: number, public engineType: string) {}
+}
+
+class Car {
+  // fields
+  // by convention, the name of a private field starts with _
+  // the ! is to stop a warning from the tsc, see https://github.com/Microsoft/TypeScript-Vue-Starter/issues/36#issuecomment-371434263
+  private _engine!: Engine;
+
+  // constructor
+  constructor(engine: Engine)
+  {
+    this.engine = engine;
+  }
+
+  // properties
+  get engine() : Engine {
+    return this._engine;
+  }
+  
+  set engine(value: Engine)
+  {
+    if(value == undefined) throw 'Please supply an engine.';
+    this._engine = value;
+  }
+
+  // functions
+  start(): void { // no need to use the key word `function` when inside a class
+    alert('Car engine started .');
+  }
+
+}
+```
+
+and the `Car` class can be used as,
+
+```ts
+var engine: Engine = new Engine(1, 'v8');
+var car: Car = new Car(engine);
+console.log(car.engine.engineType);
+```
+
+> You can cast objects from one type to another in TypeScript using `var newObj = <NewType> oldObj`;
+
+### Extending a class
+
+```ts
+class ChildClass extends ParentClass {
+  constructor() {
+    // must call base class constructor with the needed parameters.
+    super();
+
+    // initialise child class fields here
+    ...
+  }
+}
+```
+
 ## References
 
 - [Compiling TypeScript](https://code.visualstudio.com/docs/typescript/typescript-compiling)
