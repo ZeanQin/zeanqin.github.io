@@ -1,10 +1,10 @@
 ---
-title: The definitive guide to TypeScript
+title: TypeScript - Basics
 layout: post
 use_toc: true
 use_code: true
 comments: true
-excerpt: The definitive guide to TypeScript
+excerpt: The basics of TypeScript
 ---
 
 ## The problems with JavaScript
