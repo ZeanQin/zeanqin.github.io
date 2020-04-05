@@ -622,4 +622,4 @@ var a = new auto.Auto();
 ## References
 
 - [Compiling TypeScript](https://code.visualstudio.com/docs/typescript/typescript-compiling)
-- [TypeScript: Getting Started](https://app.pluralsight.com/library/courses/getting-started-typescript)
+- [TypeScript Fundamentals](https://app.pluralsight.com/library/courses/typescript/)
