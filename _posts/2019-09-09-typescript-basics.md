@@ -1,5 +1,5 @@
 ---
-title: TypeScript - Basics
+title: TypeScript - basics
 layout: post
 use_toc: true
 use_code: true
