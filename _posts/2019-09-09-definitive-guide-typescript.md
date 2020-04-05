@@ -481,6 +481,144 @@ class ChildClass extends ParentClass {
 }
 ```
 
+## Modules
+
+Similar to the fact that a class is a container for fields/properties/functions, a module is a container for classes/interfaces/variables/functions.
+
+### 1. Declaring/extending a module
+
+```ts
+// Declaring a module explicityly
+module dataservice {
+  // code
+}
+```
+
+If you create classes, variables or functions but not wrap them inside a module, you will create an internal module that gets added and extended to the Global Namespace. For exameple,
+
+```ts
+// Declaring a module implicityly
+// Both the class A and the variable t are in the global module namespace.
+
+class A implements IInterface {
+  // code ...
+}
+
+var t = new A();
+```
+
+> The `namespace` (or `module`) keyword declares a new module or extends (i.e. adding members) to an existing module with the same name. Modules and files no direct relationship (or a many to many relationship if you have to); a module can span through multiple files and a file can contain multiple modules. For example, in the same TypeScript file, you can have,
+
+```ts
+namespace Shapes {
+  export class Rectangle {
+    constructor(public width: number, public height: number) {}
+  }
+}
+
+namespace Shapes {
+  export class Circle {
+    constructor(public radius: number) {}
+  }
+}
+
+
+var rect = new Shapes.Rectangle(1, 1);
+var circle = new Shapes.Circle(2);
+```
+
+### 2. Internal module accessibilities
+
+By default, all members of a module can only be accessed internally i.e. within the module, use the `export` keyword to make a member publicly accessible outside of the module. e.g.
+
+```ts
+namespace Shapes {
+  export class Rectangle {
+    constructor(public width: number, public height: number) {}
+  }
+}
+
+// adds the rect to the global name space, or
+var rect = new Shapes.Rectangle(1, 1);
+
+// create another module to avoid global scope pollution. i.e. by adding the `myprogram` module to the global module.
+namespace myprogram {
+  function run() {
+    var rect = new Shapes.Rectangle(1, 1);
+  }
+
+  run(); // invokes the function
+}
+```
+
+Immediately-Invoked Function Expression or IIFE, pronounced "iffy", is a function that runs immediately after it's being defined. It's done by writing a function definition followed by `()`. For example,
+
+```ts
+(function() { console.log("Zean Qin"); })()
+```
+
+The outer `()` disambiguates function expression from statements, and locks in values and saves state. It's used to remove its wrapped members from the global scope to avoid global scope pollution and creates privacy.
+
+Modules created in TypeScript are converted into IIFE in JavaScript.
+
+A more complex example,
+
+```ts
+namespace App.Tools.Utils {
+  export class A {}
+}
+
+namespace App.Tools.Shapes {
+  export class Rectangle {}
+}
+
+namespace App.Tools.Shapes {
+  export class Circle {}
+}
+
+namespace MyProgram {
+  import Utils = App.Tools.Utils;
+  import Shapes = App.Tools.Shapes;
+
+  function run() {
+    var util = new Utils.A();
+    var rect = new Shapes.Rectangle();
+    var circle = new Shapes.Circle();
+  }
+
+  run();
+}
+```
+
+If these modules are defined in separate `.ts` files, we need to include `/// <reference path="...." />` to tell the compiler to merge in the modules defined in those files.
+
+> Note: the `/// <reference path="...." />` is ONLY to tell the editor where to find a dependency to the intellisense will work at design time, we still need to make sure we load those dependencies first at runtime e.g. include those `.js` files first in an html file.
+
+### 3. External modules
+
+Sequencing scripts and dependencies in those scripts are really really difficult especially in large applications.
+
+External modules are separately loadable modules i.e. we can load them separate from each other only as needed.
+
+#### AMD
+
+Asynchronous Module Definition (AMD) loads files and modules asynchronously as you need them, and the developer just needs to define upfront which modules depend on which and it will load them in the proper sequence. `require.js` is a great library that helps us manage dependencies.
+
+In `auto.ts`, we have
+
+```ts
+export interface IAuto {}
+export class Auto implements IAuto {}
+```
+
+then, in `main.ts`, we can have
+
+```ts
+import auto = require("./auto.ts")
+
+var a = new auto.Auto();
+```
+
 ## References
 
 - [Compiling TypeScript](https://code.visualstudio.com/docs/typescript/typescript-compiling)
