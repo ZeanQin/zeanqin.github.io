@@ -59,7 +59,7 @@ git checkout -t <name of remote>/test
 git config --global alias.add-commit '!git add -A && git commit'
 
 # add a `ac` alias to save a few more keystrokes
-git config --global alias.add-commit '!git add -A && git commit'
+git config --global alias.ac '!git add -A && git commit'
 ```
 
 and use it with
