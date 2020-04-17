@@ -31,7 +31,7 @@ Note: The `-d` option is an alias for `--delete`, which only deletes the branch 
 git branch -vv
 ```
 
-## Checkout remote branch 
+## Checkout remote branch
 
 With Git versions ≥ 1.6.6, with only one remote, you can just do:
 
@@ -55,6 +55,10 @@ git checkout -t <name of remote>/test
 ## Add and commit in one command
 
 ```bash
+# add a `add-commit` alias
+git config --global alias.add-commit '!git add -A && git commit'
+
+# add a `ac` alias to save a few more keystrokes
 git config --global alias.add-commit '!git add -A && git commit'
 ```
 
@@ -157,13 +161,11 @@ git lg --after="yesterday" --author="Zean"
 
 ## Git Diffs
 
-I use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy) to make the diffs more readable. Install it and then run, 
-
+I use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy) to make the diffs more readable. Install it and then run,
 
 ```bash
 git diff
 ```
-
 
 ## References
 
