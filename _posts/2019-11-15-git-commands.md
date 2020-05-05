@@ -103,7 +103,7 @@ The `--` is to remove [argument ambiguation](https://git-scm.com/docs/git-checko
 
 ## Rename a local and remote branch
 
-### Step 1: Rename your local branch
+**Step 1**: Rename your local branch
 
 If you are on the branch you want to rename:
 
@@ -117,13 +117,13 @@ If you are on a different branch:
 git branch -m old-name new-name
 ```
 
-### Step 2: Delete the old-name remote branch and push the new-name local branch
+**Step 2**: Delete the old-name remote branch and push the new-name local branch
 
 ```bash
 git push origin :old-name new-name
 ```
 
-### Step 3: Reset the upstream branch for the new-name local branch
+**Step 3**: Reset the upstream branch for the new-name local branch
 
 Switch to the branch and then:
 
@@ -133,13 +133,13 @@ git push origin -u new-name
 
 ## A better Git log
 
-Step 1: Set up alias
+**Step 1**: Set up alias
 
 ```bash
 git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 ```
 
-Step 2: Append additional flags if needed
+**Step 2**: Append additional flags if needed
 
 ```bash
 # filter by start date
