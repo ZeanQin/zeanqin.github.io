@@ -55,7 +55,7 @@ git checkout -t <name of remote>/test
 ## Add and commit in one command
 
 ```bash
-# add a `add-commit` alias
+# add a `add-commit` alias, or
 git config --global alias.add-commit '!git add -A && git commit'
 
 # add a `ac` alias to save a few more keystrokes
@@ -65,7 +65,8 @@ git config --global alias.ac '!git add -A && git commit'
 and use it with
 
 ```bash
-git add-commit -m 'My commit message'
+git add-commit -m 'My commit message' # or
+git ac -m 'My commit message'
 ```
 
 ## Make Git to use vim as editor for writing commit messages
@@ -167,6 +168,25 @@ I use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy) to make the dif
 git diff
 ```
 
+## Automatically prune remote-tracking branches for a branch on the other side that has already been deleted
+
+Without `git fetch --prune`, remote-tracking branches for a branch
+the other side already has removed will stay forever.
+
+To always `--prune` for `git fetch` and `git pull` in all your Git repositories:
+
+```bash
+git config --global fetch.prune true
+```
+
+To always `--prune` but from one single repository,
+
+```bash
+git config remote.origin.prune true
+                 #^^^^^^
+                 #replace with your repo name
+```
+
 ## References
 
 1. [How do I delete a Git branch locally and remotely?](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely)
@@ -176,3 +196,5 @@ git diff
 5. [How do I discard unstaged changes in Git?](https://stackoverflow.com/questions/52704/how-do-i-discard-unstaged-changes-in-git)
 6. [Rename a local and remote branch in git](https://multiplestates.wordpress.com/2015/02/05/rename-a-local-and-remote-branch-in-git/)
 7. [Good-lookin' diffs. Actually… nah… The best-lookin' diffs.](https://github.com/so-fancy/diff-so-fancy)
+8. [Automatic prune with Git fetch or pull](https://stackoverflow.com/questions/18308535/automatic-prune-with-git-fetch-or-pull)
+9. [fetch: make --prune configurable](https://github.com/git/git/commit/737c5a9cde708d6995c765b7c2e95033edd0a896#diff-07f3b3cf16a56e95990c64bdef634199R940)
