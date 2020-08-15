@@ -51,6 +51,12 @@ export default {
     // Doc: https://github.com/nuxt-community/stylelint-module
     '@nuxtjs/stylelint-module',
     '@nuxtjs/moment',
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-128086950-1',
+      },
+    ],
   ],
   /*
    ** Nuxt.js modules
