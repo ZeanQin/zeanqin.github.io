@@ -1,5 +1,5 @@
 ---
-title: moving from Jekyll to Nuxt.js
+title: Moving from Jekyll to Nuxt.js
 layout: post
 use_toc: true
 comments: true
