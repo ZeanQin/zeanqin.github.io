@@ -1,0 +1,183 @@
+//
+// Utilities
+// Extends default Bootstrap utility classes
+// Classes with a purpose to reduce the frequency of 
+// highly repetitive declarations
+// --------------------------------------------------
+
+
+// Disabled background of the element
+.bg-0 {
+  background: none !important;
+}
+.bg-image-0 {
+  background-image: none !important;
+}
+
+// Add .bg-darker
+.bg-darker {
+  background-color: darken($gray-900, 5%) !important;
+}
+
+// Gadient background
+.bg-gradient {
+  @include gradient-background;
+}
+
+// Gadient text
+.text-gradient {
+  @include gradient-text;
+}
+
+// Faded background color
+@each $color, $value in $theme-colors {
+  .bg-faded-#{$color} {
+    background-color: rgba($value, .08) !important;
+  }
+}
+
+// Border color
+@each $color, $value in $theme-colors {
+  .border-#{$color} {
+    border-color: rgba($value, .35) !important;
+  }
+}
+.border-secondary { border-color: $border-color !important; }
+
+
+// Background image specific utilities
+
+.bg-size-cover {
+  background-size: cover !important;
+}
+.bg-position-center {
+  background-position: center !important;
+}
+.bg-position-center-y {
+  background-position-y: center !important;
+}
+.bg-position-center-x {
+  background-position-x: center !important;
+}
+.bg-position-right-top {
+  background-position: right top !important;
+}
+.bg-position-left-top {
+  background-position: left top !important;
+}
+.bg-position-center-top {
+  background-position: center top !important;
+}
+.bg-position-right-bottom {
+  background-position: right bottom !important;
+}
+.bg-position-left-bottom {
+  background-position: left bottom !important;
+}
+.bg-position-center-bottom {
+  background-position: center bottom !important;
+}
+.bg-position-right-center {
+  background-position: right center !important;
+}
+.bg-position-left-center {
+  background-position: left center !important;
+}
+.bg-no-repeat {
+  background-repeat: no-repeat !important;
+}
+.bg-repeat-x {
+  background-repeat: repeat-x !important;
+}
+.bg-repeat-y {
+  background-repeat: repeat-y !important;
+}
+.bg-fixed {
+  background-attachment: fixed !important;
+}
+
+// Background transition for links
+
+a[class^='bg-'],
+a[class*='bg-'] {
+  transition: background-color .25s ease;
+}
+
+// Disable border-radius
+.rounded-top-0 {
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+.rounded-bottom-0 {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.rounded-right-0 {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.rounded-left-0 {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+// Disable box-shadow for specific component
+.box-shadow-0 {
+  box-shadow: none !important;
+}
+
+// Disable text decoration
+.text-decoration-0 {
+  text-decoration: none !important;
+}
+
+// Opacity classes
+
+.opacity-25 {
+  opacity: .25 !important;
+}
+.opacity-50 {
+  opacity: .5 !important;
+}
+.opacity-60 {
+  opacity: .6 !important;
+}
+.opacity-70 {
+  opacity: .70 !important;
+}
+.opacity-75 {
+  opacity: .75 !important;
+}
+.opacity-80 {
+  opacity: .8 !important;
+}
+.opacity-90 {
+  opacity: .9 !important;
+}
+.opacity-100 {
+  opacity: 1 !important;
+}
+
+
+// Full height iframe
+
+.iframe-full-height-wrap {
+  min-height: 18rem;
+  overflow: hidden;
+}
+.iframe-full-height {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+// Table layout fixed
+.table-fixed { table-layout: fixed !important; }
+
+// Disable animation
+.animation-0 { animation: none !important; }

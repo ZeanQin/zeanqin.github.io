@@ -1,0 +1,114 @@
+//
+// Buttons
+// --------------------------------------------------
+
+
+// Override button global settings
+
+.btn {
+  white-space: nowrap;
+  > i {
+    margin-top: -.125rem;
+    vertical-align: middle;
+  }
+
+  &.active { cursor: default; }
+  &.disabled,
+  &:disabled { cursor: not-allowed; }
+}
+.btn-primary, .btn-success,
+.btn-danger, .btn-warning,
+.btn-info, .btn-dark,
+.btn-outline-success:hover,
+.btn-outline-success:active,
+.btn-outline-info:hover,
+.btn-outline-info:active,
+.btn-outline-warning:hover,
+.btn-outline-warning:active {
+  color: $btn-dark-color !important;
+}
+.btn-secondary,
+.btn-outline-secondary,
+.btn-light {
+  &, &:hover {
+    color: $btn-light-color !important;
+    border-color: transparent;
+  }
+}
+.btn-light:hover,
+.btn-light:not(:disabled):not(.disabled):active,
+.btn-light:not(:disabled):not(.disabled).active,
+.show > .btn-light.dropdown-toggle {
+ border-color: theme-color('light');
+ background-color: theme-color('light');
+}
+
+// Fix light button focus
+.btn-light:focus,
+.btn-light.focus {
+  border-color: theme-color('light');
+  background-color: theme-color('light');
+}
+
+// Gradient button
+.btn-gradient {
+  color: $btn-dark-color !important;
+  @include gradient-background;
+}
+
+// Outline buttons
+
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    border-color: rgba($value, $btn-outline-border-opacity);
+  }
+}
+.btn-outline-secondary {
+  border-color: $gray-400;
+  &:hover {
+    border-color: $gray-500;
+    background-color: transparent;
+    color: $gray-800 !important;
+  }
+}
+
+// Translucent buttons
+
+[class*=' btn-translucent'] {
+  &:hover { color: $btn-dark-color !important; }
+}
+@each $color, $value in $theme-colors {
+  .btn-translucent-#{$color} {
+    background-color: rgba($value, $btn-translucent-bg-opacity);
+    color: $value;
+    &:hover {
+      background-color: $value;
+    }
+  }
+}
+
+// Light buttons :hover fixes
+
+.btn-outline-light:hover,
+.btn-translucent-light:hover {
+  color: $btn-light-color !important;
+}
+
+// Square buttons
+
+.btn-square {
+  border-radius: 0 !important;
+}
+
+[class*=' btn-transparent'] {
+  &,
+  &:hover { color: $btn-dark-color !important; }
+}
+@each $color, $value in $theme-colors {
+  .btn-transparent-#{$color} {
+    background-color: rgba($value, $btn-transparent-bg-opacity);
+    &:hover {
+      background-color: $value;
+    }
+  }
+}

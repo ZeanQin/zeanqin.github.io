@@ -1,0 +1,93 @@
+/*!
+ * Theme variables.
+ *
+ * This file gets included in every component automatically by the `@nuxtjs/style-resources` module.
+ *
+ * Do not put actual styles in this file. Importing actual styles will include them in every component and will also make your build/HMR magnitudes slower. See https://github.com/nuxt-community/style-resources-module for details.
+ *
+ *  See https://getbootstrap.com/docs/4.4/getting-started/theming/ for details on customising the default bootstrap theme.
+ */
+
+//
+// Variables
+// --------------------------------------------------
+
+//== Colors
+//
+// Gray and brand colors to use across the Theme.
+
+// Grayscale
+$white:                 #fff;
+$gray-100:              #f7f7fc;
+$gray-200:              #f3f3f9;
+$gray-300:              #e9e9f2;
+$gray-400:              #dfdfeb;
+$gray-500:              #9e9fb4;
+$gray-600:              #737491;
+$gray-700:            	#5a5b75;
+$gray-800:              #4a4b65;
+$gray-900:              #37384e;
+$black:                 #000;
+
+// Brand colors
+$primary:               #766df4;
+$secondary:             $gray-200;
+$info:		              #6a9bf4;
+$success:               #16c995;
+$warning:               #ffb15c;
+$danger:                #f74f78;
+$light:                 $white;
+$dark:                  $gray-900;
+
+// Gradient
+$gradient-from-color:   $primary;
+$gradient-to-color-1:     $info;
+$gradient-to-color-2:     $danger;
+
+// User selection color
+$user-selection-color:  rgba($primary, .22);
+
+// Options
+//
+// Modifying Bootstrap global options
+
+$enable-shadows:                              true;
+$enable-responsive-font-sizes:                true;
+
+// Spacing
+//
+// Extend the existing spacing utilities
+
+$spacer: 1rem;
+$spacers:(
+    6: ($spacer * 4.5),
+    7: ($spacer * 6),
+    8: ($spacer * 7.5),
+    9: ($spacer * 9)
+);
+
+// Body
+
+$text-muted:            $gray-500;
+
+// Links
+
+$link-color:            $primary;
+$link-hover-color:      darken($link-color, 10%);
+
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+
+$headings-color:              $gray-900;
+
+// Buttons
+
+$btn-dark-color:                    $white;
+$btn-light-color:                   $gray-700;
+
+$btn-outline-border-opacity:        .85;
+$btn-translucent-bg-opacity:        .18;
+$btn-transparent-bg-opacity:        .8;
+
+$btn-transition:                    color .25s ease-in-out, background-color .25s ease-in-out, border-color .25s ease-in-out;

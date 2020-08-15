@@ -1,0 +1,19 @@
+// Text Selection Color
+::selection {
+  background: $user-selection-color;
+}
+::-moz-selection {
+  background: $user-selection-color;
+}
+
+// Smooth Scrolling
+html {
+	scroll-behavior: smooth;
+}
+
+// Gradient Link
+
+a:not(.btn):focus, 
+a:not(.btn):hover {
+  @include gradient-text;
+}
