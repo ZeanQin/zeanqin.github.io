@@ -2,7 +2,11 @@
 
 Welcome to [my personal website](https://zean.be).
 
-It's a static website built using Nuxt.js, specifically the [@nuxt/content](https://content.nuxtjs.org/) module.
+This is a static website built using Nuxt.js, specifically the [@nuxt/content](https://content.nuxtjs.org/) module. The main features include,
+
+- authoring contents, e.g. posts, in markdown,
+- creating custom pages in Vue.js and Nuxt.js,
+- using Vue components in markdown
 
 ## Build Setup
 
