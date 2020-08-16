@@ -78,5 +78,17 @@ export default Vue.extend({
     'page-header': PageHeader,
     'project-summary': ProjectSummary,
   },
+  head() {
+    return {
+      title: 'Projects - Zean Qin',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'The main projects that I have worked on.',
+        },
+      ],
+    }
+  },
 })
 </script>

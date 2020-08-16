@@ -72,6 +72,19 @@ export default Vue.extend({
       this.ISONow = now.toISOString()
     },
   },
+  head() {
+    return {
+      title: 'Time Converter - Zean Qin',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'A simple tool to convert a DateTime object between the local format and the ISO format',
+        },
+      ],
+    }
+  },
 })
 </script>
 

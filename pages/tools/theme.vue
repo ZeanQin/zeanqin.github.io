@@ -230,5 +230,17 @@ export default Vue.extend({
   components: {
     'page-header': PageHeader,
   },
+  head() {
+    return {
+      title: 'Theme - Zean Qin',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Demo of various elements in the custom Bootstrap theme.',
+        },
+      ],
+    }
+  },
 })
 </script>

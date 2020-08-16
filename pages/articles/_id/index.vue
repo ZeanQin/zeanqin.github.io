@@ -14,20 +14,29 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import { Context } from '@nuxt/types'
+<script>
 import PageHeader from '~/components/page-header.vue'
-
-export default Vue.extend({
+export default {
   components: {
     'page-header': PageHeader,
   },
-  async asyncData({ $content, params }: Context) {
+  async asyncData({ $content, params }) {
     const article = await $content('articles', params.id).fetch()
     return { article }
   },
-})
+  head() {
+    return {
+      title: `${this.article.title} - Zean Qin`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.article.excerpt ?? this.article.title,
+        },
+      ],
+    }
+  },
+}
 </script>
 
 <style lang="scss">

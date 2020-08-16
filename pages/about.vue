@@ -38,6 +38,19 @@ export default Vue.extend({
   components: {
     'page-header': PageHeader,
   },
+  head() {
+    return {
+      title: 'About Me - Zean Qin',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Full stack software developer who also loves machine learning.',
+        },
+      ],
+    }
+  },
 })
 </script>
 

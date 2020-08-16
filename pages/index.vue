@@ -35,6 +35,19 @@ export default Vue.extend({
       .fetch()
     return { articles }
   },
+  head() {
+    return {
+      title: 'Home - Zean Qin',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Full stack software developer who also loves machine learning.',
+        },
+      ],
+    }
+  },
 })
 </script>
 
