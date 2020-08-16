@@ -43,7 +43,7 @@ export default Vue.extend({
           hid: 'description',
           name: 'description',
           content:
-            'Full stack software developer who also loves machine learning.',
+            'Welcome to my website. I am a full stack software developer who also loves machine learning.',
         },
       ],
     }

@@ -85,7 +85,7 @@ export default Vue.extend({
         {
           hid: 'description',
           name: 'description',
-          content: 'The main projects that I have worked on.',
+          content: 'The projects that I have worked on.',
         },
       ],
     }
