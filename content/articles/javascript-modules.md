@@ -1,10 +1,16 @@
 ---
 title: JavaScript - Modules
-layout: post
-use_toc: true
-use_code: true
-comments: true
 excerpt: The modules in JavaScript/TypeScript.
+
+# Optional
+category: Programming Language
+tags: 
+  - JavaScript Modules
+  - TypeScript Modules
+createdAt: "2019-09-08T14:00:00.000Z"
+updatedAt: "2020-08-16T05:41:00.309Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## The reason behind the module concept

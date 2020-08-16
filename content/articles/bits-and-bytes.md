@@ -1,8 +1,16 @@
 ---
-title: "A quick summary of Bits and Bites"
-layout: post
-use_code: true
+title: A quick summary of Bits and Bites
 excerpt: A quick summary of Bits and Bites
+
+# Optional
+category:
+tags: 
+  - Bits and Bytes
+  - Programming Basics
+createdAt: "2017-08-05T14:00:00.000Z"
+updatedAt: "2020-08-16T05:21:24.319Z"
+enableComments: true
+enableTOC: true
 ---
 
 At the smallest scale in the computer, information is stored as bits and bytes. In this section, we'll look at how that works.

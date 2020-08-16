@@ -1,9 +1,15 @@
 ---
-title: "Apache website files permission setup"
-layout: post
-use_code: true
-comments: true
+title: Apache website files permission setup
 excerpt: A quick summary of Apache website files permission setup
+
+# Optional
+category: 
+tags: 
+  - Apache file permissions
+createdAt: "2017-08-05T14:00:00.000Z"
+updatedAt: "2020-08-16T05:16:30.308Z"
+enableComments: true
+enableTOC: true
 ---
 
 Website files served by Apache need to have appropriate permissions. The common practice is to set all directories to 755 and set all files to 644.

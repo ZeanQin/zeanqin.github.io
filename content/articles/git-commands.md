@@ -1,10 +1,15 @@
 ---
 title: My commonly used Git commands
-layout: post
-use_toc: true
-use_code: true
-comments: true
 excerpt: These are some of my most commonly used Git commands.
+
+# Optional
+category: Git
+tags: 
+  - Git Commands
+createdAt: "2019-11-14T13:00:00.000Z"
+updatedAt: "2020-08-16T05:37:48.318Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## Delete branch locally and remotely

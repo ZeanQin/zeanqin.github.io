@@ -1,8 +1,15 @@
 ---
-title: "What are algorithms ?"
-layout: post
-use_code: true
+title: What are algorithms ?
 excerpt: An explanation of what algorithms are.
+
+# Optional
+category:
+tags: 
+  - Algorithms Definition
+createdAt: "2017-08-05T14:00:00.000Z"
+updatedAt: "2020-08-16T05:11:06.309Z"
+enableComments: true
+enableTOC: true
 ---
 
 The world hardly needs another definition of the word algorithm, but here I go anyway: **_an algorithm is a set of steps to solve a problem_**. Simples. Algorithms don’t really have anything to do with computers, although computers turn out to be very handy algorithm processing machines. The hash functions described earlier are all implementations of algorithms, but not all algorithms are as complicated as those. In fact, many of the most important ones are actually quite straightforward.

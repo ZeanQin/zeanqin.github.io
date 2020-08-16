@@ -1,9 +1,15 @@
 ---
-title: Machine learning
-layout: post
-use_toc: true
-comments: true
-excerpt: Machine learning
+title: Machine learning basics
+excerpt: Some notes I made while studying machine learning.
+
+# Optional
+category: Machine Learning
+tags: 
+  - Machine Learning
+createdAt: "2019-11-09T13:00:00.000Z"
+updatedAt: "2020-08-16T05:45:20.314Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## What is machine learning
@@ -31,7 +37,7 @@ The two categories of supervised machine learning problems are,
 
 Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables. With unsupervised learning there is no feedback based on the prediction results.
 
-The main categores of problems are, 
+The main categores of problems are,
 
 - **clustering** where we group data points into different clusters based on relationship among the variables in the data
 - **non-clustering** e.g. the "Cocktail Party Algorithm" allows us to find structure in a chaotic environment i.e. identifying individual voices and music from a mesh of sounds at a cocktail party.

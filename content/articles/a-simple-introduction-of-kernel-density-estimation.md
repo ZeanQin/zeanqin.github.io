@@ -1,9 +1,16 @@
 ---
 title: A simple introduction to Kernel Density Estimation
-layout: post
-use_toc: true
-comments: true
 excerpt: Kernel Density Estimation is a non-parametric way to estimate the probability density function of a random variable. This post is an introduction to the concept of KDE.
+
+# Optional
+category: Machine Learning
+tags: 
+  - Kernal Density Estimation
+  - KDE
+createdAt: "2018-10-19T13:00:00.000Z"
+updatedAt: "2020-08-16T05:02:18.018Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## What is a kernel function

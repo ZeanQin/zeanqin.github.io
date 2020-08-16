@@ -1,10 +1,15 @@
 ---
 title: Azure Form Recognizer notes
-layout: post
-use_code: true
-use_toc: true
-comments: true
 excerpt: Notes I made while learning to use the Azure Form Recognizer
+
+# Optional
+category: Machine Learning
+tags: 
+  - Azure Form Recognizer
+createdAt: "2019-11-30T13:00:00.000Z"
+updatedAt: "2020-08-16T05:18:20.312Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## What is it

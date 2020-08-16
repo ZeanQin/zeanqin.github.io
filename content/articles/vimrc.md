@@ -1,8 +1,16 @@
 ---
 title: My .vimrc
-layout: default
-use_code: true
 excerpt: This blog post about my `.vimrc` settings is mainly for personal reference, but I thought I'd make it public in case anyone else was interested. I plan on keeping this post updated if I ever change my `.vimrc` configuration.
+
+# Optional
+category: Vim
+tags: 
+  - Vim
+  - Vim Configration
+createdAt: "2017-12-17T13:00:00.000Z"
+updatedAt: "2020-08-16T05:55:30.306Z"
+enableComments: true
+enableTOC: true
 ---
 
 > **_Note: I didn't create this post. The original author is [here](https://github.com/chrisyeh96/chrisyeh96.github.io)._**

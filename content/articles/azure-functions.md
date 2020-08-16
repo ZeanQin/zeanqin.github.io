@@ -1,10 +1,15 @@
 ---
 title: Azure functions
-layout: post
-use_toc: true
-use_code: true
-comments: true
 excerpt: Basics of Azure functions
+
+# Optional
+category: Azure
+tags: 
+  - Azure Functions
+createdAt: "2019-10-01T14:00:00.000Z"
+updatedAt: "2020-08-16T05:19:51.307Z"
+enableComments: true
+enableTOC: true
 ---
 ## Azure function basics
 

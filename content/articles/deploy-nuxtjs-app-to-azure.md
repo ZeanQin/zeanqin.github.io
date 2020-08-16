@@ -1,11 +1,19 @@
 ---
 title: Deplying NuxtJS app to Azure with continous deployment
-layout: post
-use_toc: true
-use_code: true
-comments: true
 excerpt: How to deploy a NuxtJS app to Azure with continous deployment
+
+# Optional
+category: Frontend
+tags: 
+  - Vue.js
+  - Nuxt.js
+  - Azure Web App
+createdAt: "2019-08-12T14:00:00.000Z"
+updatedAt: "2020-08-16T05:31:20.308Z"
+enableComments: true
+enableTOC: true
 ---
+
 > # This page is currently work in progress
 
 ## The distribution files you need

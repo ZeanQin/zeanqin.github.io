@@ -1,10 +1,16 @@
 ---
 title: TypeScript - Basics
-layout: post
-use_toc: true
-use_code: true
-comments: true
 excerpt: The basics of TypeScript
+
+# Optional
+category: Programming Language
+tags: 
+  - TypeScript Basics
+  - Frontend
+createdAt: "2019-09-08T14:00:00.000Z"
+updatedAt: "2020-08-16T05:53:56.308Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## The problems with JavaScript

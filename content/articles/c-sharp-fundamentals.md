@@ -1,10 +1,16 @@
 ---
 title: C# fundamentals
-layout: post
-use_toc: true
-use_code: true
-comments: true
 excerpt: This post contains some of the basic/important concpets that I find myself keeping coming back to around C#. 
+
+# Optional
+category: Programming Language
+tags: 
+  - C#
+  - Fundamentals
+createdAt: "2019-06-24T14:00:00.000Z"
+updatedAt: "2020-08-16T05:25:30.322Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## Tools

@@ -1,28 +1,37 @@
 ---
 title: Getting MathJax to work
-layout: post
-use_code: true
-use_toc: true
 excerpt: Re-formatting a LaTeX document for use as a blog post took more work than expected. MathJax only supports the LaTeX math-mode commands, and there are additional formatting considerations as well. Here are some tools that I found to make the transition easier.
+
+# Optional
+category: Machine Learning
+tags: 
+  - MathJax
+createdAt: "2017-08-27T14:00:00.000Z"
+updatedAt: "2020-08-16T05:36:17.320Z"
+enableComments: true
+enableTOC: true
 ---
 
 > **_Note: I didn't create this post. The original author is [here](https://github.com/chrisyeh96/chrisyeh96.github.io)._**
 
-## Converting LaTeX to Markdown/MathJax:
+## Converting LaTeX to Markdown/MathJax
 
 1. Replace all `\textbf{abc}` with `**abc**`, and similarly for italics
+
 - Find What: `\\textbf{([^}]+)}`
 - Replace With: `**$1**`
 
 2. Replace `\begin{enumerate} ... \end{enumerate}` with actual numbering
 
 3. Replace `\href{link}{text}` with `[text](link)`
+
 - Find What: `\\href{(.+)}{(.+)}`
 - Replace With: `\[$2\]\($1\)`
 
 4. Make sure all `$$ ... $$` equations have a newline above and below. This prevents these equations from being treated as inline equations.
 
 5. Replace all `$ ... $` with `$$ ... $$`. (This assumes that single dollar signs have not been configured as delimiters for inline math.)
+
 - Find What: `([^$])\$([^$]+)\$([^$])`
 - Replace With: `$1\$\$$2\$\$$3`
 

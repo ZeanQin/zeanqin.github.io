@@ -1,8 +1,16 @@
 ---
 title: Setup Jekyll on GitHub Pages
-layout: post
-use_toc: true
 excerpt: Here is a brief summary of how I set up this blog / website using Jekyll on GitHub Pages.
+
+# Optional
+category: Frontend
+tags: 
+  - Jekyll
+  - GitHub Pages
+createdAt: "2017-08-04T14:00:00.000Z"
+updatedAt: "2020-08-16T05:52:35.319Z"
+enableComments: true
+enableTOC: true
 ---
 
 > **_Note: I didn't create this post. The original author is [here](https://github.com/chrisyeh96/chrisyeh96.github.io)._**
@@ -22,6 +30,7 @@ The problem is that `Cayman` and `Cayman Blog` do not use Bootstrap: in fact, th
 ## Syntax Highlighting
 
 Getting syntax highlighting to work required 3 steps.
+
 1. Add `highlighter: rouge` to `_config.yml`
 2. Add `rouge-github.css` to the `/css/` folder. I copied it over from the `Cayman` theme [repo](https://github.com/pages-themes/cayman/blob/master/_sass/rouge-github.scss), which is allowed per its CC0 license.
 3. Include the `rouge-github.css` stylesheet in the `default.html` layout.

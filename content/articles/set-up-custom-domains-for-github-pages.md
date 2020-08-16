@@ -1,10 +1,16 @@
 ---
 title: Point custom subdomain and root domain to Github pages
-layout: post
-use_toc: true
-use_code: true
-comments: true
 excerpt: Steps I followed to point a custom root domain and a subdomain to GitHub pages
+
+# Optional
+category: Frontend
+tags: 
+  - GitHub Pages
+  - Custom Domain
+createdAt: "2020-03-09T13:00:00.000Z"
+updatedAt: "2020-08-16T05:51:22.314Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## Introduction

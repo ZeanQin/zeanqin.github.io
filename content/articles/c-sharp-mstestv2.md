@@ -1,10 +1,17 @@
 ---
 title: C# - Automated Testing with MSTest V2
-layout: post
-use_toc: true
-use_code: true
-comments: true
 excerpt: Unit test in C# using MSTest V2.
+
+# Optional
+category: Programming Language
+tags: 
+  - C#
+  - Automated Unit Tests
+  - MSTest V2
+createdAt: "2019-09-28T14:00:00.000Z"
+updatedAt: "2020-08-16T05:27:19.317Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## The benefits of automated tests

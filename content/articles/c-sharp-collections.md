@@ -1,10 +1,15 @@
 ---
 title: C# - Collections
-layout: post
-use_toc: true
-use_code: true
-comments: true
 excerpt: Collections in C#.
+
+# Optional
+category: Programming Language
+tags: 
+  - C#
+createdAt: "2019-09-22T14:00:00.000Z"
+updatedAt: "2020-08-16T05:23:42.307Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## What is Collection

@@ -1,8 +1,16 @@
 ---
 title: Json web token (JWT) basics
-layout: post
-use_toc: true
 excerpt: Basics on what is JWT and how it works
+
+# Optional
+category:
+tags: 
+  - JWT
+  - Json Web token
+createdAt: "2019-11-06T13:00:00.000Z"
+updatedAt: "2020-08-16T05:42:28.319Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## References

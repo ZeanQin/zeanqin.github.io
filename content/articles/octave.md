@@ -1,9 +1,15 @@
 ---
 title: Basics of Octave
-layout: post
-use_toc: true
-comments: true
 excerpt: The high level programming language for prototyping machine learning algorithms.
+
+# Optional
+category: Machine Learning
+tags: 
+  - Octave
+createdAt: "2019-11-09T13:00:00.000Z"
+updatedAt: "2020-08-16T05:48:44.306Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## What is Octave
@@ -23,7 +29,7 @@ Documentation can be found here [https://octave.org/doc/interpreter/](https://oc
 - `octave` starts the interpreter
 - `help <functionname>` displays documentation for a built in function. For example, `help plot` will bring up help information for plotting.
 
-### Basic operators,
+### Basic operators
 
 - `+`, `-`, `*`, `/`, `^`
 - `==`  - equality operator
@@ -33,7 +39,7 @@ Documentation can be found here [https://octave.org/doc/interpreter/](https://oc
 - `xor(<number>, <number>)` - the XOR operator
 - `,` - chain two commands and carry them out together. Mostly for putting multiple commands on the same line.
 
-### Other keywords,
+### Other keywords
 
 - `%` - comment
 - `;` - supress the print output
@@ -61,7 +67,7 @@ Documentation can be found here [https://octave.org/doc/interpreter/](https://oc
     Note: N must be a scalar greater than or equal to 3.  If you supply
     N less than 3, magic returns either a nonmagic square, or else the
     degenerate magic squares 1 and [].
-- **`find(N)`** 
+- **`find(N)`**
 - **`flipud(X)`** - Flip the matrix upside down.
 
 Implementation of bash commands
@@ -121,7 +127,7 @@ Data indexing,
 
 ## Compute on data
 
-- `A * B` 
+- `A * B`
 - `A .* B` - element-wise multiplication; multiple each element in A by the corresponding element in B
 - `A .^ 2` - element-wise squaring of A; take the sqaure of each element in A
 - `1 ./ A` - element-wise inverse of A; calculate the inverse of each element in A
@@ -217,7 +223,7 @@ Data indexing,
     ```octave
     v = rand(10, 1);
     i = 1;
-    while i <= 5, 
+    while i <= 5,
         v(i) = 100;
         i = i + 1;
     end;
@@ -230,7 +236,7 @@ Data indexing,
     while true,
         v(i) = 999;
         i = i + 1;
-        if i == 6, 
+        if i == 6,
             break;
         end;
 
@@ -242,9 +248,9 @@ Data indexing,
     ```octave
     i = 2;
 
-    if i == 1, 
+    if i == 1,
         disp('The value is 1.');
-    elseif i == 2, 
+    elseif i == 2,
         disp('The value is 2.');
     else
         disp('The value is not one or two');
@@ -254,7 +260,7 @@ Data indexing,
 - Functions
 
     ```octave
-    % create a file with the function name as the file name such as `squarethisnumber.m`, then inside it, 
+    % create a file with the function name as the file name such as `squarethisnumber.m`, then inside it,
 
     function y = squarethisnumber(x)
 
@@ -269,7 +275,7 @@ Data indexing,
 
     > use `addpath(<path>);` to tell Octave where to look for function files.
 
-    A function can return multiple parameters, for example inside the file `squareAndCubeThisNumber.m`, 
+    A function can return multiple parameters, for example inside the file `squareAndCubeThisNumber.m`,
 
     ```octave
     function [y1, y2] = squareAndCubeThisNumber(x)
@@ -278,7 +284,7 @@ Data indexing,
     y2 = x^3;
     ```
 
-    then it can be invoked as, 
+    then it can be invoked as,
 
     ```octave
     [a, b] = squareAndCubeThisNumber(5);
@@ -310,7 +316,7 @@ Data indexing,
     J = costFunction(X, y, Θ);
     ```
 
-    and `costFunction` will be defined in `costFunction.m` as, 
+    and `costFunction` will be defined in `costFunction.m` as,
 
     ```octave
     function J = costFunction(X, y, theta)

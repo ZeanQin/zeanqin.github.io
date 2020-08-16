@@ -1,10 +1,15 @@
 ---
 title: My Windows Terminal setup
-layout: post
-use_toc: true
-use_code: true
-comments: true
 excerpt: Windows Terminal basics and my configration.
+
+# Optional
+category: 
+tags: 
+  - Windows Terminal
+createdAt: "2020-05-05T14:00:00.000Z"
+updatedAt: "2020-08-16T05:59:40.313Z"
+enableComments: true
+enableTOC: true
 ---
 
 I use Windows Subsystem for Linux primarily and the bash environment coming with it for development work. Recently I've started using Windows Terminal which allows accessing the WSL as well. Below is my configration for it.

@@ -1,9 +1,15 @@
 ---
-title: "Example content"
-layout: post
-use_code: true
-comments: true
-excerpt: Markdown examples.
+title: Example content
+excerpt: Markdown examples
+
+# Optional
+category:
+tags: 
+  - Markdown Examples
+createdAt: "2017-08-02T14:00:00.000Z"
+updatedAt: "2020-08-16T05:32:46.319Z"
+enableComments: true
+enableTOC: true
 ---
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.

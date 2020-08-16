@@ -1,11 +1,15 @@
 ---
 title: My LaTex setup
-layout: post
-use_toc: true
-use_code: true
-comments: true
-category: latex
-excerpt: My LaTex setup
+excerpt: Using LaTex for document authoring.
+
+# Optional
+category:
+tags: 
+  - LaTex
+createdAt: "2019-11-30T13:00:00.000Z"
+updatedAt: "2020-08-16T05:43:52.314Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## Installation

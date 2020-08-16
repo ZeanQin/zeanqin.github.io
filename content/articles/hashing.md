@@ -1,9 +1,16 @@
 ---
-title: "What is hashing?"
-layout: post
-use_code: true
-comments: true
-excerpt: A quick summary of Bits and Bites
+title: What is hashing?
+excerpt: Basics of hashing.
+
+# Optional
+category:
+tags: 
+  - Hashing
+  - Algorithm
+createdAt: "2017-08-05T14:00:00.000Z"
+updatedAt: "2020-08-16T05:39:18.310Z"
+enableComments: true
+enableTOC: true
 ---
 
 ## What is Hashing
@@ -33,6 +40,6 @@ There are literally thousands of named hashing functions. Some are secure, but c
 - MurmurHash
 - SpookyHash
 
-
 ## References
-1. https://blog.medium.com/what-are-bloom-filters-1ec2a50c68ff
+
+1. <https://blog.medium.com/what-are-bloom-filters-1ec2a50c68ff>
