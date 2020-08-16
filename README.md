@@ -1,4 +1,8 @@
-# zean.be
+# <https://zean.be>
+
+Welcome to [my personal website](https://zean.be).
+
+It's a static website built using Nuxt.js, specifically the [@nuxt/content](https://content.nuxtjs.org/) module.
 
 ## Build Setup
 
@@ -9,12 +13,11 @@ $ npm install
 # serve with hot reload at localhost:3000
 $ npm run dev
 
-# build for production and launch server
-$ npm run build
-$ npm run start
-
 # generate static project
 $ npm run generate
+
+# deply to GitHub pages
+$ npm run deploy
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+You can contact me at [dev@zean.be](mailto:dev@zean.be).
