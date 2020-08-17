@@ -5,7 +5,7 @@
 <script>
 export default {
   async asyncData({ $content, params }) {
-    const article = await $content('articles', params.id).fetch()
+    const article = await $content('drafts', params.id).fetch()
     return { article }
   },
   head() {
@@ -16,6 +16,11 @@ export default {
           hid: 'description',
           name: 'description',
           content: this.article.excerpt ?? this.article.title,
+        },
+        {
+          hid: 'robots',
+          name: 'robots',
+          content: 'noindex',
         },
       ],
     }
