@@ -17,3 +17,24 @@ a:not(.btn):focus,
 a:not(.btn):hover {
   @include gradient-text;
 }
+
+// scrollbar
+
+/* Sets the dimensions of the entire scrollbar */
+html::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+/* The grabbable scrollbar button  */
+html::-webkit-scrollbar-thumb {
+    background: -webkit-gradient(linear,left top,left bottom,from($gradient-from-color),to($gradient-to-color-2));
+    background: linear-gradient(180deg,$gradient-from-color,$gradient-to-color-2);
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+
+/* The vertical scrollbar background */
+html::-webkit-scrollbar-track {
+    background: linear-gradient(90deg,$gray-800,$gray-800 1px,$gray-900 0, $gray-900);
+}
