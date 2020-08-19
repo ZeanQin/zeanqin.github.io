@@ -1,5 +1,5 @@
 <template>
-  <article-detail :article="article" />
+  <article-detail :article="article" :published="true" />
 </template>
 
 <script>
