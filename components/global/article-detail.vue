@@ -13,10 +13,10 @@
 
       <!-- prev/next links -->
       <b-row v-if="prev || next" class="border-top align-items-center py-3">
-        <b-col>
+        <b-col md="6">
           <nuxt-link
             v-if="prev"
-            class="h5 d-flex align-items-center"
+            class="h5 d-inline-flex align-items-center"
             :to="{
               name: published ? 'articles-id' : 'drafts-id',
               params: { id: prev.slug },
@@ -26,10 +26,10 @@
             {{ prev.title }}
           </nuxt-link>
         </b-col>
-        <b-col>
+        <b-col class="text-right">
           <nuxt-link
             v-if="next"
-            class="h5 d-flex align-items-center justify-content-end"
+            class="h5 d-inline-flex align-items-center"
             :to="{
               name: published ? 'articles-id' : 'drafts-id',
               params: { id: next.slug },
@@ -64,8 +64,8 @@ export default Vue.extend({
   },
   data() {
     return {
-      prev: {} as Result,
-      next: {} as Result,
+      prev: null as Result | null,
+      next: null as Result | null,
     }
   },
   watch: {
