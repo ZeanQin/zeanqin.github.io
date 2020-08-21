@@ -31,8 +31,9 @@ export default {
    ** Global CSS
    */
   css: [
-    '~/assets/scss/custom.scss',
+    '~/assets/scss/dracula-prism.css',
     '@fortawesome/fontawesome-svg-core/styles.css',
+    '~/assets/scss/custom.scss',
   ],
   /*
    ** Plugins to load before mounting the App
@@ -77,7 +78,7 @@ export default {
     liveEdit: false,
     markdown: {
       prism: {
-        theme: 'prismjs/themes/prism-tomorrow.css',
+        theme: false,
       },
     },
   },
