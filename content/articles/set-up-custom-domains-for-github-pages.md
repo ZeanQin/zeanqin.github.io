@@ -1,6 +1,6 @@
 ---
-title: Point custom subdomain and root domain to Github pages
-excerpt: Steps I followed to point a custom root domain and a subdomain to GitHub pages
+title: Point custom subdomain and root domain to GitHub Pages
+excerpt: Steps I followed to point a custom root domain and a subdomain to GitHub Pages
 
 # Optional
 category: Frontend
@@ -8,31 +8,31 @@ tags:
   - GitHub Pages
   - Custom Domain
 createdAt: "2020-03-09T13:00:00.000Z"
-updatedAt: "2020-08-16T05:51:22.314Z"
+updatedAt: "2020-08-22T13:45:58.424Z"
 enableComments: true
 enableTOC: true
 ---
 
 ## Introduction
 
-I followed the steps below to point my root domain i.e. `zean.be` and a custom subdomain i.e. `www.zean.be` to a GitHub pages project.
+I followed the steps below to point my root domain `zean.be` and the custom subdomain `www.zean.be` to a GitHub Pages project.
 
 ## Steps
 
-### Step 1: Configure your GitHub pages project to accept requests from your custom domains
+**Step 1**: configure your GitHub Pages project to accept requests from your custom domains.
 
-Create a **CNAME** file in the root directory and add the following two entries (with zean.be replaced by your own domain)
+Create a file called **CNAME** in the root directory with the following two entries (with `zean.be` replaced by your own domain),
 
 ```CNAME
 zean.be
 www.zean.be
 ```
 
-These two entries tell GitHub to redirect any requests to **USERNAME.github.io** to the domain specified in the **CNAME** file.
+These two entries tell GitHub to redirect any requests to **_USERNAME_.github.io** to the domain specified in the **CNAME** file.
 
 There are two entries to ensure that **www.zean.be** will also redirect to **zean.be**. The order matters here; the first domain in the list is the primary domain and the other domains will be redirected to it.
 
-### Step 2: Add DNS records to point your root domain/subdomain to GitHub
+**Step 2**: add DNS records to point your root domain/subdomain to GitHub.
 
 Add the following CNAME record to your DNS provider,
 
@@ -40,7 +40,7 @@ Add the following CNAME record to your DNS provider,
 www.zean.be    CNAME    USERNAME.github.io
 ```
 
-and add the following A records for the root domain
+and add the following A records for the root domain,
 
 ```CNAME
 @    A    185.199.108.153
