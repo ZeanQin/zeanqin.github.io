@@ -30,7 +30,11 @@ www.zean.be
 
 These two entries tell GitHub to redirect any requests to **_USERNAME_.github.io** to the domain specified in the **CNAME** file.
 
-There are two entries to ensure that **www.zean.be** will also redirect to **zean.be**. The order matters here; the first domain in the list is the primary domain and the other domains will be redirected to it.
+There are two entries to ensure that **[www.zean.be](https://www.zean.be)** will also redirect to **[zean.be](https://zean.be)**.
+
+<b-alert variant="info" show>
+  The order matters here; the first domain in the list is the primary domain and the other domains will be redirected to it.
+</b-alert>
 
 **Step 2**: add DNS records to point your root domain/subdomain to GitHub.
 
