@@ -58,4 +58,5 @@ pre::-webkit-scrollbar-thumb {
 /* The vertical scrollbar background */
 pre::-webkit-scrollbar-track {
     background: linear-gradient(180deg,$gray-800,$gray-800 1px,$gray-900 0, $gray-900);
+    border-radius: 30px;
 }
