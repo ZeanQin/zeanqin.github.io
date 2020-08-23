@@ -8,7 +8,7 @@ tags:
   - Kernal Density Estimation
   - KDE
 createdAt: "2018-10-19T13:00:00.000Z"
-updatedAt: "2020-08-16T05:02:18.018Z"
+updatedAt: "2020-08-23T12:36:33.312Z"
 enableComments: true
 enableTOC: true
 ---
