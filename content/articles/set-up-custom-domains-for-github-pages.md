@@ -23,7 +23,7 @@ I followed the steps below to point my root domain `zean.be` and the custom subd
 
 Create a file called **CNAME** in the root directory with the following two entries (with `zean.be` replaced by your own domain),
 
-```CNAME
+```json{1-2}[CNAME]
 zean.be
 www.zean.be
 ```

@@ -98,6 +98,23 @@ export default Vue.extend({
     visibility: hidden;
     pointer-events: none;
   }
+
+  // file name
+  .nuxt-content-highlight {
+    position: relative;
+
+    & > .filename {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: #ccc;
+      z-index: 10;
+      font-style: italic;
+      line-height: 1;
+      margin-right: 0.75rem;
+      margin-top: 0.75rem;
+    }
+  }
 }
 
 .toc {
