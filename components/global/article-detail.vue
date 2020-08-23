@@ -101,9 +101,9 @@ export default Vue.extend({
     pointer-events: none;
   }
 
+  & h2:not(:first-child),
   & h3 {
-    border-bottom: 2px solid $gray-300;
-    padding-bottom: 8px;
+    margin-top: 3rem;
   }
 
   // file name
