@@ -14,8 +14,6 @@ enableComments: true
 enableTOC: true
 ---
 
-> # This page is currently work in progress
-
 ## The distribution files you need
 
 The folders and files that need to be in the `wwwroot` folder:
