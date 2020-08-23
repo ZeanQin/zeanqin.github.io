@@ -88,6 +88,8 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+@import '~/assets/scss/_variables';
+
 .nuxt-content {
   & h2::before,
   & h3::before {
@@ -97,6 +99,11 @@ export default Vue.extend({
     height: 60px;
     visibility: hidden;
     pointer-events: none;
+  }
+
+  & h3 {
+    border-bottom: 2px solid $gray-300;
+    padding-bottom: 8px;
   }
 
   // file name

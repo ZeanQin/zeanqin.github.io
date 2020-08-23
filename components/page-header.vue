@@ -2,7 +2,7 @@
   <div
     class="d-flex align-items-center justify-content-center title bg-gradient"
   >
-    <span class="h2 text text-light">{{ title }}</span>
+    <span class="h2 text text-center text-light">{{ title }}</span>
   </div>
 </template>
 
