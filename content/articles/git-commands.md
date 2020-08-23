@@ -7,57 +7,59 @@ category: Git
 tags: 
   - Git Commands
 createdAt: "2019-11-14T13:00:00.000Z"
-updatedAt: "2020-08-16T05:37:48.318Z"
+updatedAt: "2020-08-23T04:11:04.171Z"
 enableComments: true
 enableTOC: true
 ---
 
-## Delete branch locally and remotely
+## Git Commands and Configurations
+
+I use Git via the terminal a lot. Below are some commands that I use on a daily basis and some configrations that makes my workflow more pleasant and efficient.
+
+### Delete branch locally and remotely
 
 ```bash
-git push -d <remote_name> <branch_name>
-git branch -d <branch_name>
+# delete a remote branch
+git push -d <remote_name> <branch_name> # or
+git push -D <remote_name> <branch_name>
+
+# delete a local branch
+git branch -d <branch_name> # or
+git branch -D <branch_name>
 ```
 
-Note that in most cases the remote name is origin.
+<b-alert variant="info" show>Note that in most cases the _<remote_name>_ name is origin.</b-alert>
 
-To delete the local branch use one of the following:
+**Note**: The `-d` option is an alias for `--delete`, which only deletes the branch if it has already been fully merged in its upstream branch. You could also use `-D`, which is an alias for `--delete --force`, which deletes the branch "[irrespective of its merged status](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--D)".
 
-```bash
-git branch -d branch_name
-git branch -D branch_name
-```
-
-Note: The `-d` option is an alias for `--delete`, which only deletes the branch if it has already been fully merged in its upstream branch. You could also use `-D`, which is an alias for `--delete --force`, which deletes the branch "irrespective of its merged status." [Source: `man git-branch`]
-
-## List local branch and their remote tracking branch along with the latest commits
+### List local branch and their remote tracking branch along with the latest commits
 
 ```bash
 git branch -vv
 ```
 
-## Checkout remote branch
+### Checkout remote branch
 
-With Git versions ≥ 1.6.6, with only one remote, you can just do:
+With Git versions ≥ 1.6.6 and with only one remote, you can just do:
 
 ```bash
 git fetch
-git checkout test
+git checkout <branch_name>
 ```
 
-`git checkout test` will NOT work in modern git if you have multiple remotes. In this case use
+`git checkout <branch_name>` will NOT work in modern Git if you have multiple remotes. In this case use
 
 ```bash
-git checkout -b test <name of remote>/test
+git checkout -b <branch_name> <remote_name>/<branch_name>
 ```
 
 or the shorthand
 
 ```bash
-git checkout -t <name of remote>/test
+git checkout -t <remote_name>/<branch_name>
 ```
 
-## Add and commit in one command
+### Add and commit in one command
 
 ```bash
 # add a `add-commit` alias, or
@@ -74,23 +76,25 @@ git add-commit -m 'My commit message' # or
 git ac -m 'My commit message'
 ```
 
-## Make Git to use vim as editor for writing commit messages
+### Make Git to use Vim as editor for writing commit messages
 
 If you want to set the editor only for Git, do either (you don’t need both):
 
 - Set `core.editor` in your Git config: `git config --global core.editor "vim"`
 - Set the `GIT_EDITOR` environment variable: `export GIT_EDITOR=vim`
 
-If you want to set the editor for Git and also other programs, set the standardized `VISUAL` and `EDITOR` environment variables*:
+If you want to set the editor for Git and also other programs, set the standardized `VISUAL` and `EDITOR` environment variables:
+
+<b-alert variant="info" show>
+Setting both is not necessarily needed, but some programs may not use the more-correct <code>VISUAL</code>.
+</b-alert>
 
 ```bash
 export VISUAL=vim
 export EDITOR="$VISUAL"
 ```
 
-*Setting both is not necessarily needed, but some programs may not use the more-correct `VISUAL`. See `VISUAL` vs. `EDITOR`.
-
-## Discard unstaged files in current working directory
+### Discard unstaged files in current working directory
 
 To discard all unstaged files in current working directory,
 
@@ -106,7 +110,7 @@ git checkout -- path/to/file/to/revert
 
 The `--` is to remove [argument ambiguation](https://git-scm.com/docs/git-checkout#_argument_disambiguation).
 
-## Rename a local and remote branch
+### Rename a local and remote branch
 
 **Step 1**: Rename your local branch
 
@@ -136,7 +140,7 @@ Switch to the branch and then:
 git push origin -u new-name
 ```
 
-## A better Git log
+### Prettify the Git log
 
 **Step 1**: Set up alias
 
@@ -159,13 +163,13 @@ git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(ye
 --author="John Doe"
 ```
 
-### commonly used
+My most commonly used command is
 
 ```bash
 git lg --after="yesterday" --author="Zean"
 ```
 
-## Git Diffs
+### Prettify Git diff
 
 I use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy) to make the diffs more readable. Install it and then run,
 
@@ -173,7 +177,7 @@ I use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy) to make the dif
 git diff
 ```
 
-## Automatically prune remote-tracking branches for a branch on the other side that has already been deleted
+### Prune remote-tracking branches automatically for a branch on the other side that has already been deleted
 
 Without `git fetch --prune`, remote-tracking branches for a branch
 the other side already has removed will stay forever.
