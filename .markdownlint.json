@@ -1,4 +1,4 @@
 {
     "MD013": false,
-    "MD033": {"allowed_elements": ['asset', 'b-alert']}
+    "MD033": {"allowed_elements": ['asset', 'b-alert', 'b-table-simple', 'b-tbody', 'b-tr', 'b-th', 'b-td', 'span', 'code', 'p']}
 }
