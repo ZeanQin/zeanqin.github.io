@@ -7,16 +7,18 @@ category: Vim
 tags: 
   - Vim Registers
 createdAt: "2020-08-21T06:33:50.517Z"
-updatedAt: "2020-08-24T14:17:48.992Z"
+updatedAt: "2020-08-31T11:47:22.367Z"
 enableComments: true
 enableTOC: true
 ---
 
 ## Overview
 
-A register is basically a slot in memory that Vim can put some texts in and read them out later. Each register is like a clipboard provided by the OS (e.g. Windows, MacOS etc.), except that Vim has a LOT of them instead of just one.
+A register in Vim is basically a slot in memory that you can put a piece of text in and read it out later. Each register is like the clipboard provided by the OS (e.g. Windows, MacOS etc.), except that Vim has a LOT of them instead of just one.
 
-From my personal experiece - although it takes a while to learn how to use them, you'll never go back to the simple yank/paste again after knowing how to use them (even the basic ones).
+<b-alert variant="info" show>
+  It takes a while to learn how to use them and some slow repetitions in the beginning to develop the muscle memory, but you'll never go back to the simple yank/paste again getting comfortable with it.
+</b-alert>
 
 ## Basic usage
 
