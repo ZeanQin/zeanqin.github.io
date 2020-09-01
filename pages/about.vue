@@ -16,7 +16,7 @@
             Australia.
           </p>
           <p>
-            I love crafting things that live on the web, whether that be
+            I love building things that live on the web, whether that be
             websites, applications, or anything in between.
           </p>
         </b-col>
