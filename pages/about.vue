@@ -12,17 +12,12 @@
         </b-col>
         <b-col>
           <p>
-            I work in tech. When learning new things, I always find that
-            researching a particular topic leads me to another topic which then
-            leads me to other topics. And it's hard to track them all. The main
-            purpose of the site is to build such a knowledge network to help me
-            remembering things. I also put some of my practices, such as .vmrc,
-            manuals such as setting up apache servers etc on the site. Together,
-            I use this site to build my own knowledge graph.
+            Hello! I'm Zean Qin, a software engineer based in Melbourne,
+            Australia.
           </p>
-
           <p>
-            In addition, it contains my resume and portofolios.
+            I love crafting things that live on the web, whether that be
+            websites, applications, or anything in between.
           </p>
         </b-col>
       </b-row>
@@ -33,6 +28,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import PageHeader from '~/components/page-header.vue'
+
 export default Vue.extend({
   layout: 'default',
   components: {
