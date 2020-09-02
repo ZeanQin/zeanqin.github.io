@@ -3,14 +3,7 @@
     <page-header title="About me" />
     <b-container class="py-4">
       <b-row>
-        <b-col md="3" class="profile">
-          <b-img
-            :src="require('~/assets/images/general/profile_square.jpg')"
-            rounded="circle"
-            thumbnail
-          />
-        </b-col>
-        <b-col>
+        <b-col cols="12" md="6">
           <p>
             Hello! I'm Zean Qin, a software engineer based in Melbourne,
             Australia.
@@ -34,8 +27,21 @@
           </p>
           <p>
             When I'm not writing code, you'll probably catch me running, playing
-            games with the boys, or just watching TV with my dog.
+            games with the boys, or just chilling with my dog.
           </p>
+        </b-col>
+        <b-col>
+          <b-carousel :interval="4000" controls indicators fade>
+            <b-carousel-slide
+              :img-src="require('~/assets/images/about/running.jpg')"
+            ></b-carousel-slide>
+            <b-carousel-slide
+              :img-src="require('~/assets/images/about/gaming.jpeg')"
+            ></b-carousel-slide>
+            <b-carousel-slide
+              :img-src="require('~/assets/images/about/dog.jpg')"
+            ></b-carousel-slide>
+          </b-carousel>
         </b-col>
       </b-row>
     </b-container>
@@ -66,15 +72,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style lang="scss" scoped>
-@media (max-width: 767.98px) {
-  .profile {
-    text-align: center;
-
-    & img {
-      width: 150px;
-    }
-  }
-}
-</style>
