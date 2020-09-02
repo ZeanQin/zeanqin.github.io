@@ -19,6 +19,23 @@
             I love building things that live on the web, whether that be
             websites, applications, or anything in between.
           </p>
+          <p>
+            I'm also a super nerd who loves Vim, Linux and Git and enjoys to
+            customise all of the development environment.
+          </p>
+          <p>
+            After coding for a few years, I took on machine learning as a new
+            challenge and went to the
+            <b-link target="_blank" href="https://www.unimelb.edu.au">
+              University of Melbourne
+            </b-link>
+            to get a master degree with focus on data analysis and machine
+            learning.
+          </p>
+          <p>
+            When I'm not writing code, you'll probably catch me running, playing
+            games with the boys, or just watching TV with my dog.
+          </p>
         </b-col>
       </b-row>
     </b-container>
