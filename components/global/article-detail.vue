@@ -91,6 +91,8 @@ export default Vue.extend({
 @import '~/assets/scss/_variables';
 
 .nuxt-content {
+  // make hash tag links not headbutt the browser window
+  // https://css-tricks.com/hash-tag-links-padding/#fancier-clean-html-method
   & h2::before,
   & h3::before {
     display: block;
