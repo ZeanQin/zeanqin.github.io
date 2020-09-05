@@ -218,6 +218,26 @@
           including versions of Lorem Ipsum.
         </p>
       </div>
+
+      <h2>Embed CodeSandbox</h2>
+      <div>
+        <b-embed
+          type="iframe"
+          aspect="16by9"
+          allowfullscreen
+          src="https://codesandbox.io/embed/competent-jones-3wmjm?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+          style="
+            width: 100%;
+            height: 500px;
+            border: 0;
+            border-radius: 4px;
+            overflow: hidden;
+          "
+          title="competent-jones-3wmjm"
+          allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+          sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+        ></b-embed>
+      </div>
     </b-container>
   </div>
 </template>
