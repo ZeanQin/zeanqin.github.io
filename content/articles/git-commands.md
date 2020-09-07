@@ -12,9 +12,11 @@ enableComments: true
 enableTOC: true
 ---
 
-I'm a command line lover and use Git from the terminal all the time. If you're like me, you will eventually end up finding yourself repeating similar Git commands everyday.
+I'm a command line lover and use Git from the terminal all the time.
 
-Over time, I have built up a curated list of Git commands, aliases and configrations that I use on a daily basis that makes my workflow more pleasant and efficient.
+If you're like me, you might start getting annoyed by some little things from a certain point. For example, it starts to get a bit annoying to always type two separate commands - `git add <file>` then `git commit -m 'Your commit message'` - to commit your changes. Or maybe you want to have a nicer view when you type `git log`. Or you want your local branch to be automatically pruned when the remote branch has been deleted. Little things like this - you get the idea.
+
+Over time, I have built up a curated list of commands, aliases and configrations that I use on a daily basis that makes my workflow more efficient and pleasant. And I'd like to share them with you below.
 
 ### Delete branch locally and remotely
 
