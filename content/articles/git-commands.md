@@ -20,6 +20,8 @@ Over time, I have built up a curated list of commands, aliases and configrations
 
 ### Delete branch locally and remotely
 
+When you're done with a branch, you might want to delete it from both the remote and your local machine.
+
 ```bash
 # delete a remote branch
 git push -d <remote_name> <branch_name> # or
