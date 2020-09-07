@@ -1,20 +1,20 @@
 ---
-title: My commonly used Git commands
-excerpt: These are some of my most commonly used Git commands.
+title: Common Git commands and configurations used in a day-to-day workflow
+excerpt: When using Git via the command line, I find myself repeating similar tasks everyday. Over time, I've built up a curated list of Git commands, aliases and configrations that I use on a daily basis.
 
 # Optional
 category: Git
 tags: 
   - Git Commands
 createdAt: "2019-11-14T13:00:00.000Z"
-updatedAt: "2020-08-23T04:11:04.171Z"
+updatedAt: "2020-09-07T13:15:30.403Z"
 enableComments: true
 enableTOC: true
 ---
 
-## Git Commands and Configurations
+I'm a command line lover and use Git from the terminal all the time. If you're like me, you will eventually end up finding yourself repeating similar Git commands everyday.
 
-I use Git via the terminal a lot. Below are some commands that I use on a daily basis and some configrations that makes my workflow more pleasant and efficient.
+Over time, I have built up a curated list of Git commands, aliases and configrations that I use on a daily basis that makes my workflow more pleasant and efficient.
 
 ### Delete branch locally and remotely
 
