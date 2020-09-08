@@ -14,13 +14,13 @@ enableTOC: true
 
 I'm a command line lover and use Git from the terminal all the time.
 
-If you're like me, you might start getting annoyed by some little things from a certain point. For example, it starts to get a bit annoying to always type two separate commands - `git add <file>` then `git commit -m 'Your commit message'` - to commit your changes. Or maybe you want to have a nicer view when you type `git log`. Or you want your local branch to be automatically pruned when the remote branch has been deleted. Little things like this - you get the idea.
+If you're like me, you might start getting annoyed by some little things at a certain point. For example, it starts to get a bit annoying to always type two separate commands - `git add <file>` then `git commit -m 'Your commit message'` - to commit your changes. Or maybe you want to have a better looking git history when you type `git log`. Or you want your local branch to be automatically pruned when the remote branch has been deleted. Little things like these - you get the idea.
 
 Over time, I have built up a curated list of commands, aliases and configrations that I use on a daily basis that makes my workflow more efficient and pleasant. And I'd like to share them with you below.
 
 ### Delete branch locally and remotely
 
-When you're done with a branch, you might want to delete it from both the remote and your local machine.
+When you're done with a branch, you can delete it from both the remote and your local machine using the commands below.
 
 ```bash
 # delete a remote branch
@@ -41,6 +41,8 @@ git branch -D <branch_name>
 ```bash
 git branch -vv
 ```
+
+<asset src="articles/git-commands/command-git-branch-vv.png" name="List local and remote tracking branches" newline></asset>
 
 ### Checkout remote branch
 
@@ -200,6 +202,10 @@ git config remote.origin.prune true
                  #replace with your repo name
 ```
 
+### Delete all Git branches that have been merged in remote
+
+See <https://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged>
+
 ## References
 
 1. [How do I delete a Git branch locally and remotely?](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely)
@@ -211,3 +217,4 @@ git config remote.origin.prune true
 7. [Good-lookin' diffs. Actually… nah… The best-lookin' diffs.](https://github.com/so-fancy/diff-so-fancy)
 8. [Automatic prune with Git fetch or pull](https://stackoverflow.com/questions/18308535/automatic-prune-with-git-fetch-or-pull)
 9. [fetch: make --prune configurable](https://github.com/git/git/commit/737c5a9cde708d6995c765b7c2e95033edd0a896#diff-07f3b3cf16a56e95990c64bdef634199R940)
+10. [How can I delete all Git branches which have been merged?](https://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged)
