@@ -8,6 +8,7 @@
       :alt="name"
       :src="require(`~/assets/images/${src}`)"
       fluid
+      @load="onImageLoad"
     />
     <b-link v-else :href="`/${src}`" target="_blank">{{ name }}</b-link>
   </div>
@@ -15,6 +16,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import mediumZoom from 'medium-zoom'
 export default Vue.extend({
   props: {
     name: {
@@ -33,6 +35,11 @@ export default Vue.extend({
   computed: {
     isImage() {
       return !!this.src.match(/.(jpg|jpeg|png|gif)$/i)
+    },
+  },
+  methods: {
+    onImageLoad(event: any) {
+      mediumZoom(event.target)
     },
   },
 })
