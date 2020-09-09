@@ -18,7 +18,59 @@ If you're like me, you might start getting annoyed by some little things at a ce
 
 Over time, I have built up a curated list of commands, aliases and configrations that I use on a daily basis that makes my workflow more efficient and pleasant. And I'd like to share them with you below.
 
-### Delete branch locally and remotely
+### List your local branches and their remote tracking branches
+
+In addition, this command also shows the hash code and the commit message of the latest commit. It also tells you if the remote branch has been deleted.
+
+```bash
+git branch -vv
+```
+
+For example, running the command produces the following output on my machine,
+
+<asset src="articles/git-commands/command-git-branch-vv.png" name="List local and remote tracking branches" newline></asset>
+
+### Checkout a remote branch
+
+With Git versions ≥ 1.6.6 and with only one remote, you can just do:
+
+```bash
+git fetch
+git checkout <branch_name>
+```
+
+`git checkout <branch_name>` will **NOT** work in modern Git if you have multiple remotes. In this case use
+
+```bash
+git checkout -b <branch_name> <remote_name>/<branch_name>
+```
+
+or the shorthand
+
+```bash
+git checkout -t <remote_name>/<branch_name>
+```
+
+### Add and commit in one command
+
+Add either one of the following aliases to your global Git config file (usually at `~/.gitconfig` on a Linux/Mac OS system). I prefer the second one because it saves a few more keystrokes.
+
+```bash
+# add a `add-commit` alias, or
+git config --global alias.add-commit '!git add -A && git commit'
+
+# add a `ac` alias to save a few more keystrokes
+git config --global alias.ac '!git add -A && git commit'
+```
+
+And use it with
+
+```bash
+git add-commit -m 'My commit message' # or
+git ac -m 'My commit message'
+```
+
+### Delete a branch both locally and remotely
 
 When you're done with a branch, you can delete it from both the remote and your local machine using the commands below.
 
@@ -36,68 +88,52 @@ git branch -D <branch_name>
 
 **Note**: The `-d` option is an alias for `--delete`, which only deletes the branch if it has already been fully merged in its upstream branch. You could also use `-D`, which is an alias for `--delete --force`, which deletes the branch "[irrespective of its merged status](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--D)".
 
-### List local branch and their remote tracking branch along with the latest commits
+### Delete all branches that have been merged in remote
+
+Assume you have a long running `development` branch, and you branch off it to create different feature branches e.g. `feature/A`, `feature/B`.
+
+After your peers have reviewed your pull requests for both features, merged them back to `development` and deleted them from remote. You can delete `feature/A` and `feature/B` from your local by running,
 
 ```bash
-git branch -vv
+# switch to the development branch first
+git checkout development
+
+# delete local branches whose remote tracking branches have been merged back to development
+git delete-merged
 ```
 
-<asset src="articles/git-commands/command-git-branch-vv.png" name="List local and remote tracking branches" newline></asset>
+You probably have noticed that `delete-merged` is not a Git command - it's actually an alias we set up. The parameters used in the actual command is different depending on your setup. But you can follow the following steps to construct a command that suits your needs.
 
-### Checkout remote branch
+**Step 1**: Check out the `development` branch.
 
-With Git versions ≥ 1.6.6 and with only one remote, you can just do:
+**Step 2**: List all branches that have been merged into it in remote.
 
 ```bash
-git fetch
-git checkout <branch_name>
+git branch --merged
 ```
 
-`git checkout <branch_name>` will NOT work in modern Git if you have multiple remotes. In this case use
+**Step 3**: You might see a few branches that you don't want to remove e.g. `master`, `release` etc. And you can filter down the list by excluding those branches by
 
 ```bash
-git checkout -b <branch_name> <remote_name>/<branch_name>
+git branch --merged | egrep -v "(^\*|master|development|skip_branch_name)"
 ```
-
-or the shorthand
-
-```bash
-git checkout -t <remote_name>/<branch_name>
-```
-
-### Add and commit in one command
-
-```bash
-# add a `add-commit` alias, or
-git config --global alias.add-commit '!git add -A && git commit'
-
-# add a `ac` alias to save a few more keystrokes
-git config --global alias.ac '!git add -A && git commit'
-```
-
-and use it with
-
-```bash
-git add-commit -m 'My commit message' # or
-git ac -m 'My commit message'
-```
-
-### Make Git to use Vim as editor for writing commit messages
-
-If you want to set the editor only for Git, do either (you don’t need both):
-
-- Set `core.editor` in your Git config: `git config --global core.editor "vim"`
-- Set the `GIT_EDITOR` environment variable: `export GIT_EDITOR=vim`
-
-If you want to set the editor for Git and also other programs, set the standardized `VISUAL` and `EDITOR` environment variables:
 
 <b-alert variant="info" show>
-Setting both is not necessarily needed, but some programs may not use the more-correct <code>VISUAL</code>.
+<p>The regular expression used by the <code>egrep</code> command basically means "all branches whose name starts with <code>master</code>, <code>development</code> or <code>skip_branch_name</code> will <em>not</em> be deleted".</p>
+
+<p>You can modify the branches above or add your own branches that you don't want to delete.</p>
 </b-alert>
 
+**Step 4**: Delete all local branches that are already merged into the currently checked out branch
+
 ```bash
-export VISUAL=vim
-export EDITOR="$VISUAL"
+git branch --merged | egrep -v "(^\*|master|development|skip_branch_name)" | xargs git branch -d
+```
+
+**Step 5**: Set a global alias `deleted-merged` for the command
+
+```bash
+git config --global alias.delete-merged 'git branch --merged | egrep -v "(^\*|master|development|skip_branch_name)" | xargs git branch -d'
 ```
 
 ### Discard unstaged files in current working directory
@@ -123,32 +159,36 @@ The `--` is to remove [argument ambiguation](https://git-scm.com/docs/git-checko
 If you are on the branch you want to rename:
 
 ```bash
-git branch -m new-name
+git branch -m <new-name>
 ```
 
 If you are on a different branch:
 
 ```bash
-git branch -m old-name new-name
+git branch -m <old-name> <new-name>
 ```
 
-**Step 2**: Delete the old-name remote branch and push the new-name local branch
+**Step 2**: Delete the `<old-name>` remote branch and push the `<new-name>` local branch
 
 ```bash
-git push origin :old-name new-name
+git push origin :<old-name> <new-name>
 ```
 
-**Step 3**: Reset the upstream branch for the new-name local branch
+**Step 3**: Reset the upstream branch for the `<new-name>` local branch
 
 Switch to the branch and then:
 
 ```bash
-git push origin -u new-name
+git push origin -u <new-name>
 ```
 
 ### Prettify the Git log
 
-**Step 1**: Set up alias
+You can format your Git log to look like below and set an alias for it.
+
+<asset src="articles/git-commands/command-git-lg.png" name="List local and remote tracking branches" newline></asset>
+
+**Step 1**: Set up the following alias in your global Git config file
 
 ```bash
 git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
@@ -165,8 +205,8 @@ git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(ye
 --before="2017-03-10"
 --until="2017-03-10"
 
-# filter by auther
---author="John Doe"
+# filter by author
+--author="Zean Qin"
 ```
 
 My most commonly used command is
@@ -177,7 +217,7 @@ git lg --after="yesterday" --author="Zean"
 
 ### Prettify Git diff
 
-I use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy) to make the diffs more readable. Install it and then run,
+I use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy) to make the diffs more readable. Follow [the official setup steps](https://github.com/so-fancy/diff-so-fancy#install) and then just run
 
 ```bash
 git diff
@@ -202,9 +242,23 @@ git config remote.origin.prune true
                  #replace with your repo name
 ```
 
-### Delete all Git branches that have been merged in remote
+### Make Git to use Vim as editor for writing commit messages
 
-See <https://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged>
+If you want to set the editor only for Git, do either (you don’t need both):
+
+- Set `core.editor` in your Git config: `git config --global core.editor "vim"`
+- Set the `GIT_EDITOR` environment variable: `export GIT_EDITOR=vim`
+
+If you want to set the editor for Git and also other programs, set the standardized `VISUAL` and `EDITOR` environment variables:
+
+<b-alert variant="info" show>
+Setting both is not necessarily needed, but some programs may not use the more-correct <code>VISUAL</code>.
+</b-alert>
+
+```bash
+export VISUAL=vim
+export EDITOR="$VISUAL"
+```
 
 ## References
 

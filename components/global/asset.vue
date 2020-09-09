@@ -8,6 +8,7 @@
       :alt="name"
       :src="require(`~/assets/images/${src}`)"
       fluid
+      rounded
       @load="onImageLoad"
     />
     <b-link v-else :href="`/${src}`" target="_blank">{{ name }}</b-link>
