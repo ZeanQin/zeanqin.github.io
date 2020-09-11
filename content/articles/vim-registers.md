@@ -67,7 +67,7 @@ These are the registers `"0`, `"1`, `"2`, `"3`, `"4`, `"5`, `"6`, `"7`, `"8`, `"
 The register **`-`** is set by a delete command _**only if the deleted text is smaller than one line (also called small delete)**_.
 
 <b-alert variant="success" show>
-  <span class="font-weight-bold">Tip</span>: The latest yanked texts will always appear in <code>"0</code>. The latest small deletion will appear in <code>"-</code> while the latest big deletion will appear in <code>"0</code>. The other latest 8 big deletion will appear in <code>"2</code>,  <code>"3</code>,  <code>"4</code>,  <code>"5</code>,  <code>"6</code>,  <code>"7</code>,  <code>"8</code>, <code>"9</code>.
+  <span class="font-weight-bold">Tip</span>: The latest yanked texts will always appear in <code>"0</code>. The latest small deletion will appear in <code>"-</code> while the latest big deletion will appear in <code>"1</code>. The other latest 8 big deletion will appear in <code>"2</code>,  <code>"3</code>,  <code>"4</code>,  <code>"5</code>,  <code>"6</code>,  <code>"7</code>,  <code>"8</code>, <code>"9</code>.
 </b-alert>
 
 ### 4. Named registers
