@@ -1,0 +1,17 @@
+//
+// Inline code
+// 
+// The `dracula-prism.css` doesn't seem to handle inline code genereated by `nuxt-content` because the code doesn't have a `language-` class.
+// This is a hacky styling file just for handling inline code styling.
+// --------------------------------------------------
+
+:not(pre) > code {
+  color: $gray-900;
+  background: $gray-300;
+  padding: 4px 7px;
+  border-radius: 0.3em;
+
+  &:hover {
+    background: $gray-400;
+  }
+}
