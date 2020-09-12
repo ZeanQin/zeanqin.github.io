@@ -40,7 +40,7 @@ export default Vue.extend({
   },
   methods: {
     onImageLoad(event: any) {
-      mediumZoom(event.target)
+      mediumZoom(event.target, { background: '#FFFFFFF2' })
     },
   },
 })
