@@ -1,0 +1,13 @@
+//
+// Article
+// --------------------------------------------------
+
+
+// Override .nuxt-content styling
+.nuxt-content {
+  // text font size
+  @include font-size($font-size-lg);
+  @include media-breakpoint-down(md) {
+    @include font-size($font-size-md);
+  }
+}
