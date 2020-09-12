@@ -10,4 +10,38 @@
   @include media-breakpoint-down(md) {
     @include font-size($font-size-md);
   }
+
+  // make hash tag links not headbutt the browser window
+  // https://css-tricks.com/hash-tag-links-padding/#fancier-clean-html-method
+  & h2::before,
+  & h3::before {
+    display: block;
+    content: ' ';
+    margin-top: -60px;
+    height: 60px;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  & h2:not(:first-child),
+  & h3 {
+    margin-top: 3rem;
+  }
+
+  // file name
+  .nuxt-content-highlight {
+    position: relative;
+
+    & > .filename {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: #ccc;
+      z-index: 10;
+      font-style: italic;
+      line-height: 1;
+      margin-right: 0.75rem;
+      margin-top: 0.75rem;
+    }
+  }
 }
