@@ -7,7 +7,10 @@
     class="shadow-sm"
   >
     <b-container>
-      <b-navbar-brand :to="{ name: 'index' }">Zean Qin</b-navbar-brand>
+      <b-navbar-brand type="dark" :to="{ name: 'index' }" class="px-2 rounded">
+        <span>ZEAN</span>
+        <span class="font-weight-bold">QIN</span>
+      </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse">
         <template v-slot:default="{ expanded }">
