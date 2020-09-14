@@ -2,14 +2,16 @@
 // Header
 // --------------------------------------------------
 
-.navbar-brand,
-.navbar-brand:hover {
-  background-color: $gray-400;
+.navbar-light {
+  .navbar-brand {
+    background-color: $gray-400;
 
+    a {
+      color: $body-color;
+    }
+  }
+
+  .navbar-nav .nav-link.nuxt-link-exact-active {
+    @extend .text-gradient;
+  }
 }
-
-a.navbar-brand:focus, 
-a.navbar-brand:hover {
-  background-color: $gray-400 !important;
-}
-

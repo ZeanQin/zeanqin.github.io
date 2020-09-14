@@ -1,15 +1,11 @@
 <template>
-  <b-navbar
-    toggleable="lg"
-    type="light"
-    variant="light"
-    sticky
-    class="shadow-sm"
-  >
+  <b-navbar toggleable="lg" variant="light" sticky class="shadow-sm">
     <b-container>
-      <b-navbar-brand type="dark" :to="{ name: 'index' }" class="px-2 rounded">
-        <span>ZEAN</span>
-        <span class="font-weight-bold">QIN</span>
+      <b-navbar-brand type="dark" class="px-2 rounded">
+        <nuxt-link :to="{ name: 'index' }">
+          <span>ZEAN</span>
+          <span class="font-weight-bold">QIN</span>
+        </nuxt-link>
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse">
@@ -21,10 +17,10 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item active-class="active" :to="{ name: 'about' }">
+          <b-nav-item :to="{ name: 'about' }">
             About
           </b-nav-item>
-          <b-nav-item active-class="active" :to="{ name: 'projects' }">
+          <b-nav-item :to="{ name: 'projects' }">
             Projects
           </b-nav-item>
         </b-navbar-nav>
