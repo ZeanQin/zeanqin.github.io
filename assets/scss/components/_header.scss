@@ -12,7 +12,7 @@
   }
 
   .navbar-nav {
-    @extend .font-weight-bold;
+    font-weight: 500;
 
     .nav-link.nuxt-link-exact-active {
       @extend .text-gradient;
