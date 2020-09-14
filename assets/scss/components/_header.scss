@@ -11,7 +11,11 @@
     }
   }
 
-  .navbar-nav .nav-link.nuxt-link-exact-active {
-    @extend .text-gradient;
+  .navbar-nav {
+    @extend .font-weight-bold;
+
+    .nav-link.nuxt-link-exact-active {
+      @extend .text-gradient;
+    }
   }
 }
