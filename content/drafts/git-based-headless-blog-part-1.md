@@ -1,5 +1,5 @@
 ---
-title: Build a git-based headless blog using the @nuxt/content module
+title: Build a git-based headless blog using @nuxt/content - part 1 - technical
 excerpt: I have used Nuxt.js with the @nuxt/content module to build this site. I will talk about the reasons for the switch, the challenges occured and the design choices
 
 # Optional
