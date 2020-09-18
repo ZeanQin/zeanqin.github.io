@@ -108,9 +108,16 @@ And you can find more system font stacks [here](https://css-tricks.com/snippets/
 
 ## Best Practices
 
+TODO
+
+### 1. Font sizing
+
+In CSS, we use absolute units and relative units to control the size of glyphs. The actual size of a glyph doesn't change when its size is specified in abolute units, while the actual size of a glyph expressed in a relative unit depends on other part of the page.
+
 ## References
 
 1. [nuxt/content](https://content.nuxtjs.org/)
 2. [Typography for Developers](https://css-tricks.com/typography-for-developers/#typeface-vs-font)
 3. [Web Design is 95% Typography](https://ia.net/topics/the-web-is-all-about-typography-period)
 4. [Using UI System Fonts In Web Design: A Quick Practical Guide](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/)
+5. [CSS px is an Angular Measurement](http://inamidst.com/stuff/notes/csspx)
