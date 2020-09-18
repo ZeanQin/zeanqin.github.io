@@ -121,7 +121,7 @@ Sizing in CSS can be specified in either _absolute_ units (think `px`) or _relat
 </b-alert>
 
 <b-alert variant="info" show>
-Fun fact, the <code>px</code> unit doesn't actually have anything to do with screen pixels - it's just a poorly chosen name. It's actually <b-link target="_blank" href="http://inamidst.com/stuff/notes/csspx">an non-linear angular measurement</b-link>.
+Fun fact, the <code>px</code> unit doesn't actually have anything to do with screen pixels - it's just a poorly chosen name. It's actually <b-link target="_blank" href="http://inamidst.com/stuff/notes/csspx">an non-linear angular measurement</b-link>. And this is why you can actually specify pixels in decimals such as <code>12.4px</code>.
 </b-alert>
 
 As an example, most desktop browsers usually sets the texts inside the `body` tag to `16px` by default. You can use `2em` on an element if you want it to be twice as big as the body text.
@@ -141,6 +141,46 @@ Bootstrap 4 defines the size of headings as below,
 Another popular apporach is to define a _modular scale_ to define the heading sizes. Basically, it means specifying a root number and a ratio, and ratios are multiplied by the base to produce a scale of numbers that is proportionally related. For example, the following scale uses base `1em` and the ratio `1.5`. You can use [this tool](https://www.modularscale.com/) to create your custom scale.
 
 <asset src="articles/typography/modular-scales.png" name="Modular Scale" newline></asset>
+
+### 3. Line height
+
+Line height can be specified in CSS using the `line-height` property like below,
+
+```css
+p {
+  line-height: 1.5; # Note - better to not use any unit here.
+}
+```
+
+When you don't put a unit, it's relative to the computed size of the text. For example, if the text is `12px` (or `0.75em` in a browser with default font size of `16px`)  in size, the line height will be `18px`.
+
+The browser sets the line height to 1.2 by default, but it's usually too tight. And a line height of 1.5 makes the viewing experience a lot better. See image below, the line height on the left is 1.2 while the line height on the right is 1.5.
+
+<asset src="articles/typography/line-height.png" name="Line Height" newline></asset>
+
+### 4. Letter spacing
+
+This is used a lot less compared to `line-height` or `font-size`. In general, we only need to specify custom spacing for texts that are either too big or too small. And you can do it in CSS using the `letter-spacing` property. Similar to `font-size`, it's best to be specified in relative units such as `em`.
+
+```css
+p {
+  letter-spacing: 1em;
+}
+```
+
+### 5. Length of line
+
+The general consensus is that lines should contain 60 to 70 characters for best reading experience. Especially for text heavy pages.
+
+And you can specify the line length in CSS using the following property,
+
+```css
+p {
+  width: 50ch;
+}
+```
+
+The unit `ch` [represents the width, or more precisely the advance measure, of the glyph "0"](https://developer.mozilla.org/en-US/docs/Web/CSS/length). And `50ch` generally results in line width to be 60 to 70 characters in length. A lot of text heavy sites such as Medium.com, or even the Google search result page limits the number of characters in a line to a similar limit.
 
 ## References
 
