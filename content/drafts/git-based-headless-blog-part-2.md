@@ -180,7 +180,7 @@ p {
 }
 ```
 
-The unit `ch` [represents the width, or more precisely the advance measure, of the glyph "0"](https://developer.mozilla.org/en-US/docs/Web/CSS/length). And `50ch` generally results in line width to be 60 to 70 characters in length. A lot of text heavy sites such as Medium.com, or even the Google search result page limits the number of characters in a line to a similar limit.
+The unit `ch` [represents the width, or more precisely the advance measure, of the glyph "0"](https://developer.mozilla.org/en-US/docs/Web/CSS/length). And `50ch` generally results in line width to be 60 to 70 characters in length. A lot of text heavy sites, such as Medium.com, or even the Google search result page, put a similar limit on the number of characters in a line.
 
 ## References
 
