@@ -76,7 +76,7 @@ body {
 
 and the font "Merriweather" needs to be downloaded by the browser, you could get the text to flash like below.
 
-<asset src="articles/git-based-headless-blog/flash-of-unstyled-text.gif" name="List local and remote tracking branches" newline></asset>
+<asset src="articles/typography/flash-of-unstyled-text.gif" name="Flash of Unstyled Text" newline></asset>
 
 Some common apporaches to mitigate FOUT include,
 
@@ -112,7 +112,35 @@ TODO
 
 ### 1. Font sizing
 
-In CSS, we use absolute units and relative units to control the size of glyphs. The actual size of a glyph doesn't change when its size is specified in abolute units, while the actual size of a glyph expressed in a relative unit depends on other part of the page.
+Sizing in CSS can be specified in either _absolute_ units (think `px`) or _relative_ units (e.g. `em`). The size of an element specified in absolute units doesn't change, while the size of an element specified in relative units depends on the size of other elements on the page.
+
+<b-alert variant="success" show>
+<p>You should avoid using absolute units like <code>px</code>, and instead use relative units like <code>em</code>) as much as possible.</p>
+
+<p>The purpose of the <code>px</code> unit should be to serve as the foundation of a type system based on relative units. In other words, it’s an absolute value that a relative unit can point to in order to define its own size relative to that value.</p>
+</b-alert>
+
+<b-alert variant="info" show>
+Fun fact, the <code>px</code> unit doesn't actually have anything to do with screen pixels - it's just a poorly chosen name. It's actually <b-link target="_blank" href="http://inamidst.com/stuff/notes/csspx">an non-linear angular measurement</b-link>.
+</b-alert>
+
+As an example, most desktop browsers usually sets the texts inside the `body` tag to `16px` by default. You can use `2em` on an element if you want it to be twice as big as the body text.
+
+<b-alert variant="success" show>
+When setting the size of some texts, try to think in relative units - "I want element A to be twice as big as element B". Instead of thinking "I want element A to be <code>20px</code>".
+</b-alert>
+
+### 2. Heading sizing
+
+The size of headings are usually expressed in relative units. And it's common to define 6 levels of headings.
+
+Bootstrap 4 defines the size of headings as below,
+
+<asset src="articles/typography/bootstrap-headings.png" name="Headings in Bootstrap 4" newline></asset>
+
+Another popular apporach is to define a _modular scale_ to define the heading sizes. Basically, it means specifying a root number and a ratio, and ratios are multiplied by the base to produce a scale of numbers that is proportionally related. For example, the following scale uses base `1em` and the ratio `1.5`. You can use [this tool](https://www.modularscale.com/) to create your custom scale.
+
+<asset src="articles/typography/modular-scales.png" name="Modular Scale" newline></asset>
 
 ## References
 
@@ -121,3 +149,4 @@ In CSS, we use absolute units and relative units to control the size of glyphs. 
 3. [Web Design is 95% Typography](https://ia.net/topics/the-web-is-all-about-typography-period)
 4. [Using UI System Fonts In Web Design: A Quick Practical Guide](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/)
 5. [CSS px is an Angular Measurement](http://inamidst.com/stuff/notes/csspx)
+6. [Modular Scale](https://www.modularscale.com/)
