@@ -34,7 +34,37 @@ Most of the time people use them interchangeably. But hey, we're trying to look 
 
 ### 2. Common Font Categories
 
-TODO
+Typefaces come in all different shapes, and there is no single classification system. Below are a few of the most commonly seen categories.
+
+#### 2.1 Serif
+
+A “serif” is a small stroke attached to the ends of letters, giving them a traditional feel. The "serif" category inclues a few sub-categories such as Old Style, Classical, Neo-Classical, Transitional, Clarendon, etc. These typefaces are mostly used in books and newspapers.
+
+Below is what the "Caslon" font (in the Old Style subcategory) looks like. Notice the small feet present at the tops and bottoms of each letter.
+
+<asset src="articles/typography/serif-old-style-caslon.png" name="Caslon" newline></asset>
+
+You can see a list of the [top 10 most popular serif fonts here](https://www.typewolf.com/top-10-serif-fonts).
+
+#### 2.2 Sans Serif
+
+"Sans" comes from the French "without" and as the name states - sans-serif typefaces don’t have these extra strokes, giving them a smooth, modern feel. It includes humanist, geometric and grotesk etc. as sub-categories.
+
+Below is the font called "Futura" in the Sans Serif category. Again, notice the clean, straight lines, unlike serif fonts.
+
+<asset src="articles/typography/sans-serif-futura.png" name="Futura" newline></asset>
+
+You can see a list of the [top 10 most popular sans serif fonts here](https://www.typewolf.com/top-10-sans-serif-fonts).
+
+#### 2.3 Monospace
+
+Monospaced typefaces are non-proportional - every glyph takes up the exact same space. It's possible to arrange them into visual structures. And your code editor probably uses a monospace font.
+
+Below is the "Courier" font which is a monospace font.
+
+<asset src="articles/typography/monospace-courier.png" name="Courier" newline></asset>
+
+You can see a list of the [top 10 most popular monospace fonts here](https://www.typewolf.com/top-10-monospaced-fonts).
 
 ### 3. "Web safe" Fonts vs Custom Fonts
 
