@@ -15,7 +15,7 @@ enableTOC: true
 
 Typography is about shaping and laying out the texts on your website to create a pleasant user experience. [Web Design is 95% Typography](https://ia.net/topics/the-web-is-all-about-typography-period). It's an essential tool that a software developer should have in their toolbox.
 
-There's a lot more jargon and subjectivity in Typography than in other areas. This article is intended as a concise and practical guide for software developers on choosing/using custom fonts and laying out the texts nicely and comfortabely. It covers the basics to get you most of the way there.
+There's a lot more jargon and subjectivity in Typography than in other areas. This article is intended as a concise and practical guide for software developers on choosing/using custom fonts and laying out the texts nicely and comfortably. It covers the basics to get you most of the way there.
 
 ## Basics
 
@@ -28,7 +28,7 @@ Let's start with some basic terms and the common categories of fonts.
 - **typeface** is the design (e.g. shape) of a collection of letters, numbers and symbols (also called glyphs), whereas
 - **font** is a specific size, weight, or style (e.g. regular, bold, italic) of a typeface.
 
-Most of the time people use them interchangeably. But hey, we're trying to look prefessional here ;-).
+Most of the time people use them interchangeably. But hey, we're trying to look professional here ;-).
 
 ### 2. Common Font Categories
 
@@ -36,7 +36,7 @@ Typefaces come in all different shapes, and there is no single classification sy
 
 #### 2.1 Serif
 
-A “serif” is a small stroke attached to the ends of letters, giving them a traditional feel. The "serif" category inclues a few sub-categories such as Old Style, Classical, Neo-Classical, Transitional, Clarendon, etc. These typefaces are mostly used in books and newspapers.
+A “serif” is a small stroke attached to the ends of letters, giving them a traditional feel. The "serif" category includes a few sub-categories such as Old Style, Classical, Neo-Classical, Transitional, Clarendon, etc. These typefaces are mostly used in books and newspapers.
 
 Below is what the "Caslon" font (in the Old Style subcategory) looks like. Notice the small feet present at the tops and bottoms of each letter.
 
@@ -106,7 +106,7 @@ and the font "Merriweather" needs to be downloaded by the browser, you could get
 
 <asset src="articles/typography/flash-of-unstyled-text.gif" name="Flash of Unstyled Text" newline></asset>
 
-Some common apporaches to mitigate FOUT include,
+Some common approaches to mitigate FOUT include,
 
 - using a third party (e.g. [Google Fonts](https://fonts.google.com/), [Adobe Fonts](https://fonts.adobe.com/) etc.) to optimise the font files and deliver them via a CDN,
 - transforming your font files using tools like [Transfonter](https://transfonter.org/),
