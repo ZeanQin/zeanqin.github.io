@@ -13,7 +13,7 @@ enableComments: true
 enableTOC: true
 ---
 
-Typography is about shaping and laying out the texts on your website to create a pleasant user experience. [Web Design is 95% Typography](https://ia.net/topics/the-web-is-all-about-typography-period). It's an essential tool that a software developer should have in their toolbox.
+Typography is about shaping and laying out the texts on your website to create a pleasant user experience. [Web design is 95% typography](https://ia.net/topics/the-web-is-all-about-typography-period). And it's essential for website developers to know the basics and some common practices.
 
 There's a lot more jargon and subjectivity in Typography than in other areas. This article is intended as a concise and practical guide for software developers on choosing/using custom fonts and laying out the texts nicely and comfortably. It covers the basics to get you most of the way there.
 
@@ -42,17 +42,17 @@ Below is what the "Caslon" font (in the Old Style subcategory) looks like. Notic
 
 <asset src="articles/typography/serif-old-style-caslon.png" name="Caslon" newline></asset>
 
-You can see a list of the [top 10 most popular serif fonts here](https://www.typewolf.com/top-10-serif-fonts).
+You can see the [top 10 most popular serif fonts here](https://www.typewolf.com/top-10-serif-fonts).
 
 #### 2.2 Sans Serif
 
 "Sans" comes from the French "without" and as the name states - sans-serif typefaces don’t have these extra strokes, giving them a smooth, modern feel. It includes humanist, geometric and grotesk etc. as sub-categories.
 
-Below is the font called "Futura" in the Sans Serif category. Again, notice the clean, straight lines, unlike serif fonts.
+Below is the font called "Futura" in the Sans Serif category. Again, notice the clean and straight lines, compared to the serif fonts.
 
 <asset src="articles/typography/sans-serif-futura.png" name="Futura" newline></asset>
 
-You can see a list of the [top 10 most popular sans serif fonts here](https://www.typewolf.com/top-10-sans-serif-fonts).
+You can see the [top 10 most popular sans serif fonts here](https://www.typewolf.com/top-10-sans-serif-fonts).
 
 #### 2.3 Monospace
 
@@ -62,7 +62,7 @@ Below is the "Courier" font which is a monospace font.
 
 <asset src="articles/typography/monospace-courier.png" name="Courier" newline></asset>
 
-You can see a list of the [top 10 most popular monospace fonts here](https://www.typewolf.com/top-10-monospaced-fonts).
+You can see the [top 10 most popular monospace fonts here](https://www.typewolf.com/top-10-monospaced-fonts).
 
 ### 3. "Web safe" Fonts vs Custom Fonts
 
@@ -102,7 +102,7 @@ body {
 }
 ```
 
-and the font "Merriweather" needs to be downloaded by the browser, you could get the text to flash like below.
+and the font "Merriweather" needs to be downloaded by the browser, you could have the texts to flash like below after the page is loaded.
 
 <asset src="articles/typography/flash-of-unstyled-text.gif" name="Flash of Unstyled Text" newline></asset>
 
@@ -136,14 +136,14 @@ And you can find more system font stacks [here](https://css-tricks.com/snippets/
 
 ## Best Practices
 
-I've listed some of the practices I follow in choosing font size, heading size, line height, letter spacing and how many characters should be included in one line.
+I've listed some of the practices that I follow in choosing font size, heading size, line height, letter spacing and how many characters should be included in one line.
 
 ### 1. Font sizing
 
 Sizing in CSS can be specified in either _absolute_ units (think `px`) or _relative_ units (e.g. `em`). The size of an element specified in absolute units doesn't change, while the size of an element specified in relative units depends on the size of other elements on the page.
 
 <b-alert variant="success" show>
-<p>You should avoid using absolute units like <code>px</code>, and instead use relative units like <code>em</code>) as much as possible.</p>
+<p>You should avoid using absolute units like <code>px</code>, and instead use relative units like <code>em</code> as much as possible.</p>
 
 <p>The purpose of the <code>px</code> unit should be to serve as the foundation of a type system based on relative units. In other words, it’s an absolute value that a relative unit can point to in order to define its own size relative to that value.</p>
 </b-alert>
@@ -166,7 +166,7 @@ Bootstrap 4 defines the size of headings as below,
 
 <asset src="articles/typography/bootstrap-headings.png" name="Headings in Bootstrap 4" newline></asset>
 
-Another popular apporach is to define a _modular scale_ to define the heading sizes. Basically, it means specifying a root number and a ratio, and ratios are multiplied by the base to produce a scale of numbers that is proportionally related. For example, the following scale uses base `1em` and the ratio `1.5`. You can use [this tool](https://www.modularscale.com/) to create your custom scale.
+Another popular approach is to define a _modular scale_ to define the heading sizes. Basically, it means specifying a root number and a ratio, and ratios are multiplied by the base to produce a scale of numbers that is proportionally related. For example, the following scale uses base `1em` and the ratio `1.5`. You can use [this tool](https://www.modularscale.com/) to create your custom scale.
 
 <asset src="articles/typography/modular-scales.png" name="Modular Scale" newline></asset>
 
@@ -182,9 +182,11 @@ p {
 
 When you don't put a unit, it's relative to the computed size of the text. For example, if the text is `12px` (or `0.75em` in a browser with default font size of `16px`)  in size, the line height will be `18px`.
 
+<b-alert variant="success" show>
 The browser sets the line height to 1.2 by default, but it's usually too tight. And a line height of 1.5 makes the viewing experience a lot better. See image below, the line height on the left is 1.2 while the line height on the right is 1.5.
 
 <asset src="articles/typography/line-height.png" name="Line Height" newline></asset>
+</b-alert>
 
 ### 4. Letter spacing
 
@@ -198,7 +200,7 @@ p {
 
 ### 5. Length of line
 
-The general consensus is that lines should contain 60 to 70 characters for best reading experience. Especially for text heavy pages.
+The general consensus is that lines should contain 60 to 70 characters for best reading experience, especially for text heavy pages.
 
 And you can specify the line length in CSS using the following property,
 
@@ -218,3 +220,4 @@ The unit `ch` [represents the width, or more precisely the advance measure, of t
 4. [Using UI System Fonts In Web Design: A Quick Practical Guide](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/)
 5. [CSS px is an Angular Measurement](http://inamidst.com/stuff/notes/csspx)
 6. [Modular Scale](https://www.modularscale.com/)
+7. [Safe web fonts](http://web.mit.edu/jmorzins/www/fonts.html)
