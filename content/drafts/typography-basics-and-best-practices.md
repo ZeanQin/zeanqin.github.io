@@ -1,16 +1,14 @@
 ---
-title: Build a git-based headless blog using @nuxt/content - part 2 - typography
-excerpt: I have used Nuxt.js with the @nuxt/content module to build this site. I will talk about the reasons for the switch, the challenges occured and the design choices
+title: Typography basics and best practices for software developers
+excerpt: Typography is about shaping and laying out the texts on your website to create a pleasant user experience. This article covers the basics such as the different font categories, how to choose the right one, common issues with using fonts on a site etc., as well as some best practices.
 
 # Optional
 category: Frontend
 tags: 
-  - Nuxt.js
-  - Vue.js
-  - Static Website
-  - Headless Git-based CMS
+  - Typography
+  - Basics
 createdAt: "2020-08-15T14:00:00.000Z"
-updatedAt: "2020-08-16T05:47:23.306Z"
+updatedAt: "2020-09-20T11:58:17.348Z"
 enableComments: true
 enableTOC: true
 ---
@@ -138,7 +136,7 @@ And you can find more system font stacks [here](https://css-tricks.com/snippets/
 
 ## Best Practices
 
-TODO
+I've listed some of the practices I follow in choosing font size, heading size, line height, letter spacing and how many characters should be included in one line.
 
 ### 1. Font sizing
 
