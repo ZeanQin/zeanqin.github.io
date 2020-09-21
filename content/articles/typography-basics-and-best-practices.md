@@ -15,7 +15,7 @@ enableTOC: true
 
 Typography is about shaping and laying out the texts on your website to create a pleasant user experience. [Web design is 95% typography](https://ia.net/topics/the-web-is-all-about-typography-period). And it's essential for website developers to know the basics and some common practices.
 
-There's a lot more jargon and subjectivity in Typography than in other areas. This article is intended as a concise and practical guide for software developers on choosing/using custom fonts and laying out the texts nicely and comfortably. It covers the basics to get you most of the way there.
+There's a lot more jargon and subjectivity in typography than in other areas. This article is intended as a concise and practical guide for software developers on choosing/using custom fonts and laying out the texts nicely and comfortably. It covers the basics to get you most of the way there.
 
 ## Basics
 
