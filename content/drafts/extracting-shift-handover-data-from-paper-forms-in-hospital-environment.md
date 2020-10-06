@@ -38,7 +38,7 @@ A few other features include,
 
 ### Demo
 
-At [Riberry](https://riberry.health), we build a platform for collecting data and distributing insights within hospital environments, as well as delivering clinical improvement programs. This article only focuses on data extracting from paper forms using OCR - a feature on the data collection side of things.
+At [Riberry](https://riberry.health), we build a platform for collecting data and generating insights within hospital environments, as well as delivering clinical improvement programs. This article only focuses on extracting data from paper forms using OCR - a feature on the data collection side of things.
 
 And below is a demo of how data is extracted from a paper form and entered into the system.
 
