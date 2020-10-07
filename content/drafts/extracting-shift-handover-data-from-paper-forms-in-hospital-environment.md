@@ -44,6 +44,12 @@ And below is a demo of how data is extracted from a paper form and entered into 
 
 <asset src="articles/shift-handover-data-extraction/ocr.gif" name="Extracting data from a Change of Shift Huddle form" newline></asset>
 
+### Architecture overview
+
+We're using the [Form Recognizer](https://azure.microsoft.com/en-au/services/cognitive-services/form-recognizer/) service from Microsoft to handle the data extraction process. Specifically, we've trained a custom model, instead of using the pre-built models, to better handle the structure of the forms that our clients use.
+
+<asset src="articles/shift-handover-data-extraction/architecture.png" name="Architecture Overview" newline></asset>
+
 ## Miscellaneous Reflections
 
-The training process is about fine-tuning their layout algoriths, not the NLP algorithms. The Form Recognizer Service is basically like a box packing in a lot of algorithms with different purposes. For example, there'll be algorithms handling dividing the image/pdf into smaller chuncks (layout), there'll be algorithms handling the actual OCR process. The labelling/training process is mostly about figure out the parameters for dividing up the page. In fact, there isn't an option to correct the result of the OCR, in case it's wrong.
+The training process is about fine-tuning their layout algorithms, not the NLP algorithms. The Form Recognizer Service is basically like a box packing in a lot of algorithms with different purposes. For example, there'll be algorithms handling dividing the image/pdf into smaller chunks (layout), there'll be algorithms handling the actual OCR process. The labelling/training process is mostly about figure out the parameters for dividing up the page. In fact, there isn't an option to correct the result of the OCR, in case it's wrong.
