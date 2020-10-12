@@ -12,8 +12,6 @@ enableComments: true
 enableTOC: true
 ---
 
-### Background
-
 At the shift changeover in most hospitals, a paper form is completed to summarise the last shift and highlight key aspects of the upcoming shift. As an example, a completed form could look like below.
 
 <asset src="articles/shift-handover-data-extraction/sample-original.jpg" name="An example of a completed Change of Shift Huddle form" newline></asset>
@@ -52,7 +50,7 @@ At the very high level, we will train a model first. The users can then upload p
 
 <asset src="articles/shift-handover-data-extraction/architecture.png" name="Architecture Overview" newline></asset>
 
-### Training the model
+### Train the model
 
 <b-alert variant="info" show>
 <p>The focus of this article is to showcase the final product and to reflect on the lessons learnt in adding the OCR support, rather than a step-by-step guide on how to use the Azure Form Recognizer service. There is no point in writing a guide either; you can't really beat their <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/?branch=release-build-cogserv-forms-recognizer" target="_blank">documentation and examples</a>.</p>
@@ -73,20 +71,29 @@ In addition, it also offers [an open source tool (OCR-Form-Tools)](https://githu
 
 After having the tool up and running, I was able to label our sample data, train a model and test the model with ease.
 
-<b-carousel :interval="4000" controls indicators fade>
+<b-carousel controls indicators fade :interval="0">
   <b-carousel-slide>
+    <div class="bg-gradient py-2 text-center rounded">
+      <h5 class="text-light">Label the training data</h5>
+    </div>
     <template v-slot:img>
-      <asset src="articles/shift-handover-data-extraction/labelling-tool-labelling.png" name="Architecture Overview" newline></asset>
+      <asset src="articles/shift-handover-data-extraction/labelling-tool-labelling.png" name="Label the training data"></asset>
     </template>
   </b-carousel-slide>
   <b-carousel-slide>
+    <div class="bg-gradient py-2 text-center rounded">
+      <h5 class="text-light">Train a model</h5>
+    </div>
     <template v-slot:img>
-      <asset src="articles/shift-handover-data-extraction/labelling-tool-train-result.png" name="Architecture Overview" newline></asset>
+      <asset src="articles/shift-handover-data-extraction/labelling-tool-train-result.png" name="Train a model"></asset>
     </template>
   </b-carousel-slide>
   <b-carousel-slide>
+    <div class="bg-gradient py-2 text-center rounded">
+      <h5 class="text-light">Test the trained model</h5>
+    </div>
     <template v-slot:img>
-      <asset src="articles/shift-handover-data-extraction/labelling-tool-prediction.png" name="Architecture Overview" newline></asset>
+      <asset src="articles/shift-handover-data-extraction/labelling-tool-prediction.png" name="Test the trained model"></asset>
     </template>
   </b-carousel-slide>
 </b-carousel>

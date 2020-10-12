@@ -18,6 +18,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import mediumZoom from 'medium-zoom'
+
 export default Vue.extend({
   props: {
     name: {
