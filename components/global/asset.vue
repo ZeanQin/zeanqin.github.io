@@ -33,6 +33,10 @@ export default Vue.extend({
       type: Boolean,
       default: false,
     },
+    noZoom: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     isImage() {
@@ -40,8 +44,9 @@ export default Vue.extend({
     },
   },
   methods: {
-    onImageLoad(event: any) {
-      mediumZoom(event.target, { background: '#FFFFFFF2' })
+    onImageLoad(event: any): void {
+      if (!(this as any).noZoom)
+        mediumZoom(event.target, { background: '#FFFFFFF2' })
     },
   },
 })

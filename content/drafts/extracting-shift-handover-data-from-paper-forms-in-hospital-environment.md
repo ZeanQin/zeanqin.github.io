@@ -77,7 +77,7 @@ After having the tool up and running, I was able to label our sample data, train
       <h5 class="text-light">Label the training data</h5>
     </div>
     <template v-slot:img>
-      <asset src="articles/shift-handover-data-extraction/labelling-tool-labelling.png" name="Label the training data"></asset>
+      <asset src="articles/shift-handover-data-extraction/labelling-tool-labelling.png" name="Label the training data" no-zoom></asset>
     </template>
   </b-carousel-slide>
   <b-carousel-slide>
@@ -85,7 +85,7 @@ After having the tool up and running, I was able to label our sample data, train
       <h5 class="text-light">Train a model</h5>
     </div>
     <template v-slot:img>
-      <asset src="articles/shift-handover-data-extraction/labelling-tool-train-result.png" name="Train a model"></asset>
+      <asset src="articles/shift-handover-data-extraction/labelling-tool-train-result.png" name="Train a model" no-zoom></asset>
     </template>
   </b-carousel-slide>
   <b-carousel-slide>
@@ -93,7 +93,7 @@ After having the tool up and running, I was able to label our sample data, train
       <h5 class="text-light">Test the trained model</h5>
     </div>
     <template v-slot:img>
-      <asset src="articles/shift-handover-data-extraction/labelling-tool-prediction.png" name="Test the trained model"></asset>
+      <asset src="articles/shift-handover-data-extraction/labelling-tool-prediction.png" name="Test the trained model" no-zoom></asset>
     </template>
   </b-carousel-slide>
 </b-carousel>
