@@ -90,10 +90,10 @@ After having the tool up and running, I was able to label our sample data, train
   </b-carousel-slide>
   <b-carousel-slide>
     <div class="bg-gradient py-2 text-center rounded">
-      <h5 class="text-light">Test the trained model</h5>
+      <h5 class="text-light">Validate the trained model</h5>
     </div>
     <template v-slot:img>
-      <asset src="articles/shift-handover-data-extraction/labelling-tool-prediction.png" name="Test the trained model" no-zoom></asset>
+      <asset src="articles/shift-handover-data-extraction/labelling-tool-prediction.png" name="Validate the trained model" no-zoom></asset>
     </template>
   </b-carousel-slide>
 </b-carousel>
