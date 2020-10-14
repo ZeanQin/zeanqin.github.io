@@ -100,4 +100,10 @@ After having the tool up and running, I was able to label our sample data, train
 
 ### Miscellaneous Reflections
 
-The training process is about fine-tuning their layout algorithms, not the NLP algorithms. The Form Recognizer Service is basically like a box packing in a lot of algorithms with different purposes. For example, there'll be algorithms handling dividing the image/pdf into smaller chunks (layout), there'll be algorithms handling the actual OCR process. The labelling/training process is mostly about figure out the parameters for dividing up the page. In fact, there isn't an option to correct the result of the OCR, in case it's wrong.
+#### 1. The labelling
+
+There should be 3 main stages in predicting the contents in a given sample using their supervised learning,
+
+1. detect the text elements (printed or handwritten) on the form and calculate their expected sizes and positions,
+2. extract the actual content of each element
+3. classify the elements (based on their size and position on the page) into the different labels you provided.
