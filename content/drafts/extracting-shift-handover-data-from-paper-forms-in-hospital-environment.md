@@ -100,10 +100,14 @@ After having the tool up and running, I was able to label our sample data, train
 
 ### Miscellaneous Reflections
 
-#### 1. The labelling
+Now that the project is in production, below are some reflections/lessons learnt from this project.
 
-There should be 3 main stages in predicting the contents in a given sample using their supervised learning,
+#### 1. The training process
+
+There should be 3 main stages in predicting the contents of a given sample using their supervised learning approach,
 
 1. detect the text elements (printed or handwritten) on the form and calculate their expected sizes and positions,
-2. extract the actual content of each element
-3. classify the elements (based on their size and position on the page) into the different labels you provided.
+2. extract the actual text content from each element,
+3. classify the elements (based on their size and position, obtained from step 1, on the page) into the different labels you provided.
+
+With the supervised learning provided by Azure Form Recognizer, we're training a model to classify elements on the page into different labels based on the position of the elements on the page. And we're NOT building any NLP models for extracting texts from the identified elements on the page.
