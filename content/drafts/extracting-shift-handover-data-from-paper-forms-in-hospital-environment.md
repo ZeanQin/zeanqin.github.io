@@ -111,3 +111,7 @@ There should be 3 main stages in predicting the contents of a given sample using
 3. classify the elements (based on their size and position, obtained from step 1, on the page) into the different labels you provided.
 
 With the supervised learning provided by Azure Form Recognizer, we're training a model to classify elements on the page into different labels based on the position of the elements on the page. And we're NOT building any NLP models for extracting texts from the identified elements on the page.
+
+The position of each element is expressed by its bounding box which contains 8 numbers. And these 8 numbers should be the main features for each training instance (a.k.a each element). There are likely a lot of data argumentation and feature manipulation applied to the training set to clean up/expand the data set. I won't be surprised if techniques like denoising/sharpening, elastic distortion, affine transformation, dimensionality reduction etc. are applied first.
+
+Still, the problem should be relatively simple and I'm not surprised that only 6 documents are required to get started with.
