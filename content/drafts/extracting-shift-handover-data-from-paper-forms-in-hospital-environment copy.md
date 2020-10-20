@@ -66,7 +66,6 @@ In addition, it also offers [an open source tool (OCR-Form-Tools)](https://githu
 <p>In <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/quickstarts/label-tool?tabs=v2-0#set-up-the-sample-labeling-tool" target="_blank"> their guide on setting up the sample labelling tool</a>, they talk about running the tool via Docker.</p>
 
 <p>Instead of using Docker, I find it's much easer to just check out a copy of the tool from <a href="https://github.com/microsoft/OCR-Form-Tools" target="_blank">GitHub</a> and build/run it from source.</p>
-
 </b-alert>
 
 After having the tool up and running, I was able to label our sample data, train a model and test the model with ease.
@@ -100,27 +99,46 @@ After having the tool up and running, I was able to label our sample data, train
 
 ### Miscellaneous Reflections
 
-Now that the project is in production, below are some reflections/lessons learnt from this project.
+Now that the project has been deployed to production, it's a good time to look it retrospectively and reflect on various things/lessons that I learnt from doing it.
 
 #### 1. The training process
 
-There should be 3 main stages in predicting the contents of a given sample using their supervised learning approach,
+There should be 3 main stages in predicting the contents of a form using the supervised learning approach,
 
 1. detect the text elements (printed or handwritten) on the form and calculate their expected sizes and positions,
 2. extract the actual text content from each element,
-3. classify the elements (based on their size and position, obtained from step 1, on the page) into the different labels you provided.
+3. classify the elements, using their size and position info obtained from step 1, into the different labels specified.
 
-With the supervised learning provided by Azure Form Recognizer, we're training a model to classify elements on the page into different labels based on the position of the elements on the page. And we're NOT building any NLP models for extracting texts from the identified elements on the page.
+<b-alert variant="success" show>
+<p>With the supervised learning, we're fitting a model for classifying elements on the page into different labels based on the position info of these elements on the page.</p>
 
-The position of each element is expressed by its bounding box which contains 8 numbers. And these 8 numbers should be the main features for each training instance (a.k.a each element). There are likely a lot of data argumentation and feature manipulation applied to the training set to clean up/expand the data set and add more features. I won't be surprised if techniques like denoising/sharpening, elastic distortion, affine transformation, dimensionality reduction etc. are applied first.
+<p>And we're <em class="font-weight-bold">NOT</em> training any NLP models to extract texts from the elements identified on the page. This part is handled internally by the Form Recognizer service.</p>
+</b-alert>
 
-Still, the problem should be relatively simple and I'm not surprised that only 6 documents are required to get started with.
+The position and size of each text element is expressed by its bounding box which consists of 8 numbers. And these 8 numbers should be the main features for each training instance i.e. every text element.
 
-#### 2. Run the data extraction process as a background task and send users notifications when extraction is complete
+There are also likely a lot of data argumentation and feature manipulation techniques applied on the training data to expand the dataset artificially, in order to improve the accuracy of the models. For example, they'll likely use some label-preserving transformation techniques such as denoising/sharpening, elastic distortion, affine transformation, dimensionality reduction etc.
+
+But overall, the cost function should be relatively simple with just a few variables. And I'm not surprised that [only 5 documents](https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/overview#custom-models) are required to get started with.
+
+#### 2. Adding support for checkbox
+
+The Form Recognizer service [doesn't officially support checkboxes or radio buttons](https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/overview#input-requirements), but I've been able to get around it easily by,
+
+- applying a label for each option in a checkbox question, and
+- at prediction time, treating those labels with a value present as the options that the user has selected.
+
+As an example, the form that the hospitals used contains a checkbox question with two options - AM or PM. During the training process, I'd set up the labels <code>_Shift.9:00</code> and <code>_Shift.17:00</code> for the AM and PM option respectively (see below).
+
+<asset src="articles/shift-handover-data-extraction/add-checkbox-support.png" name="Add support for checkbox" newline></asset>
+
+When it comes to predicting a form, I'd take the labels with any string value (e.g. an 'x' in the screenshot above) present as the options being checked.
+
+#### 3. Run the data extraction process as a background task and send users notifications when extraction is complete
 
 After POSTing a form to
 
-#### 3. Don't over-automate the data binding process
+#### 4. Don't over-automate the data binding process
 
 ## References
 
