@@ -132,7 +132,7 @@ As an example, the form that the hospitals used contains a checkbox question wit
 
 <asset src="articles/shift-handover-data-extraction/add-checkbox-support.png" name="Add support for checkbox" newline></asset>
 
-Hypothetically, if we fed the form above to the trained model, a string 'x' will be extracted for both <code>_Shift.9:00</code> and <code>_Shift.17:00</code>. I'd consider both checked if this is a checkbox question, and I'd consider the first option is checked if this was a radio question.
+Hypothetically, if we fed the form above to the trained model, a string 'x' will be extracted for both <code>_Shift.9:00</code> and <code>_Shift.17:00</code>. I'd consider both options checked if this is a checkbox question, and I'd consider the first option is checked if this was a radio question.
 
 #### 3. Run the data extraction process as a background task and send users notifications when extraction is complete
 
