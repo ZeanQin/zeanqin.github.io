@@ -121,18 +121,18 @@ There are also likely a lot of data argumentation and feature manipulation techn
 
 But overall, the cost function should be relatively simple with just a few variables. And I'm not surprised that [only 5 documents](https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/overview#custom-models) are required to get started with.
 
-#### 2. Adding support for checkbox
+#### 2. Adding support for checkbox/radio question
 
 The Form Recognizer service [doesn't officially support checkboxes or radio buttons](https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/overview#input-requirements), but I've been able to get around it easily by,
 
-- applying a label for each option in a checkbox question, and
+- applying a label for each option in a checkbox or radio question, and
 - at prediction time, treating those labels with a value present as the options that the user has selected.
 
-As an example, the form that the hospitals used contains a checkbox question with two options - AM or PM. During the training process, I'd set up the labels <code>_Shift.9:00</code> and <code>_Shift.17:00</code> for the AM and PM option respectively (see below).
+As an example, the form that the hospitals used contains a checkbox question with two options - AM or PM. During the training process, I'd set up the labels <code>_Shift.9:00</code> and <code>_Shift.17:00</code> for the AM and the PM option respectively (see below).  
 
 <asset src="articles/shift-handover-data-extraction/add-checkbox-support.png" name="Add support for checkbox" newline></asset>
 
-When it comes to predicting a form, I'd take the labels with any string value (e.g. an 'x' in the screenshot above) present as the options being checked.
+Hypothetically, if we fed the form above to the trained model, a string 'x' will be extracted for both <code>_Shift.9:00</code> and <code>_Shift.17:00</code>. I'd consider both checked if this is a checkbox question, and I'd consider the first option is checked if this was a radio question.
 
 #### 3. Run the data extraction process as a background task and send users notifications when extraction is complete
 
