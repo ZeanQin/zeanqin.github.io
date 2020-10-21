@@ -110,7 +110,7 @@ There should be 3 main stages in predicting the contents of a form using the sup
 3. classify the elements, using their size and position info obtained from step 1, into the different labels specified.
 
 <b-alert variant="success" show>
-<p>With the supervised learning, we're fitting a model for classifying elements on the page into different labels based on the position info of these elements on the page.</p>
+<p><span class="font-weight-bold">Tip</span>: With the supervised learning, we're fitting a model for classifying elements on the page into different labels based on the position info of these elements on the page.</p>
 
 <p>And we're <em class="font-weight-bold">NOT</em> training any NLP models to extract texts from the elements identified on the page. This part is handled internally by the Form Recognizer service.</p>
 </b-alert>
@@ -134,12 +134,27 @@ As an example, the form that the hospitals used contains a checkbox question wit
 
 Hypothetically, if we fed the form above to the trained model, a string 'x' will be extracted for both <code>_Shift.9:00</code> and <code>_Shift.17:00</code>. I'd consider both options checked if this was a checkbox question, and I'd consider the first option is checked if this was a radio question.
 
-#### 3. Run the data extraction process as a background task and send users notifications when extraction is complete
+#### 3. Extracting the data asynchronously and notifying the users when the result is ready
 
-After POSTing a form to
+After **POST**ing a form to their endpoint to extract data from it, you get back an `Operation-Location`, [which is a URL containing the `resultId` used to track the progress and obtain the result of the analyse operation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm). And we're meant to repeatedly check this URL for the result data.
+
+<b-alert variant="success" show>
+<div><span class="font-weight-bold">Tip</span>: I set the frequency of checking for the result to once per second. This seems to be the same frequency that their OCR tool uses for checking for the result.</div>
+</b-alert>
+
+<b-alert variant="success" show>
+<p><span class="font-weight-bold">Tip</span>: If your users have to wait for the result before taking the next action, compress the image before <span>POSTing</span> it for analysis to shorten wait time.</p>
+
+<div>The images taken on smartphones are fairly large these days, and I compress them down to <1MB before sending them for analysis. </div>
+</b-alert>
+
+If your users don't have to wait for the analyse result, I'd highly recommend uploading the files into a blob storage and running a background task to analyse these files asynchronously. Users can be notified after the result is ready, if needed.
+
+We couldn't do it because one of the requirements is that users need to take a photo of the form, extract data from it in real-time and save it to generate insights. In practice, the process usually takes around 5 seconds.
 
 #### 4. Don't over-automate the data binding process
 
 ## References
 
 - [Form Recognizer API (v2.0)](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
+- [Form Recognizer documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/?branch=release-build-cogserv-forms-recognizer)
