@@ -154,6 +154,14 @@ We couldn't do it because one of the requirements is that users need to take a p
 
 #### 4. Don't over-automate the data binding process
 
+The fields on the paper form don't match up exactly with those on the digital version - the data entered on some fields on the paper form are not collected while there're a couple of extra fields on the digital version. In addition, the paper form rarely changes but we keep updating the digital form slightly.
+
+We use a JSON file to define the fields in the digital version of the form, and every time we update the form (even slightly) by adding/removing fields or re-arranging the fields, we'd update the JSON file.
+
+To make things easier (at least this is what we thought in the beginning),  we made the decision to automatically generate labels using the JSON file. This means every time we change the digitial version of the form, we'd have to re-name the labels used to train the form, re-train the model, copy it to production etc.
+
+It's much better to make the labels specific to the paper form, rather than trying to generating them automatically using the JSON file.
+
 ## References
 
 - [Form Recognizer API (v2.0)](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
