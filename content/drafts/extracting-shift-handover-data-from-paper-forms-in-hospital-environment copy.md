@@ -1,16 +1,20 @@
 ---
 title: Extracting shift handover data from paper forms in a hospital environment
-excerpt: TODO
+excerpt: Using Azure Form Recognizer with supervised learning to extract handwritten data from paper forms in real time.
 
 # Optional
 category: Machine Learning
 tags: 
   - Azure Form Recognizer
-createdAt: "2019-11-30T13:00:00.000Z"
-updatedAt: "2020-08-16T05:18:20.312Z"
+  - supervised learning
+  - OCR
+createdAt: "2020-08-16T05:18:20.312Z"
+updatedAt: "2020-10-25T11:54:41.082Z"
 enableComments: true
 enableTOC: true
 ---
+
+## Background
 
 At the shift changeover in most hospitals, a paper form is completed to summarise the last shift and highlight key aspects of the upcoming shift. As an example, a completed form could look like below.
 
@@ -18,7 +22,7 @@ At the shift changeover in most hospitals, a paper form is completed to summaris
 
 These completed forms are gathered together at a later point, and a person will go through each and manually enter the data on a computer. The recorded data can then be fed into an analytical system to generate insights.
 
-### The goal of the project
+## The goal of the project
 
 **The main goal of this project** is to streamline the data collection process by building a tool that,
 
@@ -34,7 +38,7 @@ A few other features include,
 - saving the original image along with the extracted data,
 - linking data e.g. Unit, Users etc. to existing entities in the system.
 
-### Demo
+## Demo
 
 At [Riberry](https://riberry.health), we build a platform for collecting data and generating insights within hospital environments, as well as delivering clinical improvement programs. This article only focuses on extracting data from paper forms using OCR - a feature on the data collection side of things.
 
@@ -42,7 +46,7 @@ And below is a demo of how data is extracted from a paper form and entered into 
 
 <asset src="articles/shift-handover-data-extraction/ocr.gif" name="Extracting data from a Change of Shift Huddle form" newline></asset>
 
-### Architecture overview
+## Architecture overview
 
 We're using the [Form Recognizer](https://azure.microsoft.com/en-au/services/cognitive-services/form-recognizer/) service from Microsoft to extract data from the forms. More specifically, we've trained a custom model, instead of using the pre-built models, to better handle the structure of the forms that our clients use.
 
@@ -53,17 +57,17 @@ At the very high level, we will train a model first. The users can then upload p
 ### Train the model
 
 <b-alert variant="info" show>
-<p>The focus of this article is to showcase the final product and to reflect on the lessons learnt in adding the OCR support, rather than a step-by-step guide on how to use the Azure Form Recognizer service. There is no point in writing a guide either; you can't really beat their <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/?branch=release-build-cogserv-forms-recognizer" target="_blank">documentation and examples</a>.</p>
+<p><span class="font-weight-bold">Note</span>: the focus of this article is to showcase the final product and to reflect on the lessons learnt in adding the OCR support, rather than a step-by-step guide on how to use the Azure Form Recognizer service. There is no point in writing a guide either; you can't really beat their <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/?branch=release-build-cogserv-forms-recognizer" target="_blank">documentation and examples</a>.</p>
 
-<p>If you're looking at learning how to use the Form Recognizer service, I highly recommend reading through their documentation - it's really the most effective way.</p>
+<div>If you're looking at learning how to use the Form Recognizer service, I highly recommend reading through their documentation - it's really the most effective way.</div>
 </b-alert>
 
 At the core of the Form Recognizer service is a set of [REST APIs](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) that allow you to train a model by using supervised/unsupervised machine learning, manage (e.g. list, delete, copy) models, and extract data using custom/pre-built models.
 
 In addition, it also offers [an open source tool (OCR-Form-Tools)](https://github.com/microsoft/OCR-Form-Tools) that interacts with these REST APIs and provides an intuitive UI to label your data, train a model and validate the model by predicting a test document.
 
-<b-alert variant="info" show>
-<p>In <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/quickstarts/label-tool?tabs=v2-0#set-up-the-sample-labeling-tool" target="_blank"> their guide on setting up the sample labelling tool</a>, they talk about running the tool via Docker.</p>
+<b-alert variant="success" show>
+<p><span class="font-weight-bold">Tip</span>: In <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/quickstarts/label-tool?tabs=v2-0#set-up-the-sample-labeling-tool" target="_blank"> their guide on setting up the sample labelling tool</a>, they talk about running the tool via Docker.</p>
 
 <p>Instead of using Docker, I find it's much easer to just check out a copy of the tool from <a href="https://github.com/microsoft/OCR-Form-Tools" target="_blank">GitHub</a> and build/run it from source.</p>
 </b-alert>
@@ -174,9 +178,15 @@ This means that whenever we change the digital version of the form (e.g. adding/
 
 ##### 4.4 What we should have done instead
 
-We should de-couple the label generating process from the JSON definition of a form. Given that the paper form rarely changes, we should have just hardcoded a set of labels to be used in the Form Recognizer service. And expand the JSON definition to include a `label` field which specifies which label is used for each question, if applicable. This way we can freely re-arrange the questions on the form without having to re-train the model in Form Recognizer.
+We should have de-coupled the label generation from the JSON definition of a form.
+
+Given that the paper form rarely changes, we should have just hardcoded a set of labels to be used in the Form Recognizer service. We could then expand the JSON definition to include a `label` property that specifies the label used for each question, if applicable.
+
+This not only simplifies the code for binding the data (i.e. converting the extracted data into domain objects), but also means that we can freely re-arrange the questions on the form without having to re-train the model in Form Recognizer.
 
 ## References
 
 - [Form Recognizer API (v2.0)](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
 - [Form Recognizer documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/?branch=release-build-cogserv-forms-recognizer)
+- [OCR-Form-Tools](https://github.com/microsoft/OCR-Form-Tools)
+- [Set up the sample labeling tool](https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/quickstarts/label-tool?tabs=v2-0#set-up-the-sample-labeling-tool)
