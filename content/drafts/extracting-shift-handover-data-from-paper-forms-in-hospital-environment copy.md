@@ -154,13 +154,27 @@ We couldn't do it because one of the requirements is that users need to take a p
 
 #### 4. Don't over-automate the data binding process
 
-The fields on the paper form don't match up exactly with those on the digital version - the data entered on some fields on the paper form are not collected while there're a couple of extra fields on the digital version. In addition, the paper form rarely changes but we keep updating the digital form slightly.
+##### 4.1 Background
 
-We use a JSON file to define the fields in the digital version of the form, and every time we update the form (even slightly) by adding/removing fields or re-arranging the fields, we'd update the JSON file.
+The fields on the paper form don't match up exactly with those on the digital version - some data on the paper form is ignored while there are a couple of extra fields on the web version. In addition, while the paper form rarely changes, we keep updating the digital form slightly either by adding/removing questions or moving around the existing questions.
 
-To make things easier (at least this is what we thought in the beginning),  we made the decision to automatically generate labels using the JSON file. This means every time we change the digitial version of the form, we'd have to re-name the labels used to train the form, re-train the model, copy it to production etc.
+##### 4.2 How we designed it
 
-It's much better to make the labels specific to the paper form, rather than trying to generating them automatically using the JSON file.
+The questions and their layouts on the web form are defined using a JSON file. Without getting into the details, in the screenshot below, the JSON structure (right) defines the **Team** section (left) of the form.
+
+<asset src="articles/shift-handover-data-extraction/define-questions-in-json.jpeg" name="Define questions in JSON" newline></asset>
+
+However, we also use the names of the questions from the JSON file to automatically construct the label (used in OCR) for that question. For example, in the screenshot below, the label - __Team..NursesShort__ - for the "Nurses Short" question is created by joining the names of all its ancestors and itself with a dot.
+
+<asset src="articles/shift-handover-data-extraction/label-from-question-names.jpeg" name="Label from question names" newline></asset>
+
+##### 4.3 Problem with the design
+
+This means that whenever we change the digital version of the form (e.g. adding/removing questions or re-arranging the fields on the form), a new set of labels will be generated. And we'd have to re-name the labels used in Form Recognizer, re-train the model, copy it to production etc. This is a really time consuming process.
+
+##### 4.4 What we should have done instead
+
+We should de-couple the label generating process from the JSON definition of a form. Given that the paper form rarely changes, we should have just hardcoded a set of labels to be used in the Form Recognizer service. And expand the JSON definition to include a `label` field which specifies which label is used for each question, if applicable. This way we can freely re-arrange the questions on the form without having to re-train the model in Form Recognizer.
 
 ## References
 
