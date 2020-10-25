@@ -54,7 +54,7 @@ At the very high level, we will train a model first. The users can then upload p
 
 <asset src="articles/shift-handover-data-extraction/architecture.png" name="Architecture Overview" newline></asset>
 
-### Train the model
+## Train the model
 
 <b-alert variant="info" show>
 <p><span class="font-weight-bold">Note</span>: the focus of this article is to showcase the final product and to reflect on the lessons learnt in adding the OCR support, rather than a step-by-step guide on how to use the Azure Form Recognizer service. There is no point in writing a guide either; you can't really beat their <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/form-recognizer/?branch=release-build-cogserv-forms-recognizer" target="_blank">documentation and examples</a>.</p>
@@ -101,7 +101,7 @@ After having the tool up and running, I was able to label our sample data, train
   </b-carousel-slide>
 </b-carousel>
 
-### Miscellaneous Reflections
+## Miscellaneous Reflections
 
 Now that the project has been deployed to production, it's a good time to look it retrospectively and reflect on various things/lessons that I learnt from doing it.
 
