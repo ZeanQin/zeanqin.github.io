@@ -3,6 +3,42 @@
     <page-header title="Projects" />
     <b-container>
       <project-summary
+        title="Extracting shift handover data from paper forms in a hospital environment"
+        date="Feb 2020 - Oct 2020"
+        report-url="/articles/extracting-shift-handover-data-from-paper-forms-in-hospital-environment"
+        image-name="extract-shift-handover-data-from-paper-forms.png"
+      >
+        <template slot="summary">
+          <p>
+            At the shift changeover in most hospitals, a paper form is completed
+            to summarise the last shift and highlight key aspects of the
+            upcoming shift.
+          </p>
+          <p>
+            The main goal of the project is to extract the handwritten data from
+            these forms using Azure Form Recognizer with supervised learning.
+          </p>
+          <p>
+            The result is a tool that,
+          </p>
+          <ul>
+            <li>
+              the users can use to take a picture of the completed forms using
+              their smart phones,
+            </li>
+            <li>
+              the tool then automatically extracts the data and pre-fills the
+              form, and
+            </li>
+            <li>the user can review and save the data.</li>
+          </ul>
+          <p>
+            Click on the link below to see a detailed report of this project
+            with some miscellaneous reflections.
+          </p>
+        </template>
+      </project-summary>
+      <project-summary
         title="Adversarial machine learning in predictive policing"
         date="Nov 2016 - Mar 2017"
         report-url="https://github.com/ZeanQin/adversarial-machine-learning/blob/master/Adversarial_Machine_Learning_in_Predictive_Policing_Report.pdf"
