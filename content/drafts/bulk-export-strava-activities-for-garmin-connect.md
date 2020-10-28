@@ -9,8 +9,8 @@ tags:
   - Node.js
   - Strava
   - Garmin Connect
-createdAt: "2019-11-30T13:00:00.000Z"
-updatedAt: "2020-08-16T05:18:20.312Z"
+createdAt: "2020-03-31T13:00:00.000Z"
+updatedAt: "2020-06-29T14:00:00.000Z"
 enableComments: true
 enableTOC: true
 ---
@@ -29,9 +29,9 @@ I had hundreds of training activities in Strava, and didn't want to export them 
 
 ## How does it work
 
-This tool first lancuhes a pupputeer.js chromium instance, which it uses to allow you to interactivtely authenticate with the real Strava website. Once logged in, it'll save your cookies into a separate file (`cookie.txt`) in order to authenticate further API requests.
+This tool first launches a pupputeer.js chromium instance, which it uses to allow you to interactively authenticate with the real Strava website. Once logged in, it'll save your cookies into a separate file (`cookie.txt`) in order to authenticate further API requests.
 
-It then runs a second command against the Strava API to get the ids of all your training activties, which will then be used to export the gpx files for each activities.
+It then runs a second command against the Strava API to get the ids of all your training activities, which will then be used to export the gpx files for each activities.
 
 ## Usage
 
