@@ -57,7 +57,7 @@ npm run export-activities
 
 You can then bulk upload these gpx files into your Garmin Connect account via their web UI.
 
-![Import to Garmin Connect](./import-screen.png)
+<asset src="articles/bulk-export-strava-activities-for-garmin-connect/import-screen.png" name="Import to Garmin Connect" newline></asset>
 
 ## Is this against Strava's Terms of Service
 
