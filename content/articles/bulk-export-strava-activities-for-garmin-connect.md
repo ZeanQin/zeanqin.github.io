@@ -17,7 +17,7 @@ enableTOC: true
 
 ## What is this
 
-This tool exports all your Strava activities into gpx files, which can then be uploaded into your Garmin Connect account.
+This tool exports all your Strava activities into `.gpx` files, which can then be uploaded into your Garmin Connect account.
 
 ## Why
 

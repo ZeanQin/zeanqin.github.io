@@ -3,6 +3,24 @@
     <page-header title="Projects" />
     <b-container>
       <project-summary
+        title="Strava activities bulk exporter for Garmin Connect"
+        date="Mar 2020 - Jun 2020"
+        report-url="/articles/bulk-export-strava-activities-for-garmin-connect"
+        image-name="strava-activities-bulk-exporter-for-garmin-connect.png"
+        code-url="https://github.com/ZeanQin/strava-activities-bulk-exporter-for-garmin-connect"
+      >
+        <template slot="summary">
+          <p>
+            Importing your training activities from Garmin to Strava is easy,
+            but not the other way around.
+          </p>
+          <p>
+            This tool exports all your Strava activities into gpx files, which
+            can then be uploaded into your Garmin Connect account.
+          </p>
+        </template>
+      </project-summary>
+      <project-summary
         title="Extracting shift handover data from paper forms in a hospital environment"
         date="Feb 2020 - Oct 2020"
         report-url="/articles/extracting-shift-handover-data-from-paper-forms-in-hospital-environment"
