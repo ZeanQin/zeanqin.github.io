@@ -5,7 +5,7 @@ excerpt: Kernel Density Estimation is a non-parametric way to estimate the proba
 # Optional
 category: Machine Learning
 tags: 
-  - Kernal Density Estimation
+  - Kernel Density Estimation
   - KDE
 createdAt: "2018-10-19T13:00:00.000Z"
 updatedAt: "2020-08-23T12:36:33.312Z"
