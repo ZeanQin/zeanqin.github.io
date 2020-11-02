@@ -13,7 +13,7 @@
             websites, applications, or anything in between.
           </p>
           <p>
-            I'm also a super nerd who loves Vim, Linux and Git and enjoys to
+            I'm also a super nerd who loves Vim, Linux and Git and enjoy to
             customise all of the development environment.
           </p>
           <p>
