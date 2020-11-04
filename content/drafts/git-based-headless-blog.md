@@ -15,11 +15,52 @@ enableComments: true
 enableTOC: true
 ---
 
-I've been using the Nuxt.js framework to build our company's [online training platform](https://riberry.health/) for quite some time now. More recently (specifically 22 May 2020), the `nuxt/content` module was [officially released](https://github.com/nuxt/content/releases/tag/v1.0.0). This module can parse markdown files (among other file types) from a folder and render them into html.
+I've been using the [Nuxt.js framework](https://nuxtjs.org/) to build the [online training platform at Riberry](https://riberry.health/) for quite some time now. Recently (specifically 22 May 2020), the [`nuxt/content` module](https://content.nuxtjs.org/) was [officially released](https://github.com/nuxt/content/releases/tag/v1.0.0) and it supports parsing markdown files (among other file types) from a folder and rendering their contents in html.
 
-Similar to Jekyll, you can build a Git-based headless blog by writing your contents in markdown files and have them automatically generated into posts. But it's got a number of big advantages over Jekyll, most notabely allowing you to use Vue components inside markdown files.
+This means that we can now build a static, Git-based headless blog using the new `nuxt/content` module and the [static site generation](https://nuxtjs.org/docs/2.x/concepts/static-site-generation/) capability provided by NuxtJS. Similar to Jekyll, we can author the blog posts in markdown files, place them into a `content` folder, and have them automatically converted into articles.
 
-So I've decided to reboot my Jekyll blog using Nuxt.js with the `nuxt/content` module.
+So I've decided to reboot my Jekyll blog (this website) using Nuxt.js with the `nuxt/content` module.
+
+## The motivation
+
+The goal is to reduce the amount of mental energy spent on maintaining the blog so I can just focus on writing good contents. This means,
+
+- making the process of publishing contents as simple as possible, and
+- having the ability to easily customise the site, where needed, to suite my preferences.
+
+#### The optimised content publishing process
+
+Only 3 steps are needed to author & publish an article,
+
+1. `npm run dev`
+
+  This enables hot reload in development mode. You can then have your markdown file and the article rendered from it (in browser) side by side - whenever you save your `.md` file, the changes will be instantly visible in your browser. You're seeing directly what the end result looks like, instead of relying a different tool to preview your markdown file and realising it applies a different styling than your website does.
+2. `npm run generate`
+
+  Generates the static website files in a `dist` folder.
+3. `npm run deploy`
+
+  Pushes the contents in the `dist` folder into the `dist` branch in my [GitHub repository](https://github.com/ZeanQin/zeanqin.github.io), where the website files are served from.
+
+  This uses a package called [`push-dir`](https://github.com/L33T-KR3W/push-dir) that can push the contents of a directory to a remote branch **without messing around with `.gitignore` (no need to commit the directory)**. You can find the set-up instructions [here](https://nuxtjs.org/faq/github-pages/#command-line-deployment).
+
+  I used the `master` branch to store the source files and use the `dist` branch to serve the static files. See the [instructions here on how to configure a separate branch as the publishing source for your GitHub Pages site](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source).
+
+## Main components
+
+- NuxtJS
+- `@nuxt/content`
+- [BootstrapVue](https://bootstrap-vue.org/)
+
+## The bad
+
+- Not clean markdown when using Vue components
+
+## The good
+
+### How to point custom domain to GitHub
+
+### Choosing a publishing source <https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source>
 
 ## Reading experience
 
