@@ -40,12 +40,15 @@ Only 3 steps are needed to author & publish an article,
   Generates the static website files in a `dist` folder.
 3. `npm run deploy`
 
-  Pushes the contents in the `dist` folder into the `dist` branch in my [GitHub repository](https://github.com/ZeanQin/zeanqin.github.io), where the website files are served from.
+  Pushes the contents in the _local `dist` folder_ into the _remote `dist` branch_ in my [GitHub repository](https://github.com/ZeanQin/zeanqin.github.io), where the website files are served from.
 
-  This uses a package called [`push-dir`](https://github.com/L33T-KR3W/push-dir) that can push the contents of a directory to a remote branch **without messing around with `.gitignore` (no need to commit the directory)**. You can find the set-up instructions [here](https://nuxtjs.org/faq/github-pages/#command-line-deployment).
+  <b-alert variant="success" show>
+  <span class="font-weight-bold">Tip:</span> I used the <code>master</code> branch to store the source files and use the <code>dist</code> branch to serve the static files. See the <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source" target="_blank">instructions here on how to configure a separate branch as the publishing source for your GitHub Pages site</a>.
+  </b-alert>
 
-  I used the `master` branch to store the source files and use the `dist` branch to serve the static files. See the [instructions here on how to configure a separate branch as the publishing source for your GitHub Pages site](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source).
-
+  <b-alert variant="success" show>
+  <span class="font-weight-bold">Tip:</span> This uses a package called <a href="https://github.com/L33T-KR3W/push-dir" target="_blank"><code>push-dir</code></a> that can push the contents of a directory to a remote branch <span class="font-weight-bold">without messing around with <code>.gitignore</code> (no need to commit the directory)</span>. You can find the set-up instructions <a href="https://nuxtjs.org/faq/github-pages/#command-line-deployment" target="_blank">here</a>.
+  </b-alert>
 ## Main components
 
 - NuxtJS
