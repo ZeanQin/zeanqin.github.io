@@ -43,7 +43,7 @@ Only 3 steps are needed to author & publish an article,
   Pushes the contents in the _local `dist` folder_ into the _remote `dist` branch_ in my [GitHub repository](https://github.com/ZeanQin/zeanqin.github.io), where the website files are served from.
 
   <b-alert variant="success" show>
-  <span class="font-weight-bold">Tip:</span> I used the <code>master</code> branch to store the source files and use the <code>dist</code> branch to serve the static files. See the <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source" target="_blank">instructions here on how to configure a separate branch as the publishing source for your GitHub Pages site</a>.
+  <span class="font-weight-bold">Tip:</span> I use the <code>master</code> branch to store the source files and use the <code>dist</code> branch to serve the static files. See the <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source" target="_blank">instructions here on how to configure a separate branch as the publishing source for your GitHub Pages site</a>.
   </b-alert>
 
   <b-alert variant="success" show>
