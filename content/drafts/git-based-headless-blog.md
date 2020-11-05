@@ -28,7 +28,7 @@ The goal is to reduce the amount of mental energy spent on maintaining the blog 
 - making the process of publishing contents as simple as possible, and
 - having the ability to easily customise the site, where needed, to suite my preferences.
 
-#### The optimised content publishing process
+### The optimised content publishing process
 
 Only 3 steps are needed to author & publish an article,
 
@@ -51,17 +51,35 @@ Only 3 steps are needed to author & publish an article,
   <b-alert variant="success" show>
   <span class="font-weight-bold">Tip:</span> This uses a package called <a href="https://github.com/L33T-KR3W/push-dir" target="_blank"><code>push-dir</code></a> that can push the contents of a directory to a remote branch <span class="font-weight-bold">without messing around with <code>.gitignore</code> (no need to commit the directory)</span>. You can find the set-up instructions <a href="https://nuxtjs.org/faq/github-pages/#command-line-deployment" target="_blank">here</a>.
   </b-alert>
-## Main components
+
+### Other benefits
+
+Compared to Jekyll, using NuxtJS with the `nuxt/content` module also offers a few other benefits.
+
+First, _it gives you the ability to use Vue components inside the markdown files to add more interactivity to the articles_. The `nuxt/content` module will automatically parse them into static pages.
+
+<b-alert variant="warning" show>
+<span class="font-weight-bold">Caution:</span>
+This means that you're not writing in pure markdown any more! And there will be more work to replace these Vue components scattered around your articles if you decided to move onto a different framework later.
+</b-alert>
+
+<b-alert variant="success" show>
+<span class="font-weight-bold">Tip:</span> Only use custom Vue components in markdown files when you have to.
+</b-alert>
+
+Second, _it gives a much familiar development environment in case of making changes to the website_. VueJS is much more popular these days, while Jekyll - in my opinion - is less mainstream. Maintaining enough knowledge of Jekyll (and the Liquid templating language) just for the purpose of keeping my blog running doesn't seem to be worth it for me. Using NuxtJS (the VueJS framework) with the `nuxt/content` module allows me to tap into the entire JavaScript ecosystem a lot easier.
+
+There are a lot of other benefits with using the `nuxt/content` module, and you can find a more comprehensive list [here](https://content.nuxtjs.org/#features).
+
+## The different pieces
+
+From a technical point of view, a website is a package of different frameworks, tools, designs and features. Below are some choices I made in building this site.
+
+### The main components
 
 - NuxtJS
 - `@nuxt/content`
 - [BootstrapVue](https://bootstrap-vue.org/)
-
-## The bad
-
-- Not clean markdown when using Vue components
-
-## The good
 
 ### How to point custom domain to GitHub
 
