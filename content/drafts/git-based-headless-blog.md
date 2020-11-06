@@ -71,23 +71,31 @@ Second, _it gives a much familiar development environment in case of making chan
 
 There are a lot of other benefits with using the `nuxt/content` module, and you can find a more comprehensive list [here](https://content.nuxtjs.org/#features).
 
-## The different pieces
+## Design choices
 
-From a technical point of view, a website is a package of different frameworks, tools, designs and features. Below are some choices I made in building this site.
+TODO
 
 ### The main components
 
-- NuxtJS
-- `@nuxt/content`
-- [BootstrapVue](https://bootstrap-vue.org/)
+- Nuxt.js/Vue.js
+- The `@nuxt/content` module
+- [BootstrapVue](https://bootstrap-vue.org/) for theming
+
+### Typography
+
+Typography is about shaping and laying out the texts on a website to create a pleasant user experience. It's one of the most important areas to focus on to improve the reading experience of a text heavy site; in fact, [web design is 95% typography](https://ia.net/topics/the-web-is-all-about-typography-period).
+
+There are a lot of things to consider. For example, typefaces have different levels of formality and make people feel differently.
+
+e.g. picking the right typeface, choosing between custom fonts and using native font stacks, how to decide the font size, line height, or the letter spacing, on different size of screens etc.
+
+It's such a big field, and I ended up writing [an separate article](/articles/typography-basics-and-best-practices/) about it after doing a lot of research.
 
 ### How to point custom domain to GitHub
 
 ### Choosing a publishing source <https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source>
 
 ## Reading experience
-
-[Web Design is 95% Typography](https://ia.net/topics/the-web-is-all-about-typography-period).
 
 ### Native font stack
 
@@ -114,6 +122,10 @@ $font-family-sans-serif:
   // Emoji fonts
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 ```
+
+### Issues encountered
+
+Add custom asset component
 
 ## References
 
