@@ -15,7 +15,7 @@ enableComments: true
 enableTOC: true
 ---
 
-I've been using the [Nuxt.js framework](https://nuxtjs.org/) to build the [online training platform at Riberry](https://riberry.health/) for quite some time now. Recently (specifically 22 May 2020), the [`nuxt/content` module](https://content.nuxtjs.org/) was [officially released](https://github.com/nuxt/content/releases/tag/v1.0.0) and it supports parsing markdown files (among other file types) from a folder and rendering their contents in html.
+I've been using the [Nuxt.js framework](https://nuxtjs.org/) to build the [online training platform at Riberry](https://riberry.health/) for quite some time now. Recently (22 May 2020 to be exact), the [`nuxt/content` module](https://content.nuxtjs.org/) was [officially released](https://github.com/nuxt/content/releases/tag/v1.0.0) and it supports parsing markdown files (among other file types) from a folder and rendering their contents in html.
 
 This means that we can now build a static, Git-based headless blog using the new `nuxt/content` module and the [static site generation](https://nuxtjs.org/docs/2.x/concepts/static-site-generation/) capability provided by NuxtJS. Similar to Jekyll, we can author the blog posts in markdown files, place them into a `content` folder, and have them automatically converted into articles.
 
@@ -25,7 +25,7 @@ So I've decided to reboot my Jekyll blog (this website) using Nuxt.js with the `
 
 The goal is to reduce the amount of mental energy spent on maintaining the blog so I can just focus on writing good contents. This means,
 
-- making the process of publishing contents as simple as possible, and
+- making the process of publishing articles as simple as possible, and
 - having the ability to easily customise the site, where needed, to suite my preferences.
 
 ### The optimised content publishing process
@@ -34,7 +34,7 @@ Only 3 steps are needed to author & publish an article,
 
 1. `npm run dev`
 
-  This enables hot reload in development mode. You can then have your markdown file and the article rendered from it (in browser) side by side - whenever you save your `.md` file, the changes will be instantly visible in your browser. You're seeing directly what the end result looks like, instead of relying a different tool to preview your markdown file and realising it applies a different styling than your website does.
+  This enables hot reload in development mode. You can then have your markdown file and the article rendered from it (in browser) side by side - whenever you save your `.md` file, the changes will be instantly visible in your browser. You're directly seeing what the end result looks like, instead of relying a different tool to preview your markdown file and realising it applies a different styling than your website does.
 2. `npm run generate`
 
   Generates the static website files in a `dist` folder.
@@ -73,59 +73,29 @@ There are a lot of other benefits with using the `nuxt/content` module, and you 
 
 ## Design choices
 
-TODO
+Looking back, the two main challenges have been choosing the right components used to build the blog and improving the reading experience.
 
 ### The main components
 
-- Nuxt.js/Vue.js
-- The `@nuxt/content` module
-- [BootstrapVue](https://bootstrap-vue.org/) for theming
+`Nuxt.js`, the simple and powerful `Vue.js` framework, is used to build this site. On top of it, the `@nuxt/content` module is used to parse markdown files in the `content` folder into pages. Theming is handled by [BootstrapVue](https://bootstrap-vue.org/).
 
-### Typography
+### Typography for improving read experience
 
 Typography is about shaping and laying out the texts on a website to create a pleasant user experience. It's one of the most important areas to focus on to improve the reading experience of a text heavy site; in fact, [web design is 95% typography](https://ia.net/topics/the-web-is-all-about-typography-period).
 
-There are a lot of things to consider. For example, typefaces have different levels of formality and make people feel differently.
-
-e.g. picking the right typeface, choosing between custom fonts and using native font stacks, how to decide the font size, line height, or the letter spacing, on different size of screens etc.
+There are a lot of details to consider and choices to make in order to make an article pleasant to read. These include picking the right typeface, choosing between custom fonts and native font stacks, setting the optimal font size/line height/letter spacing depending on the user's screen size etc.
 
 It's such a big field, and I ended up writing [an separate article](/articles/typography-basics-and-best-practices/) about it after doing a lot of research.
 
-### How to point custom domain to GitHub
+## Hosting setups
 
-### Choosing a publishing source <https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source>
+The generated static site is hosted from a `dist` branch in a GitHub repository. And I've also pointed my custom domains to it.
 
-## Reading experience
+### Point custom domain to GitHub
 
-### Native font stack
+### Choosing a publishing source
 
-I've chosen to use a “native font stack” for optimum text rendering on every device and OS, instead of using one typeface to rule them all.
-
-One problem with
-
--
-
-Luckily Bootstrap 4 provides this by default, and the typeface stack looks like below
-
-```bash
-$font-family-sans-serif:
-  // Safari for OS X and iOS (San Francisco)
-  -apple-system,
-  // Chrome < 56 for OS X (San Francisco)
-  BlinkMacSystemFont,
-  // Windows
-  "Segoe UI",
-  // Android
-  "Roboto",
-  // Basic web fallback
-  "Helvetica Neue", Arial, sans-serif,
-  // Emoji fonts
-  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
-```
-
-### Issues encountered
-
-Add custom asset component
+<https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source>
 
 ## References
 
