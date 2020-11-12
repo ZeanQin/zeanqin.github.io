@@ -87,15 +87,11 @@ There are a lot of details to consider and choices to make in order to make an a
 
 It's such a big field, and I ended up writing [an separate article](/articles/typography-basics-and-best-practices/) about it after doing a lot of research.
 
-## Hosting setups
+## Point custom domains to GitHub
 
-The generated static site is hosted from a `dist` branch in a GitHub repository. And I've also pointed my custom domains to it.
+I have pointed my root domain [zean.be](https://zean.be) and the subdomain [www.zean.be](http://www.zean.be) to the GitHub repository, and set up redirection from the `www` subdomain to the root domain - so users will always land on <https://zean.be>. I've written a separate step-by-step guide on how to do this in [this article](/articles/set-up-custom-domains-for-github-pages).
 
-### Point custom domain to GitHub
-
-### Choosing a publishing source
-
-<https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source>
+In addition, I've also enabled the free Let's Encrypt SSL certificate for the blog following the instructions [here](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/securing-your-github-pages-site-with-https#enforcing-https-for-your-github-pages-site).
 
 ## References
 
