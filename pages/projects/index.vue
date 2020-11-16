@@ -17,14 +17,14 @@
             maintaining the blog so I can just focus on writing the contents.
           </p>
           <p>
-            It features an extremely streamlined content authoring/publishing
-            process using only 3 commands.
+            It features a streamlined content authoring/publishing process using
+            only 3 commands.
           </p>
           <p>
-            In addition, the new toolstack gives the ability to use Vue
-            components inside the markdown files for adding more interactivity
-            to the articles. It also provides a more mainstream development
-            environment (Vue.js) in case of making changes to the website.
+            In addition, Vue components can now be used directly inside the
+            markdown files for adding more interactivity to the articles. The
+            toolstack also provides a more mainstream development environment
+            (Vue.js) in case of making changes to the website.
           </p>
           <p>
             Click on the buttons below to see a detailed report of this project
