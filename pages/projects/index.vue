@@ -3,6 +3,36 @@
     <page-header title="Projects" />
     <b-container>
       <project-summary
+        title="Git-based headless CMS (this website)"
+        date="Aug 2020 - Current"
+        report-url="/articles/git-based-headless-blog"
+        image-name="git-based-headless-blog.png"
+        code-url="https://github.com/ZeanQin/zeanqin.github.io"
+      >
+        <template slot="summary">
+          <p>
+            The project is a reboot of this website, previously built with
+            Jekyll, using Nuxt.js with the <code>@nuxt/content</code> module.
+            The goal is to reduce the amount of mental energy spent on
+            maintaining the blog so I can just focus on writing the contents.
+          </p>
+          <p>
+            It features an extremely streamlined content authoring/publishing
+            process using only 3 commands.
+          </p>
+          <p>
+            In addition, the new toolstack gives the ability to use Vue
+            components inside the markdown files for adding more interactivity
+            to the articles. It also provides a more mainstream development
+            environment (Vue.js) in case of making changes to the website.
+          </p>
+          <p>
+            Click on the buttons below to see a detailed report of this project
+            and the source code.
+          </p>
+        </template>
+      </project-summary>
+      <project-summary
         title="Strava activities bulk exporter for Garmin Connect"
         date="Mar 2020 - Jun 2020"
         report-url="/articles/bulk-export-strava-activities-for-garmin-connect"
