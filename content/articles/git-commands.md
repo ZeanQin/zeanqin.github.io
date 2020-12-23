@@ -215,6 +215,14 @@ My most commonly used command is
 git lg --after="yesterday" --author="Zean"
 ```
 
+### Compare commits between two branches
+
+Before merging one branch into another, you might want to get an overview of the commits to be merged.
+
+```bash
+git log --oneline --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --decorate --abbrev-commit <destination_branch>..<source_branch>
+```
+
 ### Prettify Git diff
 
 I use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy) to make the diffs more readable. Follow [the official setup steps](https://github.com/so-fancy/diff-so-fancy#install) and then just run
