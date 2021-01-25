@@ -268,6 +268,34 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 ```
 
+### Revert a merge commit that's already pushed to remote branch
+
+```bash
+# revert the commit and create a new commit
+git revert <commit-id> -m <parent-number>
+
+# push the new, revert commit to remote
+git push
+
+# other people can then pull the new commit
+git pull
+```
+
+The `-m` option specifies the *parent number*. This is because a merge commit has more than one parent, and Git does not know automatically which parent was the mainline, and which parent was the branch you want to un-merge.
+
+When you view a merge commit in the output of `git log`, you will see its parents listed on the line that begins with `Merge`:
+
+```bash
+commit 35b4b1355e5dbfeece0121cff2c89ec574da2a29
+Merge: 420dacb2 beca933d
+Author: Alexander<alex@gmail.com>
+Date:   Fri Jan 22 16:42:36 2021 +1100
+
+    Merge branch 'feature/RUM-649-redux' into development
+```
+
+In this situation, `git revert 35b4b13 -m 1` will get you the tree as it was in `420dacb2`, and `git revert -m 2` will reinstate the tree as it was in `beca933d`.
+
 ## References
 
 1. [How do I delete a Git branch locally and remotely?](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely)
@@ -280,3 +308,4 @@ export EDITOR="$VISUAL"
 8. [Automatic prune with Git fetch or pull](https://stackoverflow.com/questions/18308535/automatic-prune-with-git-fetch-or-pull)
 9. [fetch: make --prune configurable](https://github.com/git/git/commit/737c5a9cde708d6995c765b7c2e95033edd0a896#diff-07f3b3cf16a56e95990c64bdef634199R940)
 10. [How can I delete all Git branches which have been merged?](https://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged)
+11. [How to revert a merge commit that's already pushed to remote branch?](https://stackoverflow.com/questions/7099833/how-to-revert-a-merge-commit-thats-already-pushed-to-remote-branch)
