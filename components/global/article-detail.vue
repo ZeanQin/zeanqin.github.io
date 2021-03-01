@@ -74,7 +74,7 @@ export default Vue.extend({
       handler() {
         this.$content(this.published ? 'articles' : 'drafts')
           .only(['title', 'slug'])
-          .sortBy('updatedAt', 'asc')
+          .sortBy('createdAt', 'asc')
           .surround(this.article.slug)
           .fetch()
           .then(([prev, next]) => {

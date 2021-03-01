@@ -2,7 +2,7 @@
   <b-container>
     <div v-for="article in articles" :key="article.slug" class="my-4">
       <div class="article-meta">
-        {{ $moment(article.updatedAt).format('dddd, Do MMMM YYYY') }}
+        {{ $moment(article.createdAt).format('dddd, Do MMMM YYYY') }}
       </div>
       <nuxt-link
         class="h2 article-title my-3"

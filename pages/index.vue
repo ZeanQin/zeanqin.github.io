@@ -17,8 +17,8 @@ export default Vue.extend({
   },
   async asyncData({ $content }: Context) {
     const articles = await $content('articles')
-      .sortBy('updatedAt', 'desc')
-      .only(['title', 'slug', 'updatedAt', 'excerpt'])
+      .sortBy('createdAt', 'desc')
+      .only(['title', 'slug', 'createdAt', 'excerpt'])
       .fetch()
     return { articles }
   },
