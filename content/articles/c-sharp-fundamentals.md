@@ -1,5 +1,5 @@
 ---
-title: C# fundamentals
+title: C# - Fundamentals
 excerpt: This post contains some of the basic/important concpets that I find myself keeping coming back to around C#. 
 
 # Optional
@@ -21,10 +21,10 @@ enableTOC: true
 
 .NET and .NET Core are the programs that translates C# files into instructions for the CPU. They both contain,
 
-- **_CLR (Common Language Rumtime)_** - the rumtime (or space) to run the programs in C#
+- **_CLR (Common Language Rumtime)_** - the runtime (or space) to run the programs in C#
 - **_FCL (Framework Class Library_** - also known as Base Class Library, the library to perform common activities such as communicate over the network over HTTP, manage files etc.
 
-The **_.NET Core SDK_** contains the CLR, FCL and other tools that make developing software easier.These tools include `dotnet`, the .NET CLI. The common commands are:
+The **_.NET Core SDK_** contains the CLR, FCL and other tools that make developing software easier. These tools include `dotnet`, the .NET CLI (short for Command Line Interface). The common commands are:
 
 - `dotnet new [options]` - scaffold a new project
 - `dotnet add package <PACKAGE_NAME>` - add a NuGet package to the project
@@ -47,6 +47,24 @@ Typical folders/files in a project,
 
 **NuGet** is the package system for .NET and .NET Core. External packages are referenced in the `.csproj` file and can be restored using the `dotnet restore` command.
 
+### What `dotnet run` actually does
+
+The `dotnet run` command implicitly does a few things behind the scene,
+
+1. restoring the dependencies by running `dotnet restore`,
+2. compiling the source code by running `dotnet build`. The compilation process involves,
+
+    - Using the compiler to transform or translate the source code into an efficient binary format that is faster to excute when we need to actually run the application.
+    - Putting all `.cs` files into a single `.dll` file.
+
+        - The `.dll` in the context of .NET and .NET Core is called an assembly (rather than Dynamic Link Library).
+
+3. providing the proper runtime and launching the application by running `dotnet [path-to-application-assembly]`
+
+> *TIP*: Add `--` to separeate application parameters from the dotnet parameters. i.e. run `dotnet run -- A B C` to make sure the values `A`, `B`, and `C` are passed to the application, rather than being passed to the CLI.
+
+### What is a solution ?
+
 A **solution file** keeps track of multiple projects and is understood by Visual Studio or the .NET CLI i.e. `dotnet`. For example, `dotnet build` will build all projects in a solution and `dotnet test` will find all unit testing projects in the solution and run the unit tests. To create a solution file, run `dotnet new sln` at the top level of the collection of projects.
 
 Keywords:
@@ -60,7 +78,7 @@ Keywords:
 
 ## Reference type vs value types
 
-<asset src="articles/csharp/reference-type-vs-value-type.png" name="Monolithic" newline></asset>
+<asset src="articles/csharp/reference-type-vs-value-type.png" name="Reference type vs value type" newline></asset>
 
     Tip: the keywords are "memory address".
 
