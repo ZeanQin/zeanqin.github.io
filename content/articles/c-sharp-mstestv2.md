@@ -62,6 +62,24 @@ public class PlayerShould
 }
 ```
 
+3. Each test should be broken into 3 sections,
+
+```csharp
+[TestClass]
+public class PlayerShould
+{
+   [TestMethod]
+   public void BeInExpierencedWhenNew()
+   {
+      // arrange - put together the test data, and arrange the objects/values to be used
+
+      // act - invoke a method to perform a computation to produce the actual result
+
+      // assert - assert something about the value that is computed inside of act
+   }
+}
+```
+
 ## Asserts
 
 The different types of asserts are,
