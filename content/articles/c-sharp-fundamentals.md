@@ -70,7 +70,7 @@ A **solution file** keeps track of multiple projects and is understood by Visual
 Keywords:
 
 - `static` - The static keyword associates members (i.e. methods or fields in a class) to the class rather than its instances (i.e. objects) of a class. Static fields are mostly used to track some global states across all objects of the same class. Static methods are usually behaviours that have nothing to do with specific objects of the class.  
-- `internal` - Access modifier that makes a class only accessible inside a project. Good for internal classes that are implementation details of your project and you don't want to expose them publicly. The `public` modifier exposes a class to consumer of the project.
+- `internal` - Access modifier that makes a class only accessible inside a project. Good for internal classes that are implementation details of your project and you don't want to expose them publicly. The `public` modifier exposes a class to consumer of the project. If no access modifier is specificed for a class, the class is treated as `internal` by default.
 
 *Unit test* is testing a small unit of code, e.g. a method in a class, and verify that it's working as intended. The convention in C# is to create a separate project with the name _**<project_name>.Tests**_. A great side effect of writing unit tests is that it forces you to think about the design of your code.
 
