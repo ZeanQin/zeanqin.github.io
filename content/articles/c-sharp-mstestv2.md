@@ -21,8 +21,8 @@ enableTOC: true
 - Quick to execute (versus manual testing)
 - Generally more repeatable (versus manual)
 - Execution flexibility:
-  - Run on demand
-  - As part of continuous integration
+  - Run on demand (e.g. on a local machine after we've made a change)
+  - As part of continuous integration (e.g. on a build server)
   - On a schedule (e.g. overnight)
 
 ## MSTest Overview
@@ -33,17 +33,17 @@ The high level components of MSTest are:
 - **Asserts** allow us to check the expected values are received from the production code.
 - **Test runners** look through the code, look for specific test attributes that mark methods as tests and execute those methods. It also reports the outcome of tests, for example, whether a test passed or failed. These can include free test runners and 3rd party commercial test runners.
 
-NuGet Packages
+The MSTest framework has a number of NuGet packages,
 
-- `MSTest.TestFramework` includes,
+- The `MSTest.TestFramework` package contains the core framework which includes,
   - Attributes,
   - Assert methods,
-  - Data driven tests,
+  - Data-driven tests,
   - Extensibility points
 
-- `MSTest.TestAdapter` allows us to,
-  - discover MSTest-based tests such as `[TestMethod]` etc.,
-  - execute tests
+- The `MSTest.TestAdapter` package allows us to,
+  - discover MSTest-based tests such as methods decorated with the `[TestMethod]` attribute and,
+  - execute the discovered tests
 
 ## Conventions
 
@@ -84,10 +84,17 @@ public class PlayerShould
 
 The different types of asserts are,
 
-- General purpose asserts, i.e. the static methods in `Assert`,
-- Specialised string asserts, i.e. the static methods in `StringAssert`,
-- Specialised collection asserts, i.e. the static methods in `CollectionAssert`
-- Exception, type, and reference asserts
+- General purpose asserts, i.e. the static methods in the `Assert` class. Examples include,
+  - check result = and != expected value for built in types such as ints, floats, doubles, bool, string etc.
+- Specialised string asserts, i.e. the static methods in `StringAssert`. Examples include
+  - `StartsWith`, `EndsWith`, `Contains`,
+  - `Matches` for regular expression matches
+- Specialised collection asserts, i.e. the static methods in `CollectionAssert`. Examples include,
+  - `Contains`, `AreEqual`, `AllItemsAreUnique`
+- Other assertions including,
+  - exceptions are thrown,
+  - objects are of the specificed type,
+  - object reference
 - Custom asserts
 
 ## Controlling and customising test execution
