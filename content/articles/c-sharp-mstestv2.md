@@ -99,7 +99,22 @@ The different types of asserts are,
 
 ## Controlling and customising test execution
 
-### Test categorisation
+### Selectively execute tests based on filtering condition(s)
+
+Use `dotnet test --filter <Expression>`, where expression is in the format `<property><operator><value>[|&<Expression>]`,  via the CLI to execute only the tests matching the filtering condition(s).
+
+To run tests whose `FullyQualifiedName` (i.e. `<Namespace>.<ClassName>.<MethodName>`) contains a particular string, use `dotnet test --filter <arbitrary_string>`. We could set `<arbitrary_string>` to different values to filter at different levels,
+
+- when `<arbitrary_string>` is set to `<Namespace>`, we will execute all tests in the matching namespace,
+- when `<arbitrary_string>` is set to `<ClassName>`, we will execute all tests in all the matching classes,
+- when `<arbitrary_string>` is set to `<MethodName>`, we will execute all tests with the matching name,
+- etc.
+
+To run tests in a class, use `dotnet test --filter "ClassName=<Namespace>.<ClassName>"`.
+
+See <https://aka.ms/vstest-filtering> for more information on filtering support.
+
+### Categorise tests
 
 We can set a category on a test method or a test class. Multiple categories can be applied to a test method/class. When a category is set for a class, all test methods in that class are added to that category.
 
@@ -113,11 +128,9 @@ public void BeInexperiencedWhenNew()
 }
 ```
 
-To run tests in a category, use `dotnet test --filter="TestCategory=Player defaults"`. To run tests in multiple categories, use `dotnet test --filter="TestCategory=Player defaults|TestCategory=Another category"`
+To run tests in a category via the CLI, use `dotnet test --filter "TestCategory=Player defaults"`. To run tests in multiple categories, use `dotnet test --filter "TestCategory=Player defaults|TestCategory=Another category"`
 
-To run tests in a class, use `dotnet test --filter="ClassName=<Namespace>.<ClassName>"`
-
-### Ingore tests
+### Ingore some tests
 
 Use the `Ignore` attribute to temporarily ignore a test method.
 
@@ -132,7 +145,7 @@ public void BeNice()
 
 ### Output additional messages
 
-We can use `Console.WriteLine()` inside test methods to output additional messages. To see the messages, run `dotnet run -v n`
+We can use `Console.WriteLine()` inside test methods to output additional messages. To see the messages, run `dotnet test -v n`.
 
 ### Run additional code during the test execution lifecycle
 
@@ -144,7 +157,7 @@ public class LifeCycle
 {
 
    /*
-   * Run this method before any test method in this assembly runs.
+   * Run this method before any test method in this assembly (i.e. project) runs.
    *
    * The method has to be static and passes the TestContext object as parameter.
    */
@@ -169,23 +182,23 @@ public class LifeCycle
    * Run this test method after each and every test method runs.
    */
    [TestCleanup]
-   public void LifeCycleInit() {}
+   public void LifeCycleClean() {}
 
    /*
-   * Run this code after all test methods have finished running.
+   * Run this code after all test methods in this class have finished running.
    *
    * This method has to be static and accepts the TestContext object as parameter.
    */
    [ClassCleanup]
-   public static void LifeCycleClassInit(TestContext context) {}
+   public static void LifeCycleClassClean(TestContext context) {}
 
    /*
-   * Run this method after all test methods in this assembly have finished running.
+   * Run this method after all test methods in this assembly (i.e. project) have finished running.
    *
    * The method has to be static and passes the TestContext object as parameter.
    */
    [AssemblyCleanup]
-   public static void AssemblyCleanup(TestContext context) {}
+   public static void AssemblyClean(TestContext context) {}
 
    [TestMethod]
    public void Test1() {}
@@ -195,18 +208,19 @@ public class LifeCycle
 }
 ```
 
-### Share object between tests
+### Share objects between tests
 
-Some object might take a long time to create. We can create one object and share it between tests.
+Some object might take a long time to create e.g. it might involve I/O, network access or reading from a database or file. We can create the object once and share it between tests.
 
 ```csharp
 [TestClass]
 public class Foo
 {
+   // The object needs to be static as we're using a static method to initialise the data.
    static string SomeExpensiveObject;
 
    [ClassInitialize]
-   public static void Bar(TestContext context)
+   public static void LifeCycleClassInit(TestContext context)
    {
       SomeExpensiveOjbect = // create object
    }
@@ -217,34 +231,38 @@ public class Foo
 
 ### Benefits
 
-- Reduce duplicated tests and associated maintenance costs. i.e. instead of having 10 similar test methods testing the same function with different data, we can keep only one of the test methods, run it multiple times with a set of test data we specify.  
+- Reduce duplicated test code and associated maintenance costs with having to maintain that duplicated code. For example, instead of having 10 similar test methods testing the same function with different data, we can keep only one of the test methods, run it multiple times with a set of test data we specify.  
 - Reuse the same test data sets across multiple test methods or test classes.
-- External non-developers can create test data
+- Allow external non-developers to create or modify test data.
 
 ### Example 1: specify test data for one test method
 
 ```csharp
-// The attribute tells mstest that we want to execute the method multiple times with different test data
-[DataTestMethod]
+[DataTestMethod] // The attribute tells mstest that we want to execute the method multiple times with different test data.
 [DataRow(1, 99)]
 [DataRow(2, 98)]
 [DataRow(3, 97)]
 public void Foo(int input, int expectedValue)
 {
+   // arrange 
    var bar = new Bar();
+
+   // act
    var actualOutput = bar.take(input);
+
+   // assert
    Assert.AreEqual(expectedValue, actualOutput);
 }
 ```
 
-### Example 2: centralise test data into a static getter
+### Example 2: centralise test data into a getter-only static property
 
 ```csharp
 [TestClass]
 public class Foo
 {
    /*
-    * Static getter for generate test data
+    * Static getter for generating the test data.
     */
    public static IEnumerable<object[]> Damages
    {
@@ -259,12 +277,17 @@ public class Foo
       }
    }
 
-   [DataTestMethod]
-   [DynamicData(nameof(Damages))] // the attribute allows us to choose a property that returns the test data
+   [DataTestMethod] // The attribute tells mstest that we want to execute the method multiple times with different test data.
+   [DynamicData(nameof(Damages), DynamicDataSourceType.Property)] // This attribute allows us to choose a property or method that returns the test data.
    public void Foo(int input, int expectedValue)
    {
+      // arrange
       var bar = new Bar();
+
+      // act
       var actualOutput = bar.take(input);
+
+      // assert
       Assert.AreEqual(expectedValue, actualOutput);
    }
 }
@@ -277,9 +300,9 @@ public class Foo
 public class Foo
 {
    /*
-    * Static method for generate test data
+    * Static method for generating the test data.
     */
-   public static IEnumerable<object[]> GetDamages
+   public static IEnumerable<object[]> GetDamages()
    {
       return new List<object[]>
       {
@@ -289,23 +312,47 @@ public class Foo
       };
    }
 
-   [DataTestMethod]
-   [DynamicData(nameof(GetDamages), DynamicDataSourceType.Method)] // the attribute allows us to choose a method that returns the test data
+   [DataTestMethod] // The attribute tells mstest that we want to execute the method multiple times with different test data.
+   [DynamicData(nameof(GetDamages), DynamicDataSourceType.Method)] // This attribute allows us to choose a method or property that returns the test data.
    public void Foo(int input, int expectedValue)
    {
+      // arrange 
       var bar = new Bar();
+
+      // act
       var actualOutput = bar.take(input);
+
+      // assert
       Assert.AreEqual(expectedValue, actualOutput);
    }
 }
 ```
 
-### Example 4: centralise test data into a static method in a different class
+### Example 4: centralise test data into a static getter-only property or method in a different class
 
 ```csharp
 public class Data
 {
-   public static IEnumerable<object[]> GetDamages
+   /*
+    * Static getter for generating the test data.
+    */
+   public static IEnumerable<object[]> Damages
+   {
+      get
+      {
+         return new List<object[]>
+         {
+            new object[] { 1, 99 },
+            new object[] { 2, 98 },
+            new object[] { 3, 97 },
+         };
+      }
+   }
+
+   /*
+    * Static method for generating the test data.
+    */
+   public static IEnumerable<object[]> GetDamages()
    {
       return new List<object[]>
       {
@@ -320,11 +367,19 @@ public class Data
 public class Foo
 {
    [DataTestMethod]
-   [DynamicData(nameof(Data.GetDamages), typeof(Data), DynamicDataSourceType.Method)] // the attribute allows us to choose a method that returns the test data
+   [DynamicData( // This attribute allows us to choose a property or method that returns the test data.
+      nameof(Data.GetDamages), // The name of method or property having test data.
+      typeof(Data), //  The declaring type of property or method having data.
+      DynamicDataSourceType.Method)] 
    public void Foo(int input, int expectedValue)
    {
+      // arrange 
       var bar = new Bar();
+
+      // act
       var actualOutput = bar.take(input);
+
+      // assert
       Assert.AreEqual(expectedValue, actualOutput);
    }
 }
@@ -332,29 +387,62 @@ public class Foo
 
 ### Example 4: read test data from external soure
 
-```csharp
-public class Data
+Step 1: create an external file such as a csv file `DamageData.csv` like below,
+
+```txt[DamageData.csv]
+1, 99
+2, 98
+3, 97
+```
+
+Step 2: create the class for reading the data and providing it as a static getter-only property or method.
+
+```csharp[Data.cs]
+class Data
 {
-   public static IEnumerable<object[]> Damages
-   {
-      get
-      {
-         // step 1: get data from external source
+    public static IEnumerable<object[]> Damages
+    {
+        get
+        {
+            return File
+                .ReadAllLines("DamageData.csv")
+                .Select(line =>
+                    line.Split(',').Select(int.Parse).Cast<object>().ToArray());
+        }
+    }
 
-         // step 2: construct and return IEnumerable<object[]>
-      }
-   }
+    public static IEnumerable<object[]> GetDamages()
+    {
+        return File
+            .ReadAllLines("DamageData.csv")
+            .Select(line =>
+                line.Split(',').Select(int.Parse).Cast<object>().ToArray());
+    }
 }
+```
 
+Step 3: make sure the `DamageData.csv` file is copied to the output directory.
+
+Step 4: update the test method to use the data provided by the `Data.cs` class.
+
+```csharp[Foo.cs]
 [TestClass]
 public class Foo
 {
    [DataTestMethod]
-   [DynamicData(nameof(Data.Damages), typeof(Data))] // the attribute allows us to choose a property that returns the test data
+   [DynamicData( // This attribute allows us to choose a property or method that returns the test data.
+      nameof(Data.GetDamages), // The name of method or property having test data.
+      typeof(Data), //  The declaring type of property or method having data.
+      DynamicDataSourceType.Method)] 
    public void Foo(int input, int expectedValue)
    {
+      // arrange 
       var bar = new Bar();
+
+      // act
       var actualOutput = bar.take(input);
+
+      // assert
       Assert.AreEqual(expectedValue, actualOutput);
    }
 }
@@ -362,32 +450,68 @@ public class Foo
 
 ## Reducing code duplication and increasing test readability
 
-### Custom Asserts by using extention methods
+### Create custom asserts
 
-```csharp
+This can be done by defining extention methods on the `Assert`, `StringAssert` and `CollectionAssert` classes.
+
+#### Example 1: custom assert
+
+Step 1: define the custom assert
+
+```csharp[CustomAsserts.cs]
 public static class CustomAsserts
 {
-   public static void IsInRange(this Assert assert, int actual, int expectedMin, int expectedMax)
-   {
-      // custom logic
-
-      throw new AssertFailedException("Message");
-   }
+    public static void IsInRange(this Assert assert,
+                                 int actual,
+                                 int expectedMinimumValue,
+                                 int expectedMaximumValue)
+    {
+        if (actual < expectedMaximumValue || actual > expectedMaximumValue)
+        {
+            throw new AssertFailedException($"{actual} was not in the range {expectedMinimumValue} - {expectedMaximumValue}");
+        }
+    }
 }
-
-// somewhere else in a test method
-Assert.That.IsInRange(2, 1, 100);
 ```
 
-### Custom test category attribute
+Step 2: use the custom assert in a test method
 
 ```csharp
+Assert.That.IsInRange(2, 1, 100); // `That` is for getting the singleton instance of the Assert functionality.
+```
+
+#### Example 2: custom collection assert
+
+Step 1: define the custom collection assert
+
+```csharp[CustomAsserts.cs]
+public static void AllItemsSatisfy<T>(this CollectionAssert collectionAssert,
+                                      ICollection<T> collection,
+                                      Predicate<T> predicate)
+{
+    if (collection.Any(item => !predicate(item)))
+        throw new AssertFailedException("All items don't satisfy the predicate.");
+}
+```
+
+Step 2: use the custom collection assert in a test method
+
+```csharp
+// e.g. check all items in a string array are not null or empty.
+CollectionAssert.That.AllItemsSatisfy(new [] {"Zean", "Qin"}, i => !string.IsNullOrEmpty(i));
+```
+
+### Create custom reusable test category attributes
+
+We might have multiple test categories with the same e.g. `TestCategory("Player Defaults")`. To avoid the duplicated magic strings (and only write it once), we can create a custom test category.
+
+```csharp[CustomCategories.cs]
 /*
  * Custom test category attribute
  */
 public class PlayerDefaultsAttribute : TestCategoryBaseAttribute
 {
-   public override Ilist<string> TestCategories => new [] {"Player Defaults"}
+   public override IList<string> TestCategories => new [] {"Player Defaults"}
 }
 
 
@@ -397,35 +521,70 @@ public class PlayerDefaultsAttribute : TestCategoryBaseAttribute
 public void Foo() {}
 ```
 
-### Custom data source attribute
+### Create custom data source attributes
+
+We can implement our own version of the `DynamicData` attribute to,
+
+- increases the code readability, and
+- allow us to specify the file name containing the test data.
+
+The `DynamicData` attribute implements the `ITestDataSource` interface by relying on another class (specified by the parameters of the attribute) to provide the data parsing logic.
+
+Our custom attribute will implement the `ITestDataSource` interface by directly implementing the logic for parsing the data.
+
+Step 1: define custom attribute
 
 ```csharp
-/*
- * Custom data source attribute
- */
 public class CsvDataSourceAttribute : Attribute, ITestDataSource
 {
-   public string FileName { get; }
-   public CsvDataSourceAttribute(string fileName)
+    public string FileName { get; }
+    public CsvDataSourceAttribute(string fileName)
+    {
+        this.FileName = fileName;
+    }
+
+    public IEnumerable<object[]> GetData(MethodInfo methodInfo)
+    {
+        return File
+            .ReadAllLines(this.FileName)
+            .Select(line =>
+                line.Split(',').Select(int.Parse).Cast<object>().ToArray());
+    }
+
+    public string GetDisplayName(MethodInfo methodInfo, object[] data)
+    {
+        if (data == null)
+            return null;
+
+        return $"{methodInfo.Name}({string.Join(",", data)})";
+    }
+}
+```
+
+Step 2: use the attribute
+
+```csharp
+[TestClass]
+public class Foo
+{
+   [DataTestMethod]
+   // [DynamicData( // This attribute allows us to choose a property or method that returns the test data.
+   //    nameof(Data.GetDamages), // The name of method or property having test data.
+   //    typeof(Data), //  The declaring type of property or method having data.
+   //    DynamicDataSourceType.Method)] 
+   [CsvDataSourceAttribute("DamageData.csv")] // Use our custom data attribute instead.
+   public void Foo(int input, int expectedValue)
    {
-      FileName = fileName;
-   }
+      // arrange 
+      var bar = new Bar();
 
-   public string GetDisplayName( MethodInfo methodInfo, object[] data)
-   {
+      // act
+      var actualOutput = bar.take(input);
 
-   }
-
-   public IEnumerable<object[]> GetData(MethodInfo methodInfo)
-   {
-
+      // assert
+      Assert.AreEqual(expectedValue, actualOutput);
    }
 }
-
-// then somewhere else for a test method
-[DataTestMethod]
-[CsvDataSource("data.csv")]
-public void Foo() {}
 ```
 
 ## References
