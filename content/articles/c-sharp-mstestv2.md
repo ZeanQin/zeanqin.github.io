@@ -190,7 +190,7 @@ public class LifeCycle
    * This method has to be static and accepts the TestContext object as parameter.
    */
    [ClassCleanup]
-   public static void LifeCycleClassClean(TestContext context) {}
+   public static void LifeCycleClassClean() {}
 
    /*
    * Run this method after all test methods in this assembly (i.e. project) have finished running.
@@ -198,7 +198,7 @@ public class LifeCycle
    * The method has to be static and passes the TestContext object as parameter.
    */
    [AssemblyCleanup]
-   public static void AssemblyClean(TestContext context) {}
+   public static void AssemblyClean() {}
 
    [TestMethod]
    public void Test1() {}

@@ -82,7 +82,21 @@ Keywords:
 
     Tip: the keywords are "memory address".
 
-In C#, when passing a variable to a method, we are always, 100% of the time, passing the parameter by value. It means, we always copy the value held by the variable, instead of the memory address of the variable. The held value could be a memory address if the variable holds a reference to an object or the actual value if variable holds the actual value.
+### Passing by value
+
+```csharp
+// Passing by value
+
+var a = ... // imagine we declared and initialised a variable
+
+f(x) { ... } // we also defined a function somewhere
+
+f(a) // We then execute the function by passing in the variable `a`
+```
+
+In C#, when passing a variable (e.g. the variable `a` in `var a = ...`) to a method (e.g. the method `f(x)`), we are always, 100% of the time, **passing the parameter by value**. It means, we always copy the value held by the variable (i.e. `a`), instead of the memory address of the variable `a`. The held value could be a memory address if the variable holds a reference to an object or the actual value if variable holds the actual value.
+
+### Passing by reference
 
 Passing a variable by its reference to a method allows (inside) that method to update the content of the variable. So,
 
@@ -96,7 +110,7 @@ var book = new Book("Book 1");
 GetBookSetName(ref book);
 ```
 
-```c#
+```csharp
 void GetBookSetName(ref book)
 {
     // your code here
@@ -105,12 +119,12 @@ void GetBookSetName(ref book)
 
 or using the `out` keyword
 
-```c#
+```csharp
 var book = new Book("Book 1");
 GetBookSetName(out book);
 ```
 
-```c#
+```csharp
 void GetBookSetName(out book)
 {
     // out assumes the reference has not been initialised
