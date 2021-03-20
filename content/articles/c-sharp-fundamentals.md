@@ -101,7 +101,7 @@ In C#, when passing a variable (e.g. the variable `a` in `var a = ...`) to a met
 Passing a variable by its reference to a method allows (inside) that method to update the content of the variable. So,
 
 - If the variable holds the memory address of some object, the method can change which object the variable is pointing to if it wants to, in addition to update the object.
-- If the variable holds a value, the method can update the value held by the varialbe.
+- If the variable holds a value, the method can update the value held by the variable.
 
 In C#, passing a variable by reference is achieved by using the `ref` keyword,  
 
@@ -134,19 +134,29 @@ void GetBookSetName(out book)
 
 Unlike `ref`, with the `out` keyword, the C# compiler assumes that the incoming reference has not been initialised. The compiler will give an error if the out parameter is not assigned in the `GetBookSetName` method.
 
-### How to tell if a varialbe is reference type or value type
+### How to tell if a variable is reference type or value type
 
-A `class` type is a reference type and a `struct` type, including `double` (alias for `Double`), `DateTime`, `char` etc., is a value type.
+A `class` type is a reference type and a `struct` type, including `int` (alias for `Int32`), `double` (alias for `Double`), `bool` (alias for `Boolean`), `DateTime`, `char` etc., is a value type.
 
-```
-A `struct` is similar to a `class` in that it can have fields and methods.
-```
+### Similarities between reference type and value type
+
+A `struct` type is similar to a `class` type in that it can have fields and methods.
+
+### Differences between reference type and value type
+
+A reference type is usually mutable while a value type is immutable.
+
+For example, an object is mutable because we can change it's properties. But if we have the number 3, we cannot really change that value and we cannot re-assining the meaning of integer 3.
+
+NOTE: We can assign both a reference type and a value type to variables, which is not what we're talking about here. We're talking about if the object/value itself is mutable.
+
+### Special case - string is immutable
 
 A `string` (alias for `String`) is a reference type but behaves like a value type. Like a value type, a `string` object is immutable and all of the methods on that object creates a copy of the original object.
 
-```
-The CLR keeps track of all objects and varialbes. It knows if there are no fields or variables pointing to an object. And the garbage collector will deallocate that object to free up memory.
-```
+### Garbage Collection
+
+ One of the services that the .NET runtime (the CLR) provides is a garbage collector. So the .NET runtime can keep track of all the objects that you have allocated and created, and it also keeps track of and knows about all the variables you've created and all the fields that you have inside of objects that point to other objects that are in memory. And the .NET runtime knows when there's an object in memory, it knows when there's no variables and no fields that are pointing to or using that object. And it knows when that happens, when nothing is using that object, it can run a garbage collection and clean up and deallocate that object. That frees up memory so your program doesn't exhaust memory.
 
 Conventions
 
@@ -161,7 +171,7 @@ Execution always goes from top to bottom. Flow controls include,
 - `break`, `continue` for jumping statements
 - `switch` for switching
 
-```c#
+```csharp
 // C# 7 and later supports switch with pattern matching
 switch(a)
 {
@@ -191,7 +201,7 @@ The return type of a method is not part of the signature for that method.
 
 A field is the variable representing the state of the object, while a property is the field + the getters and setters of that backing field.
 
-```c#
+```csharp
 // a backing field for the property
 private string name;
 
@@ -206,14 +216,14 @@ public string Name {
 }
 ```
 
-And it can be written as an auto property as below
+And it can be written as an _auto property_ as below
 
-```c#
+```csharp
 // the C# compiler will automatically generate a private backing field with the getters and setters as shown above.
 public string Name { get; set; }
 ```
 
-Defining a property is very similar to defining a public field. However, there are a couple of differences between them,
+Defining an auto property is very similar to defining a public field with the same name. However, there are a couple of differences between them,
 
 - The main differences revovle around reflection and serialisation, which both inspect an object to see what's available for state at runtime.
 - Another difference is that the getter and setter of a property can have different access modifiers. e.g. one is private while the other is public.
@@ -222,7 +232,7 @@ Defining a property is very similar to defining a public field. However, there a
 
 A `readonly` field can only be set by a variable initialisor or in the constructor. And the compiler will throw an error if it's set in a method. It's good for states that are set at the object creation time but never are changed for the rest of the object life cycle.
 
-```C#
+```csharp
 // initializer
 readonly string Cateogry = "Science";
 // or initialise in constructor
@@ -231,18 +241,18 @@ readonly string Cateogry = "Science";
 
 ### _Const fields_
 
-`const` has a stricter rule than `readonly`. i.e. it can only be set by an initializer and is not even able to be set inside a constructor. Because it's not tied to a particular object, it's accessed via the type name rather than the object.
+`const` has a stricter rule than `readonly` - it can only be set by an initializer and is not even able to be set inside a constructor. Because it's not tied to a particular object, it's accessed via the type name rather than the object. That is, const fields are treated as static members of the class.
 
-```C#
+```csharp
 // initializer
 public const string CATEGORY = "Science"; // by convension, all const values use upper case for the name of the field.
 ```
 
 ### _Delegates_
 
-A delegate is a specific type, just like `double`, `string` etc, that describes what a method looks like including the return type of the method and the sequence of parameters of the method.
+A delegate is a specific type, just like `double` (alias for `Double`), `string` (alias for `String`), `Book` in `class Book {}` etc, that describes what a method looks like including the return type of the method and the sequence of parameters of the method.
 
-```c#
+```csharp
 namespace GradeBook {
     // for comparision
     public class Book {}
@@ -254,7 +264,7 @@ namespace GradeBook {
 
 Then somewhere,
 
-```c#
+```csharp
 namespace Gradebook.Tests
 {
     public class
@@ -285,7 +295,7 @@ namespace Gradebook.Tests
 
 A `multi-cast delegate` is a delegate that contains multiple methods and can invoke all methods at once. Example,
 
-```c#
+```csharp
 namespace Tests
 {
     public delegate string WriteLogDelegate(string message);
@@ -326,7 +336,7 @@ A method of an object might want to generate some event and invoke some methods 
 
 An example of defining and raising an event using delegate,
 
-```c#
+```csharp
 namespace GradeBook
 {
 
@@ -350,7 +360,7 @@ namespace GradeBook
 
 and an exmaple of handling the event is,
 
-```c#
+```csharp
 class Program
 {
     static void Main(string[] args)
@@ -387,7 +397,7 @@ The three pillars of OOP:
 
 - _*Inheritance*_ allows us to reuse code from similar classes
 
-    ```c#
+    ```csharp
     namespace Test {
         public class A {
             public string Name {get; set;}
@@ -412,7 +422,7 @@ The three pillars of OOP:
 
     One way to achieve polymorphism is by inheriting from an abstract class and providing implementation for the abstract methods. For example, a `Book` object (the real type could be different) can `SaveGrade()` to in memory, disk or over the network.
 
-    ```c#
+    ```csharp
     public class NamedObject
     {
         public string Name {get; set;}
@@ -446,7 +456,7 @@ The three pillars of OOP:
     }
     ```
 
-    ```c#
+    ```csharp
     var inMemoryBook = new InMemoryBook("hi");
     foo(inMemoryBook);
 
@@ -464,7 +474,7 @@ The three pillars of OOP:
 
     No access modifier for methods are needed in an interface because the implementing type must always make the method public.
 
-    ```C#
+    ```csharp
     public interface IBook
     {
         string Name {get;}
@@ -479,7 +489,7 @@ The three pillars of OOP:
     }
     ```
 
-    ```c#
+    ```csharp
     public void foo(IBook book)
     {
         // ...
@@ -494,7 +504,7 @@ The `IDisposable` is implemented by many classes to advertise that they have som
 
 An easy pattern to make sure an object is always disposed is
 
-```c#
+```csharp
 void foo()
 {
     // when used to wrap a statement, the `using` keyword is telling the compiler that we are using the `writer` object and it needs to always call the `.Dispose()` method on the object after all statements in the code block are executed.
