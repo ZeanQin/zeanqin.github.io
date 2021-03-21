@@ -395,7 +395,7 @@ The three pillars of OOP:
 
 - _*Encapsulation*_ allows us to hide details about our code. e.g. methods, properties, access modifiers etc.
 
-- _*Inheritance*_ allows us to reuse code from similar classes
+- _*Inheritance*_ allows us to reuse code from similar classes.
 
     ```csharp
     namespace Test {
@@ -410,7 +410,7 @@ The three pillars of OOP:
         public class B : A {
             public B(string name) : base(name) // chain constructors for initialising properties in base object.
             {
-                Name = name;
+                // initialise other properties in class B.
             }
         }
     }
@@ -418,35 +418,34 @@ The three pillars of OOP:
 
     Every class has a base class; if not specified, the base class is the `System.Object` class. A struct also inherits from the `Object` class; so a value type is technically also a reference type.
 
-- _*Polymorphism*_ allows us to have objects of the same type to behave differently.
+- _*Polymorphism*_ allows us to have objects of the same type (e.g. an abstract base class or an interface) to behave differently.
 
     One way to achieve polymorphism is by inheriting from an abstract class and providing implementation for the abstract methods. For example, a `Book` object (the real type could be different) can `SaveGrade()` to in memory, disk or over the network.
 
     ```csharp
     public class NamedObject
     {
+        public NamedObject(string name) 
+        {
+            Name = name;
+        }
+
         public string Name {get; set;}
     }
 
     public abstract class Book : NamedOjbect
     {
-        public Book(string name) : base(name)
-        {
-            Name = name;
-        }
+        public Book(string name) : base(name) { }
 
-        // only defines the signature and return type of the method that any descendant classes should have
-        // no implementation details
+        // Only defines the signature and return type of the method that any descendant classes should have.
+        // No implementation details are provided at this level.
         public abstract void AddGrade(double grade);
 
     }
 
     public class InMemoryBook : Book
     {
-        public Book(string name) : base(name)
-        {
-            Name = name;
-        }
+        public Book(string name) : base(name) { }
 
         // the override keyword tells the comiler to override the inherited abstract or virtual method.
         public override void AddGrade(double grade)
@@ -462,6 +461,7 @@ The three pillars of OOP:
 
     public foo(Book book)
     {
+        // AddGrade here is polymorphic - its behaviour changes depending on the actual type of `book` (rather than the base type `Book`).
         book.AddGrade(96);
     }
     ```
@@ -469,8 +469,8 @@ The three pillars of OOP:
     Another way to achieve encapsulation and polymorphism is by definning an interface.
 
   - An interface contains no implementation details and it only describes the members that should be available on a specific type.
-  - An abstract class contains some implementation details and some
-  - A class has all implmentation details
+  - An abstract class contains some implementation details and some abstract methods.
+  - A class has all implmentation details.
 
     No access modifier for methods are needed in an interface because the implementing type must always make the method public.
 
@@ -496,19 +496,24 @@ The three pillars of OOP:
     }
     ```
 
-    Difference between an `abstract` method and a `virtual` method,
-  - An `abstract` method is saying the deriving class must override me,
-  - a `virtual` method is saying I have provided implmention details, but deriving class can still override me if it needs to.
+Difference between an `abstract` method and a `virtual` method,
 
-The `IDisposable` is implemented by many classes to advertise that they have something to be cleaned up, freed or released. The implementing class usually has a `.Close()` method as well as the `.Dispose()` method. These two methods typically do the same thing i.e. freeing up the underlying resources.
+- An `abstract` method is saying the deriving class must override me,
+- a `virtual` method is saying I have provided implmention details, but deriving class can still override me if it needs to.
 
-An easy pattern to make sure an object is always disposed is
+In both cases, the derived class needs the `override` keyword for a method if that method overrrides the parent version.
+
+The `IDisposable` interface is implemented by many classes to advertise that they have something to be cleaned up, freed or released. The garbage collector will eventually free up the resources, but sometimes we want these resoruces to be freed immediately on demand.
+
+The implementing class usually has a `.Close()` method as well as the `.Dispose()` method. These two methods typically do the same thing - asking the garbage collector to free up the underlying resources.
+
+When working with an object that implements `IDisposible`, an easy pattern to make sure the `.Dispose()` method is called is,
 
 ```csharp
 void foo()
 {
-    // when used to wrap a statement, the `using` keyword is telling the compiler that we are using the `writer` object and it needs to always call the `.Dispose()` method on the object after all statements in the code block are executed.
-    // the c# compiler will generate a try ... catch ... finally code to make sure the `.Dispose()` method is called.
+    // When wrapping a statement with using, the `using` keyword is telling the compiler that we are using the `writer` object and it needs to always call the `.Dispose()` method on the object after all statements in the code block are executed.
+    // The c# compiler will generate a try ... catch ... finally code to make sure the `.Dispose()` method is called.
     using(var writter = File.AppendText("test.txt"))
     {
         // ...
