@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/tools/time-converter", {data:[{}],fetch:[],mutations:void 0});
