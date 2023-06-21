@@ -32,7 +32,7 @@
     "bootstrap": "^4.5.0",
     "bootstrap-vue": "^2.15.0",
     "medium-zoom": "^1.0.6",
-    "nuxt": "^2.14.0"
+    "nuxt": "^3.4.3"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.0",
